@@ -1,0 +1,49 @@
+{
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "overrides": [
+  {
+    "files": ["*.ts", ".js"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "jsx": false,
+      "project": "./tsconfig.json",
+      "sourceType": "module",
+      "extraFileExtensions": [".ts", ".js"]
+    },
+    "plugins": ["import", "@typescript-eslint", "@html-eslint"],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      "airbnb-base",
+      "airbnb-typescript/base"
+    ],
+    "rules": {
+      "no-shadow": "off",
+      "indent": "off",
+      "import/prefer-default-export": "off",
+      "@typescript-eslint/indent": ["error", 2],
+      "max-len": ["error", 90],
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/no-shadow": "error"
+    }
+  },
+  {
+    "files": ["*.html"],
+    "parser": "@html-eslint/parser",
+    "plugins": ["@html-eslint/eslint-plugin"],
+    "rules": {
+      "@html-eslint/indent": ["error", 2],
+      "max-len": ["error", 120]
+    }
+}]
+}
