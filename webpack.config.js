@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPligin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const devServer = (isDev) =>
   !isDev
@@ -40,11 +40,11 @@ module.exports = ({ develop }) => ({
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPligin.loader, 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [MiniCssExtractPligin.loader, 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.html$/i,
@@ -62,7 +62,7 @@ module.exports = ({ develop }) => ({
       template: path.resolve(__dirname, './src/index.html'),
       filename: 'index.html',
     }),
-    new MiniCssExtractPligin({
+    new MiniCssExtractPlugin({
       // filename: '[name].[contenthash].css',
       filename: '[name].css',
     }),
