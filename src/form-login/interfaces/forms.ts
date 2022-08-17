@@ -1,5 +1,11 @@
-export interface IForm {
+export interface IInputElement {
   validate(): boolean;
+  getHtmlTag(): HTMLDivElement;
+}
+
+export interface IForm {
+  isValid(): boolean;
+  setParent(element: HTMLElement): void;
 }
 
 export interface IFormAutorization {

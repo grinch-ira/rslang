@@ -1,0 +1,43 @@
+.field {
+  width: 250px;
+  height: 40px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  background-color: #888888;
+  border: 2px solid #4a026c;
+  border-radius: 5px;
+  position: relative;
+}
+
+.field__input {
+  background-color: transparent;
+  font-size: 1.2rem;
+  &::placeholder {
+    color: #000000;
+  }
+}
+
+// .valid {
+
+// }
+
+.valid::after {
+  content: "✓";
+  font-size: 2rem;
+  color: #00ff00;
+  position: absolute;
+  right: -30px;
+}
+
+// .invalid {
+
+// }
+
+.invalid::after {
+  content: "❌";
+  font-size: 2rem;
+  color: #ff0000;
+  position: absolute;
+  right: -30px;
+}
