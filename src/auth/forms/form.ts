@@ -1,4 +1,5 @@
-import { IForm, IInputElement } from '../interfaces/forms';
+import { IForm } from './interfaces/forms';
+import { IInputElement } from '../inputs/interfaces/input-element';
 // import { InputElement } from './input-element';
 
 export class Form implements IForm {

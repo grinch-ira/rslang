@@ -1,5 +1,4 @@
-// import { Form } from './form-login/components/form';
-import { FormAutorization } from './form-login/components/form-autorization';
+import { FormAutorization } from './auth/forms/form-autorization';
 import './reset.scss';
 import './style.scss';
 import './variables.scss';

@@ -1,5 +1,5 @@
 import { BuildElement } from '../../utils/element-builder/components/build-element';
-import { IInputElement } from '../interfaces/forms';
+import { IInputElement } from './interfaces/input-element';
 import './input-element.scss';
 
 export class InputElement implements IInputElement {

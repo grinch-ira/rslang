@@ -1,5 +1,5 @@
 import { Form } from './form';
-import { InputElement } from './input-element';
+import { InputElement } from '../inputs/input-element';
 
 export class FormAutorization extends Form {
   protected htmlInputEmail: HTMLDivElement;
