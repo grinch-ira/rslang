@@ -1,4 +1,4 @@
-export interface IInputElement {
+export interface IInputBaseElement {
   validate(): boolean;
   getHtmlTag(): HTMLDivElement;
 }
