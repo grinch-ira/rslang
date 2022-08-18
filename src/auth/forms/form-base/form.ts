@@ -8,9 +8,9 @@ export class Form implements IForm {
     this.validateElementContainer = [];
   }
 
-  public setParent(element: HTMLElement) {
-    element.append(...this.validateElementContainer.map((item) => item.getHtmlTag()));
-  }
+  // public setParent(element: HTMLElement) {
+  //   element.append(...this.validateElementContainer.map((item) => item.getHtmlTag()));
+  // }
 
   public isValid(): boolean {
     return this.validateElementContainer.every((item) => item.validate());

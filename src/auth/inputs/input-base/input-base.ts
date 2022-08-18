@@ -31,35 +31,53 @@ export class InputBaseElement implements IInputBaseElement {
   }
 
   public validate(): boolean {
-    return this.compareRegExp.every(([checkRegExp, message]) => {
+    const isValid = this.compareRegExp.every(([checkRegExp, message]) => {
       if (this.value.match(checkRegExp)) {
         return true;
       }
       this.drawErrorMessage(message);
       return false;
     });
+    this.checkFieldState(isValid);
+    return isValid;
   }
 
   public getHtmlTag(): HTMLDivElement {
     return this.htmlElementContainer;
   }
 
+  public getValue(): string {
+    return this.value;
+  }
+
   private drawErrorMessage(message: string): void {
     this.infoLabel.textContent = message;
+  }
+
+  private checkFieldState(isValid: boolean): void {
+    if (isValid) {
+      this.htmlElementContainer.classList.remove('invalid');
+      this.htmlElementContainer.classList.add('valid');
+      this.drawErrorMessage('Отлично ;)))');
+    } else {
+      this.htmlElementContainer.classList.remove('valid');
+      this.htmlElementContainer.classList.add('invalid');
+    }
   }
 
   private handler(e: Event | undefined) {
     if (e) {
       switch (e.type) {
         case 'blur':
-          if (this.validate()) {
-            this.htmlElementContainer.classList.remove('invalid');
-            this.htmlElementContainer.classList.add('valid');
-            this.drawErrorMessage('Отлично ;)))');
-          } else {
-            this.htmlElementContainer.classList.remove('valid');
-            this.htmlElementContainer.classList.add('invalid');
-          }
+          this.validate();
+          // if (this.validate()) {
+          //   this.htmlElementContainer.classList.remove('invalid');
+          //   this.htmlElementContainer.classList.add('valid');
+          //   this.drawErrorMessage('Отлично ;)))');
+          // } else {
+          //   this.htmlElementContainer.classList.remove('valid');
+          //   this.htmlElementContainer.classList.add('invalid');
+          // }
           break;
         case 'input':
           this.value = (e.target as HTMLInputElement).value;

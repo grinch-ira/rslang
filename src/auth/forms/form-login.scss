@@ -1,0 +1,24 @@
+.autorization-container {
+  width: 1280px;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: bisque;
+  display: flex;
+  flex-direction: column;
+
+
+  .header {
+    padding: 40px;
+    font-size: 4rem;
+    font-weight: 900;
+    flex: 0 0 auto;
+  }
+
+  main {
+    flex: 1 0 auto;
+    padding-left: 40px;
+    .form__subtext {
+      font-size: 1.3rem;
+    }
+  }
+}

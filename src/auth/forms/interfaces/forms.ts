@@ -1,6 +1,6 @@
 export interface IForm {
   isValid(): boolean;
-  setParent(element: HTMLElement): void;
+  // setParent(element: HTMLElement): void;
 }
 
 export interface IFormAutorization {
