@@ -1,4 +1,4 @@
-import { BaseElement } from '../../utils/basic-element/base-element';
+import { BaseElement } from '../../utils/base-element/base-element';
 import { FormAutorization } from './form-autorization/form-autorization';
 import { FormRegistration } from './form-registration/form-registration';
 import './form-login.scss';

@@ -1,15 +1,20 @@
+import {
+  FieldPlaceholder,
+  FieldValidateError,
+  IInputBaseElement,
+} from '../../inputs/interfaces/inputs';
 import { InputBaseElement } from '../input-base';
 
 export class InputConfirmPassword extends InputBaseElement {
-  currentPasswordField: InputBaseElement;
+  private readonly currentPasswordField: IInputBaseElement;
 
-  currentCompare: [RegExp, string];
+  private currentCompare: [RegExp, string];
 
-  constructor(passField: InputBaseElement) {
+  constructor(passField: IInputBaseElement) {
     const currentPass: [RegExp, string] = [new RegExp(passField.getValue()),
-      'Блин, опять не совпадает...'];
-    super('password', 'Подтвердите пароль', [
-      [new RegExp('.{1,}', 'g'), 'Поле не может быть пустым'],
+      FieldValidateError.notEqualyPassword];
+    super('password', FieldPlaceholder.enterConfirmPassword, [
+      [new RegExp('.{1,}', 'g'), FieldValidateError.emptyField],
       currentPass,
     ]);
     this.currentPasswordField = passField;

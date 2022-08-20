@@ -1,18 +1,16 @@
+import { FieldPlaceholder, FieldValidateError } from '../../inputs/interfaces/inputs';
 import { InputBaseElement } from '../input-base';
 
 export class InputPassword extends InputBaseElement {
   constructor() {
-    super('password', 'Введите пароль', [
-      [new RegExp('.{1,}', 'g'), 'Поле не может быть пустым'],
-      [new RegExp('(?=.*[0-9])', 'g'), 'Пароль должен содержать хотябы одно число'],
-      [new RegExp('(?=.*[!@#$%^&*№;:=+-_])', 'g'),
-        'Пароль должен содержать хотябы один спецсимвол из набора !@#$%^&*№;:=+-_'],
-      [new RegExp('(?=.*[a-zа-я])', 'g'),
-        'Пароль должен содержать хотябы одну букву в нижнем регистре'],
-      [new RegExp('(?=.*[A-ZА-Я])', 'g'),
-        'Пароль должен содержать хотябы одну букву в верхнем регистре'],
+    super('password', FieldPlaceholder.enterPassword, [
+      [new RegExp('.{1,}', 'g'), FieldValidateError.emptyField],
+      [new RegExp('(?=.*[0-9])', 'g'), FieldValidateError.fieldNeedNumber],
+      [new RegExp('(?=.*[!@#$%^&*№;:=+-_])', 'g'), FieldValidateError.fieldNeedSymbol],
+      [new RegExp('(?=.*[a-zа-я])', 'g'), FieldValidateError.fieldNeedSmallLetter],
+      [new RegExp('(?=.*[A-ZА-Я])', 'g'), FieldValidateError.fieldNeedUpperLetter],
       [new RegExp('[0-9a-zа-яA-ZА-Я!@#$%^&*№;:=+-_]{6,}', 'g'),
-        'Пароль состоит не менее чем из 6-ти символов'],
+        FieldValidateError.fieldNeedSixOrMoreLength],
     ]);
   }
 }

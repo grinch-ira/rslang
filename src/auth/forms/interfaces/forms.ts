@@ -1,16 +1,10 @@
 export interface IForm {
   isValid(): boolean;
-  // setParent(element: HTMLElement): void;
+  getHtmlTag(): HTMLFormElement;
 }
 
-export interface IFormAutorization {
-  validate(): boolean;
-}
-
-export interface IFormRegistration {
-  validate(): boolean;
-}
-
-export interface IFormLogin {
-  validate(): boolean;
+export enum FormErrorMsg {
+  notValidEmailPassword = 'Неверный E-mail или пароль ;(',
+  notVolidInput = 'Скорее всего Вы допустили опечатку...',
+  userAlreadyExist = 'Пользователь с таким E-mail`ом уже существует!!!',
 }

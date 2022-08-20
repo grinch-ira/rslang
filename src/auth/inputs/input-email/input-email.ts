@@ -1,3 +1,4 @@
+import { FieldPlaceholder, FieldValidateError } from '../../inputs/interfaces/inputs';
 import { InputBaseElement } from '../input-base';
 
 export class InputEmail extends InputBaseElement {
@@ -6,9 +7,9 @@ export class InputEmail extends InputBaseElement {
       '^(([^<>()[\\]\\.,;:\\s@"]+(\\.[^<>()[\\]\\.,;:\\s@"]+)*)|',
       '(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])',
       '|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$'].join(''));
-    super('email', 'Введите E-mail', [
-      [new RegExp('.{1,}', 'g'), 'Поле не может быть пустым'],
-      [regExpToCheckEmail, 'Неверный E-mail'],
+    super('email', FieldPlaceholder.enterEmail, [
+      [new RegExp('.{1,}', 'g'), FieldValidateError.emptyField],
+      [regExpToCheckEmail, FieldValidateError.emailNotCorrect],
     ]);
   }
 }

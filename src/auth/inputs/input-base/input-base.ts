@@ -1,9 +1,9 @@
 import { IInputBaseElement } from '../interfaces/inputs';
 import './input-base.scss';
-import { BaseElement } from '../../../utils/basic-element/base-element';
+import { BaseElement } from '../../../utils/base-element/base-element';
 
 export class InputBaseElement implements IInputBaseElement {
-  private htmlElementContainer: HTMLDivElement;
+  private readonly htmlElementContainer: HTMLDivElement;
 
   private compareRegExp: [RegExp, string][];
 
@@ -70,14 +70,6 @@ export class InputBaseElement implements IInputBaseElement {
       switch (e.type) {
         case 'blur':
           this.validate();
-          // if (this.validate()) {
-          //   this.htmlElementContainer.classList.remove('invalid');
-          //   this.htmlElementContainer.classList.add('valid');
-          //   this.drawErrorMessage('Отлично ;)))');
-          // } else {
-          //   this.htmlElementContainer.classList.remove('valid');
-          //   this.htmlElementContainer.classList.add('invalid');
-          // }
           break;
         case 'input':
           this.value = (e.target as HTMLInputElement).value;

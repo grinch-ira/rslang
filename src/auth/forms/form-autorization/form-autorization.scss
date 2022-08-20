@@ -1,9 +1,3 @@
-.form {
-  width: 320px;
-  padding: 40px;
-  background-color: #804d98; // rgba(74, 2, 108, 0.7);
-}
-
 .form__title {
   padding-bottom: 20px;
   font-size: 2rem;
@@ -16,10 +10,16 @@
   color: #ffffff;
 }
 
-.form__button-send {
-  width: 100%;
-  height: 40px;
-  font-size: 1.2rem;
-  border-radius: 5px;
-
+.form-error-message {
+  width: 90%;
+  height: 25%;
+  color: #804d98;
+  background-color: #eaf36f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  top: 60%;
+  left: 5%;
 }

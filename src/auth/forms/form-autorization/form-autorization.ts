@@ -1,46 +1,48 @@
 import { Form } from '../form-base';
 import { InputEmail } from '../../inputs/input-email/input-email';
 import { InputPassword } from '../../inputs/input-password/input-password';
-import { BaseElement } from '../../../utils/basic-element/base-element';
+import { BaseElement } from '../../../utils/base-element/base-element';
 import './form-autorization.scss';
+import { apiSingIn } from '../../../api/api-sing-in';
+import { FormErrorMsg, IForm } from '../interfaces/forms';
 
-export class FormAutorization extends Form {
+export class FormAutorization extends Form implements IForm {
 
-  protected htmlButtonSend: HTMLButtonElement;
+  private readonly email: InputEmail;
 
-  private htmlContainer: HTMLFormElement;
+  private readonly pass: InputPassword;
 
   constructor() {
     super();
-    const email = new InputEmail();
-    this.validateElementContainer.push(email);
-    const pass = new InputPassword();
-    this.validateElementContainer.push(pass);
-    this.htmlButtonSend = new BaseElement('button', 'form__button-send', 'Войти').element;
-    this.htmlContainer = new BaseElement(
-      'form',
-      'form',
-      [
-        new BaseElement('div', 'form__title', 'Уже с нами?').element,
-        new BaseElement('div', 'form__todo', 'Войдите в свой аккаунт RSLang!').element,
-        email.getHtmlTag(),
-        pass.getHtmlTag(),
-        this.htmlButtonSend,
-      ]).element;
-    this.htmlButtonSend.addEventListener('click', (event) => this.buttonHandler(event));
+    this.email = new InputEmail();
+    this.validateElementContainer.push(this.email);
+    this.pass = new InputPassword();
+    this.validateElementContainer.push(this.pass);
+    this.htmlButtonSubmit.textContent = 'Войти';
+    this.htmlContainer.append(
+      new BaseElement('div', 'form__title', 'Уже с нами?').element,
+      new BaseElement('div', 'form__todo', 'Войдите в свой аккаунт RSLang!').element,
+      this.email.getHtmlTag(),
+      this.pass.getHtmlTag(),
+      this.htmlButtonSubmit,
+    );
+    this.htmlButtonSubmit.addEventListener('click', (event) => this.buttonHandler(event));
   }
 
-  buttonHandler(event: Event) {
+  private buttonHandler(event: Event) {
     event.preventDefault();
     if (this.isValid()) {
-      console.log(this.isValid());
-      // fetch();
+      apiSingIn.signIn(this.email.getValue(), this.pass.getValue()).then((result) => {
+        // TODO use enum, not magic number
+        if (result.statusCode !== 200) {
+          this.drawInfoMessage(FormErrorMsg.notValidEmailPassword);
+        } else {
+          localStorage.setItem('auth', JSON.stringify(result.body));
+          // TODO redirect to Router!!!
+        }
+      });
     } else {
-      // drop fetch;
+      this.drawInfoMessage(FormErrorMsg.notVolidInput);
     }
-  }
-
-  getHtmlTag(): HTMLFormElement {
-    return this.htmlContainer;
   }
 }
