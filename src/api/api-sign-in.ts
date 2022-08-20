@@ -29,4 +29,4 @@ class ApiSignIn extends BaseUrl {
   }
 }
 
-export const apiSingIn = new ApiSignIn();
+export const apiSignIn = new ApiSignIn();
