@@ -1,10 +1,10 @@
 import { BaseUrl } from './base-url';
-import { IUserAuthInfo } from './api_interfaces';
+import { IUserAuthInfoResponse } from './api_interfaces';
 
 class ApiSignIn extends BaseUrl {
   private readonly singInUrl = 'signin';
 
-  async signIn(email: string, password: string): Promise<IUserAuthInfo> {
+  async signIn(email: string, password: string): Promise<IUserAuthInfoResponse> {
     return fetch(`${this.baseUrl}${this.singInUrl}`, {
       method: 'POST',
       headers: {
@@ -14,9 +14,18 @@ class ApiSignIn extends BaseUrl {
         email,
         password,
       }),
-    }).then(response => response.json())
-      .catch(() => {
-      });
+    }).then(async (response) => {
+      if (response.status === 200) {
+        return {
+          statusCode: response.status,
+          body: await response.json(),
+        };
+      } else {
+        return {
+          statusCode: response.status,
+        };
+      }
+    });
   }
 }
 

@@ -22,6 +22,16 @@ export interface IWord {
   textExampleTranslate: string;
 }
 
+export interface IWordResponse {
+  statusCode: number;
+  body?: IWord;
+}
+
+export interface IArrayWordResponse {
+  statusCode: number;
+  body?: IWord[];
+}
+
 export interface IUserBasicInfo {
   name: string;
   email: string;
@@ -34,6 +44,20 @@ export interface IUserAuthInfo {
   refreshToken: string;
   userId: string;
   name: string;
+}
+
+export interface IUserAuthInfoResponse {
+  statusCode: number;
+  body?: IUserAuthInfo;
+}
+
+export interface IUserBasicInfoResponse {
+  statusCode: number;
+  body?: IUserBasicInfo;
+}
+
+export interface IDeleteResponse {
+  statusCode: number;
 }
 
 //TODO переписать difficulty в Enum
