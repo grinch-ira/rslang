@@ -1,5 +1,10 @@
 export const BASE_URL = 'https://rslang-task.herokuapp.com/';
 
+export interface IErrorInfo {
+  statusCode: number;
+  message: number;
+}
+
 export interface IWord {
   id: string;
   group: number;
@@ -29,4 +34,11 @@ export interface IUserAuthInfo {
   refreshToken: string;
   userId: string;
   name: string;
+}
+
+//TODO переписать difficulty в Enum
+//TODO конкретизировать поле optional
+export interface IWordBody {
+  difficulty: '0' | '1' | '2' | '3' | '4';
+  optional: object;
 }
