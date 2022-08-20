@@ -1,0 +1,12 @@
+.textbook__level-switcher {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  row-gap: 10px;
+}
+
+.textbook__level-button {
+  padding: 15px;
+  background-color: #bd1cbd;
+  border-radius: 15px;
+}
