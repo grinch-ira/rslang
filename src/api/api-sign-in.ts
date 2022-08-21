@@ -2,10 +2,10 @@ import { BaseApi } from './base-api';
 import { IUserAuthInfoResponse } from './api_interfaces';
 
 class ApiSignIn extends BaseApi {
-  private readonly singInUrl = 'signin';
+  private readonly signInUrl = 'signin';
 
   async signIn(email: string, password: string): Promise<IUserAuthInfoResponse> {
-    return fetch(`${this.baseUrl}/${this.singInUrl}`, {
+    return fetch(`${this.baseUrl}/${this.signInUrl}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
