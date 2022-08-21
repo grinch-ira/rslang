@@ -4,7 +4,7 @@ export class BaseApi {
   readonly baseUrl = BASE_URL;
 
   async changeResponseOnCustom(response: Response) {
-    if (response.status === StatusCode.SuccessCode) {
+    if (response.status === StatusCode.Success) {
       return {
         statusCode: response.status,
         body: await response.json(),
