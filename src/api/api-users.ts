@@ -53,11 +53,7 @@ class ApiUsers extends BaseApi {
       headers: {
         'Authorization': `Bearer ${token}`,
       },
-    }).then(response => {
-      return {
-        statusCode: response.status,
-      };
-    });
+    }).then(response => ({ statusCode: response.status }));
   }
 
   async getNewUserTokens(id: string, token: string): Promise<IUserAuthInfoResponse> {
