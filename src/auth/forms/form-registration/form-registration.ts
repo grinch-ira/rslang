@@ -8,8 +8,9 @@ import './form-registration.scss';
 import { InputName } from '../../inputs/input-name/input-name';
 import { FormErrorMsg, IForm } from '../interfaces/forms';
 import { IInputBaseElement } from '../../inputs/interfaces/inputs';
-import { apiUsers } from '../../../api/api-user';
-import { apiSingIn } from '../../../api/api-sing-in';
+import { apiUsers } from '../../../api/api-users';
+import { apiSignIn } from '../../../api/api-sign-in';
+import { StatusCode } from '../../../api/api-interfaces';
 
 export class FormRegistration extends Form implements IForm {
   private readonly email: IInputBaseElement;
@@ -50,13 +51,11 @@ export class FormRegistration extends Form implements IForm {
         this.email.getValue(),
         this.password.getValue(),
       ).then((resultCreate) => {
-        // Add enum!!! Do not use magic number!!!
         switch (resultCreate.statusCode) {
-          case 200:
-            apiSingIn.signIn(this.email.getValue(), this.password.getValue())
+          case StatusCode.Success:
+            apiSignIn.signIn(this.email.getValue(), this.password.getValue())
               .then((resultAuth) => {
-              // TODO use enum, not magic number
-                if (resultAuth.statusCode !== 200) {
+                if (resultAuth.statusCode !== StatusCode.Success) {
                   this.drawInfoMessage(FormErrorMsg.notValidEmailPassword);
                 } else {
                   localStorage.setItem('auth', JSON.stringify(resultAuth.body));
@@ -65,10 +64,10 @@ export class FormRegistration extends Form implements IForm {
                 }
               });
             break;
-          case 417:
+          case StatusCode.ExpectationFailed:
             this.drawInfoMessage(FormErrorMsg.userAlreadyExist);
             break;
-          case 422:
+          case StatusCode.UnprocessableEntity:
             this.drawInfoMessage(FormErrorMsg.notValidEmailPassword);
             break;
         }

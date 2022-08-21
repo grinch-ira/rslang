@@ -73,5 +73,6 @@ export interface IWordBody {
 export enum StatusCode {
   Success = 200,
   Forbidden = 403,
+  ExpectationFailed = 417,
   UnprocessableEntity = 422,
 }

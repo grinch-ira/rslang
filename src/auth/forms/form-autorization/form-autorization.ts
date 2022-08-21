@@ -3,8 +3,9 @@ import { InputEmail } from '../../inputs/input-email/input-email';
 import { InputPassword } from '../../inputs/input-password/input-password';
 import { BaseElement } from '../../../utils/base-element/base-element';
 import './form-autorization.scss';
-import { apiSingIn } from '../../../api/api-sing-in';
+import { apiSignIn } from '../../../api/api-sign-in';
 import { FormErrorMsg, IForm } from '../interfaces/forms';
+import { StatusCode } from '../../../api/api-interfaces';
 
 export class FormAutorization extends Form implements IForm {
 
@@ -32,9 +33,8 @@ export class FormAutorization extends Form implements IForm {
   private buttonHandler(event: Event): void {
     event.preventDefault();
     if (this.isValid()) {
-      apiSingIn.signIn(this.email.getValue(), this.pass.getValue()).then((result) => {
-        // TODO use enum, not magic number
-        if (result.statusCode !== 200) {
+      apiSignIn.signIn(this.email.getValue(), this.pass.getValue()).then((result) => {
+        if (result.statusCode !== StatusCode.Success) {
           this.drawInfoMessage(FormErrorMsg.notValidEmailPassword);
         } else {
           localStorage.setItem('auth', JSON.stringify(result.body));
