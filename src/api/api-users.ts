@@ -1,6 +1,6 @@
 import { BaseApi } from './base-api';
 import {
-  IDeleteResponse,
+  IStatusCodeResponse,
   IUserAuthInfoResponse,
   IUserBasicInfoResponse,
 } from './api_interfaces';
@@ -47,7 +47,7 @@ class ApiUsers extends BaseApi {
     }).then(async (response) => this.changeResponseOnCustom(response));
   }
 
-  async deleteAUser(id: string, token: string): Promise<IDeleteResponse> {
+  async deleteAUser(id: string, token: string): Promise<IStatusCodeResponse> {
     return fetch(`${this.baseUrl}/${this.usersUrl}/${id}`, {
       method: 'DELETE',
       headers: {

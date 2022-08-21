@@ -17,14 +17,28 @@ export interface IWord {
   textExampleTranslate: string;
 }
 
-export interface IWordResponse {
+export interface IStatusCodeResponse {
   statusCode: number;
-  body?: IWord;
 }
 
-export interface IArrayWordResponse {
-  statusCode: number;
-  body?: IWord[];
+export interface IWordResponse extends IStatusCodeResponse {
+  body: IWord | undefined;
+}
+
+export interface IArrayWordResponse extends IStatusCodeResponse {
+  body: IWord[] | undefined;
+}
+
+export interface IUserAuthInfoResponse extends IStatusCodeResponse {
+  body: IUserAuthInfo | undefined;
+}
+
+export interface IUserBasicInfoResponse extends IStatusCodeResponse {
+  body: IUserBasicInfo | undefined;
+}
+
+export interface ICustomResponse<T> extends IStatusCodeResponse {
+  body: T | undefined;
 }
 
 export interface IUserBasicInfo {
@@ -39,20 +53,6 @@ export interface IUserAuthInfo {
   refreshToken: string;
   userId: string;
   name: string;
-}
-
-export interface IUserAuthInfoResponse {
-  statusCode: number;
-  body?: IUserAuthInfo;
-}
-
-export interface IUserBasicInfoResponse {
-  statusCode: number;
-  body?: IUserBasicInfo;
-}
-
-export interface IDeleteResponse {
-  statusCode: number;
 }
 
 export enum WordDifficultyGroup {

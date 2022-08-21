@@ -1,9 +1,13 @@
-import { BASE_URL, StatusCode } from './api_interfaces';
+import {
+  BASE_URL,
+  ICustomResponse,
+  StatusCode,
+} from './api_interfaces';
 
 export class BaseApi {
   readonly baseUrl = BASE_URL;
 
-  async changeResponseOnCustom(response: Response) {
+  async changeResponseOnCustom<T>(response: Response):Promise<ICustomResponse<T>> {
     if (response.status === StatusCode.Success) {
       return {
         statusCode: response.status,
@@ -12,6 +16,7 @@ export class BaseApi {
     } else {
       return {
         statusCode: response.status,
+        body: undefined,
       };
     }
   }
