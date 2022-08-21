@@ -1,17 +1,18 @@
 import { BaseElement } from '../../utils/base-element/base-element';
+import { IPublisher, ISubscriber } from '../textbook-interfaces';
 import './level-switcher.scss';
 
-export class LevelSwitcher {
+export class LevelSwitcher implements IPublisher {
   private readonly htmlContainer: HTMLDivElement;
 
   private currentLevel: number;
 
-  private refresh: () => void;
+  private subscribers: ISubscriber[];
 
-  constructor(update: () => void) {
-    this.refresh = update;
+  constructor() {
     this.htmlContainer = new BaseElement('div', 'textbook__level-switcher').element;
     this.currentLevel = 0;
+    this.subscribers = [];
     for (let i = 0; i < 6; i += 1) {
       const item = new BaseElement(
         'button',
@@ -20,10 +21,22 @@ export class LevelSwitcher {
       ).element;
       item.addEventListener('click', () => {
         this.currentLevel = i;
-        this.refresh();
+        this.notify();
       });
       this.htmlContainer.append(item);
     }
+  }
+
+  register(subscriber: ISubscriber): void {
+    this.subscribers.push(subscriber);
+  }
+
+  unregister(subscriber: ISubscriber): void {
+    this.subscribers = this.subscribers.filter((sub) => sub !== subscriber);
+  }
+
+  notify(): void {
+    this.subscribers.forEach((subscriber => subscriber.update()));
   }
 
   getHtmlTag(): HTMLDivElement {
