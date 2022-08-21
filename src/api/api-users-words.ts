@@ -1,10 +1,10 @@
-import { BaseUrl } from './base-url';
+import { BaseApi } from './base-api';
 import { IWordBody } from './api_interfaces';
 
-class ApiUsersWords extends BaseUrl {
+class ApiUsersWords extends BaseApi {
 
   async getAllUserWords(id: string, token: string) {
-    return fetch(`${this.baseUrl}users/${id}/words`, {
+    return fetch(`${this.baseUrl}/users/${id}/words`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -15,7 +15,7 @@ class ApiUsersWords extends BaseUrl {
   }
 
   async getAUserWordById(userId: string, wordId: string, token: string) {
-    return fetch(`${this.baseUrl}users/${userId}/words/${wordId}`, {
+    return fetch(`${this.baseUrl}/users/${userId}/words/${wordId}`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -31,7 +31,7 @@ class ApiUsersWords extends BaseUrl {
     wordBody: IWordBody,
     token: string,
   ) {
-    return fetch(`${this.baseUrl}users/${userId}/words/${wordId}`, {
+    return fetch(`${this.baseUrl}/users/${userId}/words/${wordId}`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -50,7 +50,7 @@ class ApiUsersWords extends BaseUrl {
     wordBody: IWordBody,
     token: string,
   ) {
-    return fetch(`${this.baseUrl}users/${userId}/words/${wordId}`, {
+    return fetch(`${this.baseUrl}/users/${userId}/words/${wordId}`, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -68,7 +68,7 @@ class ApiUsersWords extends BaseUrl {
     wordId: string,
     token: string,
   ) {
-    return fetch(`${this.baseUrl}users/${userId}/words/${wordId}`, {
+    return fetch(`${this.baseUrl}/users/${userId}/words/${wordId}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -77,7 +77,6 @@ class ApiUsersWords extends BaseUrl {
       .catch(() => {
       });
   }
-
 }
 
 export const apiUsersWords = new ApiUsersWords();

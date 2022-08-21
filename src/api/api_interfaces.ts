@@ -1,9 +1,4 @@
-export const BASE_URL = 'https://rslang-task.herokuapp.com/';
-
-export interface IErrorInfo {
-  statusCode: number;
-  message: number;
-}
+export const BASE_URL = 'https://rslang-task.herokuapp.com';
 
 export interface IWord {
   id: string;
@@ -60,9 +55,21 @@ export interface IDeleteResponse {
   statusCode: number;
 }
 
-//TODO переписать difficulty в Enum
+export enum WordDifficultyGroup {
+  A1 = '0',
+  A2 = '1',
+  B1 = '2',
+  B2 = '3',
+  C1 = '4',
+  C2 = '5',
+}
+
 //TODO конкретизировать поле optional
 export interface IWordBody {
-  difficulty: '0' | '1' | '2' | '3' | '4';
+  difficulty: WordDifficultyGroup;
   optional: object;
+}
+
+export enum StatusCode {
+  SuccessCode = 200,
 }

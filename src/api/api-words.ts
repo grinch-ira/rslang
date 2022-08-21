@@ -1,43 +1,24 @@
-import { BaseUrl } from './base-url';
-import { IArrayWordResponse, IWordResponse } from './api_interfaces';
+import { BaseApi } from './base-api';
+import { IArrayWordResponse, IWordResponse, WordDifficultyGroup } from './api_interfaces';
 
-class ApiWords extends BaseUrl {
+class ApiWords extends BaseApi {
   private readonly wordsUrl = 'words';
 
-  getAChunkOfWords(group: string, page: string): Promise<IArrayWordResponse> {
+  getAChunkOfWords(
+    group: WordDifficultyGroup,
+    page: string,
+  ): Promise<IArrayWordResponse> {
     return fetch(
-      `${this.baseUrl}${this.wordsUrl}?page=${page}&group=${group}`,
+      `${this.baseUrl}/${this.wordsUrl}?page=${page}&group=${group}`,
       { method: 'GET' },
-    ).then(async (response) => {
-      if (response.status === 200) {
-        return {
-          statusCode: response.status,
-          body: await response.json(),
-        };
-      } else {
-        return {
-          statusCode: response.status,
-        };
-      }
-    });
+    ).then(async (response) => this.changeResponseOnCustom(response));
   }
 
   getAWordWithAssetsById(id: string): Promise<IWordResponse> {
     return fetch(
-      `${this.baseUrl}${this.wordsUrl}/${id}`,
+      `${this.baseUrl}/${this.wordsUrl}/${id}`,
       { method: 'GET' },
-    ).then(async (response) => {
-      if (response.status === 200) {
-        return {
-          statusCode: response.status,
-          body: await response.json(),
-        };
-      } else {
-        return {
-          statusCode: response.status,
-        };
-      }
-    });
+    ).then(async (response) => this.changeResponseOnCustom(response));
   }
 }
 
