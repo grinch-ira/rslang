@@ -3,7 +3,7 @@ import {
   IStatusCodeResponse,
   IUserAuthInfoResponse,
   IUserBasicInfoResponse,
-} from './api_interfaces';
+} from './api-interfaces';
 
 class ApiUsers extends BaseApi {
   private readonly usersUrl = 'users';

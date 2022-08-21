@@ -2,7 +2,7 @@ import {
   BASE_URL,
   ICustomResponse,
   StatusCode,
-} from './api_interfaces';
+} from './api-interfaces';
 
 export class BaseApi {
   readonly baseUrl = BASE_URL;

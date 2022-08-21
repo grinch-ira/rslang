@@ -1,5 +1,5 @@
 import { BaseApi } from './base-api';
-import { IUserAuthInfoResponse } from './api_interfaces';
+import { IUserAuthInfoResponse } from './api-interfaces';
 
 class ApiSignIn extends BaseApi {
   private readonly signInUrl = 'signin';

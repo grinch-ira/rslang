@@ -1,5 +1,5 @@
 import { BaseApi } from './base-api';
-import { IArrayWordResponse, IWordResponse, WordDifficultyGroup } from './api_interfaces';
+import { IArrayWordResponse, IWordResponse, WordDifficultyGroup } from './api-interfaces';
 
 class ApiWords extends BaseApi {
   private readonly wordsUrl = 'words';
