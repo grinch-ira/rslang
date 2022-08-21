@@ -42,7 +42,7 @@ export class FormRegistration extends Form implements IForm {
     this.htmlButtonSubmit.addEventListener('click', (event) => this.buttonHandler(event));
   }
 
-  private buttonHandler(event: Event) {
+  private buttonHandler(event: Event): void {
     event.preventDefault();
     if (this.isValid()) {
       apiUsers.createANewUser(

@@ -1,6 +1,4 @@
-type AllHTMLKey = keyof HTMLElementTagNameMap;
-type AllHTMLElements = HTMLElementTagNameMap[AllHTMLKey];
-type InnerElement = string | undefined | AllHTMLElements | AllHTMLElements[];
+import { InnerElement } from './interface';
 
 export class BaseElement<K extends keyof HTMLElementTagNameMap> {
   element: HTMLElementTagNameMap[K];

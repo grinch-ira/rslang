@@ -4,7 +4,7 @@ import { FormRegistration } from './form-registration/form-registration';
 import './form-login.scss';
 
 export class FormLogin {
-  private htmlContainer: HTMLDivElement;
+  private readonly htmlContainer: HTMLDivElement;
 
   private htmlFormContainer: HTMLElement;
 
@@ -22,7 +22,11 @@ export class FormLogin {
     this.selectAutorization();
   }
 
-  selectAutorization(): void {
+  public getHtmlTag(): HTMLDivElement {
+    return this.htmlContainer;
+  }
+
+  private selectAutorization(): void {
     const link = new BaseElement('a', 'link-to-next-form', 'зарегистрируйся').element;
     link.addEventListener('click', (event) => {
       event.preventDefault();
@@ -38,7 +42,7 @@ export class FormLogin {
     );
   }
 
-  selectRegistration(): void {
+  private selectRegistration(): void {
     const link = new BaseElement('a', 'link-to-next-form', 'Да, войти!').element;
     link.addEventListener('click', (event) => {
       event.preventDefault();
@@ -54,7 +58,4 @@ export class FormLogin {
     );
   }
 
-  getHtmlTag() {
-    return this.htmlContainer;
-  }
 }

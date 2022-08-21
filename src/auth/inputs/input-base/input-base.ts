@@ -65,7 +65,7 @@ export class InputBaseElement implements IInputBaseElement {
     }
   }
 
-  private handler(e: Event | undefined) {
+  private handler(e: Event | undefined): void {
     if (e) {
       switch (e.type) {
         case 'blur':
