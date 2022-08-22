@@ -1,30 +1,36 @@
+import { WordDifficultyGroup } from '../../api/api-interfaces';
 import { BaseElement } from '../../utils/base-element/base-element';
-import { IPublisher, ISubscriber } from '../textbook-interfaces';
+import { LevelButton } from '../level-button/level-button';
+import {
+  IPublisher,
+  IPublisherLevelButton,
+  ISubscriber,
+  ISubscriberLevelButton,
+} from '../textbook-interfaces';
 import './level-switcher.scss';
 
-export class LevelSwitcher implements IPublisher {
-  private readonly htmlContainer: HTMLDivElement;
+export class LevelSwitcher extends BaseElement<'div'>
+  implements IPublisher, ISubscriberLevelButton {
 
-  private currentLevel: number;
+  private currentLevel: WordDifficultyGroup;
 
   private subscribers: ISubscriber[];
 
   constructor() {
-    this.htmlContainer = new BaseElement('div', 'textbook__level-switcher').element;
-    this.currentLevel = 0;
+    super('div', 'textbook__level-switcher');
+    const levelArr = Object.values(WordDifficultyGroup).sort();
+    this.currentLevel = levelArr[0];
     this.subscribers = [];
-    for (let i = 0; i < 6; i += 1) {
-      const item = new BaseElement(
-        'button',
-        'textbook__level-button',
-        `Level ${i + 1}`,
-      ).element;
-      item.addEventListener('click', () => {
-        this.currentLevel = i;
-        this.notify();
-      });
-      this.htmlContainer.append(item);
+    for (let i = 0; i < levelArr.length; i += 1) {
+      const button = new LevelButton(levelArr[i]);
+      button.register(this);
+      this.element.append(button.element);
     }
+  }
+
+  update(publisher: IPublisherLevelButton): void {
+    this.currentLevel = publisher.level;
+    this.notify();
   }
 
   register(subscriber: ISubscriber): void {
@@ -39,11 +45,7 @@ export class LevelSwitcher implements IPublisher {
     this.subscribers.forEach((subscriber => subscriber.update()));
   }
 
-  getHtmlTag(): HTMLDivElement {
-    return this.htmlContainer;
-  }
-
-  getCurrentLevel(): number {
+  getCurrentLevel(): WordDifficultyGroup {
     return this.currentLevel;
   }
 }

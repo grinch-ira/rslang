@@ -1,0 +1,45 @@
+.word-presenter {
+  width: 400px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: #d0cccc;
+  flex: 0 0 auto;
+}
+
+.word-presenter__image {
+  border-radius: 5px 20px 5px 20px;
+}
+
+.word-presenter__description {
+  padding: 20px;
+  font-size: 1.5rem;
+}
+
+.word-presenter__word {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.word-presenter__translate {
+  padding-top: 5px;
+  font-size: 1.2rem;
+}
+
+.word-presenter__transcription {
+  padding-top: 5px;
+}
+
+.word-presenter__subheader {
+  padding: 20px 0 10px 10px;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.word-presenter__meaning-translate {
+  padding-top: 10px;
+}
+
+.word-presenter__example-translate {
+  padding-top: 10px;
+}

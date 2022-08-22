@@ -1,25 +1,41 @@
 import { apiWords } from '../api/api-words';
 import { BaseElement } from '../utils/base-element/base-element';
 import { LevelSwitcher } from './level-switcher/level-switcher';
+import { PageSwitcher } from './page-switcher/page-switcher';
 import { ISubscriber } from './textbook-interfaces';
-import { WordsList } from './wordsList/words-list';
+import { WordPresenter } from './word-presenter/word-presenter';
+import { WordsList } from './words-list/words-list';
+import './textbook.scss';
 
-export class Textbook implements ISubscriber {
-  private readonly htmlContoiner: HTMLDivElement;
-
+export class Textbook extends BaseElement<'div'> implements ISubscriber {
   private levelSwitcher: LevelSwitcher;
+
+  private pageSwitcher: PageSwitcher;
 
   private wordList: WordsList;
 
+  private wordPresenter: WordPresenter;
+
   constructor() {
-    this.htmlContoiner = new BaseElement('div').element;
+    super('div', 'textbook');
     this.levelSwitcher = new LevelSwitcher();
     this.levelSwitcher.register(this);
+
     this.wordList = new WordsList();
-    this.wordList.register(this);
-    this.htmlContoiner.append(
-      this.levelSwitcher.getHtmlTag(),
-      this.wordList.getHtmlTag(),
+
+    this.wordPresenter = new WordPresenter();
+    this.wordList.register(this.wordPresenter);
+
+    this.pageSwitcher = new PageSwitcher();
+    this.pageSwitcher.register(this);
+
+    this.element.append(
+      this.levelSwitcher.element,
+      new BaseElement('div', 'textbook__word-cascade', [
+        this.wordList.element,
+        this.wordPresenter.element,
+      ]).element,
+      this.pageSwitcher.element,
     );
     this.loadWords();
   }
@@ -30,8 +46,8 @@ export class Textbook implements ISubscriber {
 
   private loadWords(): void {
     apiWords.getAChunkOfWords(
-      this.levelSwitcher.getCurrentLevel().toString(),
-      this.wordList.getCurrentPage().toString(),
+      this.levelSwitcher.getCurrentLevel(),
+      this.pageSwitcher.getCurrentPage().toString(),
     ).then((result) => {
       if (result.statusCode === 200) {
         if (result.body) this.wordList.setWords(result.body);
@@ -39,7 +55,7 @@ export class Textbook implements ISubscriber {
     });
   }
 
-  public getHtmlTag(): HTMLDivElement {
-    return this.htmlContoiner;
-  }
+  // public getHtmlTag(): HTMLDivElement {
+  //   return this.element;
+  // }
 }

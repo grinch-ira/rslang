@@ -1,0 +1,10 @@
+.textbook {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.textbook__word-cascade {
+  display: flex;
+  gap: 30px;
+}
