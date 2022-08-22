@@ -1,6 +1,6 @@
 export interface IForm {
+  element: HTMLFormElement;
   isValid(): boolean;
-  getHtmlTag(): HTMLFormElement;
 }
 
 export enum FormErrorMsg {

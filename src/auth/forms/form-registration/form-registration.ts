@@ -27,17 +27,17 @@ export class FormRegistration extends Form implements IForm {
     const confirmPass = new InputConfirmPassword(this.password);
     this.validateElementContainer.push(this.email, this.password, this.name, confirmPass);
     this.htmlButtonSubmit.textContent = 'Зарегистрироваться';
-    this.htmlContainer.append(
+    this.element.append(
       new BaseElement('div', 'form__title', 'Заргистрируйся в RSLang!!!').element,
       new BaseElement(
         'div',
         'form__todo',
         '... и изучай английский вместе с нами',
       ).element,
-      this.email.getHtmlTag(),
-      this.name.getHtmlTag(),
-      this.password.getHtmlTag(),
-      confirmPass.getHtmlTag(),
+      this.email.element,
+      this.name.element,
+      this.password.element,
+      confirmPass.element,
       this.htmlButtonSubmit,
     );
     this.htmlButtonSubmit.addEventListener('click', (event) => this.buttonHandler(event));

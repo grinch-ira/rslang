@@ -3,14 +3,13 @@ import { FormAutorization } from './form-autorization/form-autorization';
 import { FormRegistration } from './form-registration/form-registration';
 import './form-login.scss';
 
-export class FormLogin {
-  private readonly htmlContainer: HTMLDivElement;
-
+export class FormLogin extends BaseElement<'div'> {
   private htmlFormContainer: HTMLElement;
 
   constructor() {
+    super('div', 'autorization-container');
     this.htmlFormContainer = new BaseElement('main').element;
-    this.htmlContainer = new BaseElement('div', 'autorization-container', [
+    this.element.append(
       new BaseElement(
         'header',
         'header',
@@ -18,12 +17,8 @@ export class FormLogin {
       ).element,
       this.htmlFormContainer,
       new BaseElement('footer').element,
-    ]).element;
+    );
     this.selectAutorization();
-  }
-
-  public getHtmlTag(): HTMLDivElement {
-    return this.htmlContainer;
   }
 
   private selectAutorization(): void {
@@ -34,7 +29,7 @@ export class FormLogin {
     });
     this.htmlFormContainer.innerHTML = '';
     this.htmlFormContainer.append(
-      new FormAutorization().getHtmlTag(),
+      new FormAutorization().element,
       new BaseElement('div', 'form__subtext', [
         new BaseElement('span', '', 'Ещё не с нами? Тогда ').element,
         link,
@@ -50,7 +45,7 @@ export class FormLogin {
     });
     this.htmlFormContainer.innerHTML = '';
     this.htmlFormContainer.append(
-      new FormRegistration().getHtmlTag(),
+      new FormRegistration().element,
       new BaseElement('div', 'form__subtext', [
         new BaseElement('span', '', 'Уже есть аккаунт? ').element,
         link,

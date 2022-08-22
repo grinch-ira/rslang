@@ -2,11 +2,11 @@ To use this component, you need to import the module:
 
   import { FormLogin } from './auth/forms/form-login';
 
-And also create an instance of this class and add HTML content using the class method ".getHtmlTag" to your HTML container.
+And also create an instance of this class and add HTML content using the class property ".element" to your HTML container.
 For example:
 
   const auth = new FormLogin();
-  document.body.append(auth.getHtmlTag());
+  document.body.append(auth.element);
 
 After successful autorization, your localStorage will contain User Data by auth key in format:
 
@@ -28,4 +28,4 @@ For tests, I use this code in the index.ts file:
   import './variables.scss';
 
   const auth = new FormLogin();
-  document.body.append(auth.getHtmlTag());
+  document.body.append(auth.element);

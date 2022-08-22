@@ -19,10 +19,10 @@ export class InputConfirmPassword extends InputBaseElement {
     ]);
     this.currentPasswordField = passField;
     this.currentCompare = currentPass;
-    this.getHtmlTag().addEventListener('click', () => {
+    this.element.addEventListener('click', () => {
       this.currentCompare[0] = new RegExp('^' +
         this.currentPasswordField.getValue() + '$');
     });
-    this.getHtmlTag().addEventListener('keyup', () => this.validate());
+    this.element.addEventListener('keyup', () => this.validate());
   }
 }

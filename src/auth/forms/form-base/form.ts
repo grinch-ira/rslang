@@ -3,21 +3,15 @@ import { IInputBaseElement } from '../../inputs/interfaces/inputs';
 import { BaseElement } from '../../../utils/base-element/base-element';
 import './form.scss';
 
-export class Form implements IForm {
+export class Form extends BaseElement<'form'> implements IForm {
   protected readonly validateElementContainer: IInputBaseElement[];
-
-  protected readonly htmlContainer: HTMLFormElement;
 
   protected readonly htmlButtonSubmit: HTMLButtonElement;
 
   constructor() {
+    super('form', 'form');
     this.validateElementContainer = [];
-    this.htmlContainer = new BaseElement('form', 'form').element;
     this.htmlButtonSubmit = new BaseElement('button', 'form__button-submit').element;
-  }
-
-  public getHtmlTag(): HTMLFormElement {
-    return this.htmlContainer;
   }
 
   public isValid(): boolean {
@@ -31,6 +25,6 @@ export class Form implements IForm {
       message,
     ).element;
     infoMessage.addEventListener('click', () => infoMessage.remove());
-    this.htmlContainer.append(infoMessage);
+    this.element.append(infoMessage);
   }
 }

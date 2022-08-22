@@ -2,9 +2,7 @@ import { IInputBaseElement } from '../interfaces/inputs';
 import './input-base.scss';
 import { BaseElement } from '../../../utils/base-element/base-element';
 
-export class InputBaseElement implements IInputBaseElement {
-  private readonly htmlElementContainer: HTMLDivElement;
-
+export class InputBaseElement extends BaseElement<'div'> implements IInputBaseElement {
   private compareRegExp: [RegExp, string][];
 
   private value: string;
@@ -12,6 +10,7 @@ export class InputBaseElement implements IInputBaseElement {
   private infoLabel: HTMLDivElement;
 
   constructor(type: string, placeholder: string, compareRegExp: [RegExp, string][]) {
+    super('div', 'field-container');
     this.compareRegExp = compareRegExp;
     const input = new BaseElement('input', 'field__input').element;
     input.setAttribute('type', type);
@@ -23,10 +22,7 @@ export class InputBaseElement implements IInputBaseElement {
     const field = new BaseElement('div', 'field', input).element;
     field.addEventListener('click', () => input.focus());
     this.infoLabel = new BaseElement('div', 'info-label').element;
-    this.htmlElementContainer = new BaseElement(
-      'div',
-      'field-container',
-      [field, this.infoLabel]).element;
+    this.element.append(field, this.infoLabel);
     this.value = '';
   }
 
@@ -42,10 +38,6 @@ export class InputBaseElement implements IInputBaseElement {
     return isValid;
   }
 
-  public getHtmlTag(): HTMLDivElement {
-    return this.htmlElementContainer;
-  }
-
   public getValue(): string {
     return this.value;
   }
@@ -56,12 +48,12 @@ export class InputBaseElement implements IInputBaseElement {
 
   private checkFieldState(isValid: boolean): void {
     if (isValid) {
-      this.htmlElementContainer.classList.remove('invalid');
-      this.htmlElementContainer.classList.add('valid');
+      this.element.classList.remove('invalid');
+      this.element.classList.add('valid');
       this.drawErrorMessage('Отлично ;)))');
     } else {
-      this.htmlElementContainer.classList.remove('valid');
-      this.htmlElementContainer.classList.add('invalid');
+      this.element.classList.remove('valid');
+      this.element.classList.add('invalid');
     }
   }
 
@@ -75,8 +67,8 @@ export class InputBaseElement implements IInputBaseElement {
           this.value = (e.target as HTMLInputElement).value;
           break;
         case 'focus':
-          this.htmlElementContainer.classList.remove('valid');
-          this.htmlElementContainer.classList.remove('invalid');
+          this.element.classList.remove('valid');
+          this.element.classList.remove('invalid');
           this.drawErrorMessage('');
       }
     }

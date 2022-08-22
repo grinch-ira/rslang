@@ -1,6 +1,6 @@
 export interface IInputBaseElement {
+  element: HTMLDivElement;
   validate(): boolean;
-  getHtmlTag(): HTMLDivElement;
   getValue(): string;
 }
 

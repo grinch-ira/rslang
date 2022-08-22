@@ -20,11 +20,11 @@ export class FormAutorization extends Form implements IForm {
     this.pass = new InputPassword();
     this.validateElementContainer.push(this.pass);
     this.htmlButtonSubmit.textContent = 'Войти';
-    this.htmlContainer.append(
+    this.element.append(
       new BaseElement('div', 'form__title', 'Уже с нами?').element,
       new BaseElement('div', 'form__todo', 'Войдите в свой аккаунт RSLang!').element,
-      this.email.getHtmlTag(),
-      this.pass.getHtmlTag(),
+      this.email.element,
+      this.pass.element,
       this.htmlButtonSubmit,
     );
     this.htmlButtonSubmit.addEventListener('click', (event) => this.buttonHandler(event));
