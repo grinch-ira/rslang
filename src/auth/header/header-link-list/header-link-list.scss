@@ -1,0 +1,26 @@
+.header-link-list {
+  width: 436px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.3em;
+  font-weight: 700;
+  flex-wrap: wrap;
+}
+
+.header-link-login {
+  color: #ffffff;
+  background: #ffaa3a;
+  padding: 15px 20px;
+  border-radius: 15px;
+}
+
+@media(max-width:720px){
+  .header-link-list{
+    font-size: 1em;
+  }
+  .header-link-login{
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+}

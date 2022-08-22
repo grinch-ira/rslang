@@ -1,0 +1,13 @@
+.header-logo {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 38px;
+  color: #000000;
+  width: 200px;
+}
+
+@media(max-width:720px){
+  .header-logo{
+    font-size: 20px;
+  }
+}
