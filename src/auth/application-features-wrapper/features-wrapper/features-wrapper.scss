@@ -2,9 +2,16 @@
   margin: 65px auto;
   max-width: 90%;
 }
-.application-features-title{
+
+.application-features-title {
+  text-align: center;
+  font-size: 48px;
   max-width: 940px;
   margin: 0 auto;
+}
+
+.application-features-title span {
+  font-size: 22px;
 }
 
 .app-feature-container {
@@ -28,6 +35,9 @@
     line-height: 28px;
     text-align: center;
     justify-content: space-around;
+    border-radius: 20px;
+    background-color: #f9f8fa;
+    box-shadow: 1px 3px 4px rgb(0 0 0 / 10%);
   }
 
   &-dictionary,
@@ -36,9 +46,26 @@
   }
 }
 
-@media(max-width:1220px){
-  .app-feature-container{
+@media(max-width:1220px) {
+  .app-feature-container {
     max-width: 700px;
     flex-wrap: wrap;
+  }
+
+  .app-feature-textbook {
+    margin-bottom: 25px;
+  }
+}
+
+@media(max-width:560px) {
+
+  .app-feature {
+
+    &-textbook,
+    &-dictionary,
+    &-games,
+    &-statistic {
+      margin: 0 auto 25px auto;
+    }
   }
 }

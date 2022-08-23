@@ -1,10 +1,9 @@
 import { BaseElement } from '../../../utils/base-element/base-element';
-import { ApplicationFeaturesTitle } from '../application-features-title/application-features-title';
-import { FeaturesContainerBase } from '../application-features-image-container/app-features-img-container-base';
+import { FeaturesContainerBase } from '../app-features-img-container-base/app-features-img-container-base';
 import './features-wrapper.scss';
 
 export class FeaturesWrapper extends BaseElement<'div'> {
-  private applicationFeaturesTitle: ApplicationFeaturesTitle;
+  private applicationFeaturesTitle: BaseElement<'div'>;
 
   private textbookFeatures: FeaturesContainerBase;
 
@@ -18,7 +17,13 @@ export class FeaturesWrapper extends BaseElement<'div'> {
 
   constructor() {
     super('div', 'features-wrapper');
-    this.applicationFeaturesTitle = new ApplicationFeaturesTitle();
+    this.applicationFeaturesTitle = new BaseElement(
+      'div',
+      'application-features-title',
+      `Ваш следующий успех - не за горами <br>
+    <span>чтобы стать к нему чуть-чуть ближе, 
+    ознакомтесь с возможностями приложения</span>`,
+    );
     this.featuresContainer = new BaseElement('div', 'app-feature-container');
 
     this.textbookFeatures = new FeaturesContainerBase(
