@@ -5,7 +5,7 @@ export class ApplicationFeaturesTitle extends BaseElement<'div'> {
     super(
       'div',
       'application-features-title',
-      `Ваш следующий успех - не за горами 
+      `Ваш следующий успех - не за горами <br>
       <span>чтобы стать к нему чуть-чуть ближе, 
       ознакомтесь с возможностями приложения</span>`,
     );

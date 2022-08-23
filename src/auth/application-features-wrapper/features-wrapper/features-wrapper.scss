@@ -1,4 +1,44 @@
-.features-wrapper{
+.features-wrapper {
   margin: 65px auto;
+  max-width: 90%;
+}
+.application-features-title{
   max-width: 940px;
+  margin: 0 auto;
+}
+
+.app-feature-container {
+  margin: 60px auto 0 auto;
+  display: flex;
+  max-width: 1200px;
+  justify-content: space-between;
+}
+
+.app-feature {
+
+  &-textbook,
+  &-dictionary,
+  &-games,
+  &-statistic {
+    display: flex;
+    flex-direction: column;
+    max-width: 237px;
+    height: 450px;
+    font-size: 22px;
+    line-height: 28px;
+    text-align: center;
+    justify-content: space-around;
+  }
+
+  &-dictionary,
+  &-statistic {
+    flex-direction: column-reverse;
+  }
+}
+
+@media(max-width:1220px){
+  .app-feature-container{
+    max-width: 700px;
+    flex-wrap: wrap;
+  }
 }

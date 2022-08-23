@@ -4,18 +4,18 @@ import { FeaturesWrapper } from '../application-features-wrapper/features-wrappe
 import './start-page.scss';
 
 export class StartPage {
-  private HeaderWrapper: HeaderWrapper;
+  private headerWrapper: HeaderWrapper;
 
-  private MainWrapperImage: MainWrapperImage;
+  private mainWrapperImage: MainWrapperImage;
 
-  private FeaturesWrapper: FeaturesWrapper;
+  private featuresWrapper: FeaturesWrapper;
 
   constructor(private root: HTMLElement) {
-    this.HeaderWrapper = new HeaderWrapper();
-    this.MainWrapperImage = new MainWrapperImage();
-    this.FeaturesWrapper = new FeaturesWrapper();
-    this.root.append(this.HeaderWrapper.element);
-    this.root.append(this.MainWrapperImage.element);
-    this.root.append(this.FeaturesWrapper.element);
+    this.headerWrapper = new HeaderWrapper();
+    this.mainWrapperImage = new MainWrapperImage();
+    this.featuresWrapper = new FeaturesWrapper();
+    this.root.append(this.headerWrapper.element);
+    this.root.append(this.mainWrapperImage.element);
+    this.root.append(this.featuresWrapper.element);
   }
 }
