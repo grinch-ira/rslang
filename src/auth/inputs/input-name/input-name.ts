@@ -1,4 +1,4 @@
-import { FieldPlaceholder, FieldValidateError } from '../../inputs/interfaces/inputs';
+import { FieldPlaceholder, FieldValidateError } from '../interfaces/inputs';
 import { InputBaseElement } from '../input-base';
 
 export class InputName extends InputBaseElement {

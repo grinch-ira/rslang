@@ -5,6 +5,6 @@ export interface IForm {
 
 export enum FormErrorMsg {
   notValidEmailPassword = 'Неверный E-mail или пароль ;(',
-  notVolidInput = 'Скорее всего Вы допустили опечатку...',
+  notValidInput = 'Скорее всего Вы допустили опечатку...',
   userAlreadyExist = 'Пользователь с таким E-mail`ом уже существует!!!',
 }

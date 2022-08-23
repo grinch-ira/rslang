@@ -1,4 +1,4 @@
-import { Form } from '../form-base/form';
+import { Form } from '../form-base';
 import { BaseElement } from '../../../utils/base-element/base-element';
 import { InputEmail } from '../../inputs/input-email/input-email';
 import { InputPassword } from '../../inputs/input-password/input-password';
@@ -73,7 +73,7 @@ export class FormRegistration extends Form implements IForm {
         }
       });
     } else {
-      this.drawInfoMessage(FormErrorMsg.notVolidInput);
+      this.drawInfoMessage(FormErrorMsg.notValidInput);
     }
   }
 }

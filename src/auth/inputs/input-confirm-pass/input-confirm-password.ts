@@ -2,7 +2,7 @@ import {
   FieldPlaceholder,
   FieldValidateError,
   IInputBaseElement,
-} from '../../inputs/interfaces/inputs';
+} from '../interfaces/inputs';
 import { InputBaseElement } from '../input-base';
 
 export class InputConfirmPassword extends InputBaseElement {

@@ -2,7 +2,7 @@ import { Form } from '../form-base';
 import { InputEmail } from '../../inputs/input-email/input-email';
 import { InputPassword } from '../../inputs/input-password/input-password';
 import { BaseElement } from '../../../utils/base-element/base-element';
-import './form-autorization.scss';
+import './form-authorization.scss';
 import { apiSignIn } from '../../../api/api-sign-in';
 import { FormErrorMsg, IForm } from '../interfaces/forms';
 import { StatusCode } from '../../../api/api-interfaces';
@@ -42,7 +42,7 @@ export class FormAutorization extends Form implements IForm {
         }
       });
     } else {
-      this.drawInfoMessage(FormErrorMsg.notVolidInput);
+      this.drawInfoMessage(FormErrorMsg.notValidInput);
     }
   }
 }

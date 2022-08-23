@@ -1,4 +1,4 @@
-import { FieldPlaceholder, FieldValidateError } from '../../inputs/interfaces/inputs';
+import { FieldPlaceholder, FieldValidateError } from '../interfaces/inputs';
 import { InputBaseElement } from '../input-base';
 
 export class InputEmail extends InputBaseElement {
@@ -11,5 +11,9 @@ export class InputEmail extends InputBaseElement {
       [new RegExp('.{1,}', 'g'), FieldValidateError.emptyField],
       [regExpToCheckEmail, FieldValidateError.emailNotCorrect],
     ]);
+  }
+
+  public getValue(): string {
+    return super.getValue().toLowerCase();
   }
 }
