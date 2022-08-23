@@ -9,8 +9,16 @@ export class LevelButton extends BaseElement<'div'> implements IPublisherLevelBu
   subscribers: ISubscriber[];
 
   constructor(level: WordDifficultyGroup) {
-    const levelTitle = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-    super('div', 'level-button', levelTitle[+level]);
+    const levelTitle = Object.keys(WordDifficultyGroup).sort();
+    // ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+    super('div', 'level-button', [
+      new BaseElement(
+        'div',
+        'level-button__label',
+        (+level < 2) ? 'Easy' : (+level > 3) ? 'Hard' : 'Medium').element,
+      new BaseElement('div', 'level-button__value', levelTitle[+level]).element,
+    ]);
+
     this.level = level;
     this.element.addEventListener('click', () => this.notify());
     this.subscribers = [];

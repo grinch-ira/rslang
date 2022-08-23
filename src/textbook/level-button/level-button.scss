@@ -4,9 +4,31 @@
   padding: 15px;
   background-color: #bd1cbd;
   border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
   transition: 0.2s;
+  overflow: hidden;
+  position: relative;
+
   &:hover {
     transform: scale(1.05);
     transition: 0.2s;
+  }
+
+  &__value {
+    width: 90px;
+    height: 90px;
+    background-color: antiquewhite;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(-10deg);
+    flex: 0 0 auto;
+    position: absolute;
+    right: -20px;
   }
 }
