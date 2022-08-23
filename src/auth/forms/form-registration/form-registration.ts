@@ -4,7 +4,6 @@ import { InputEmail } from '../../inputs/input-email/input-email';
 import { InputPassword } from '../../inputs/input-password/input-password';
 import { InputConfirmPassword } from
   '../../inputs/input-confirm-pass/input-confirm-password';
-import './form-registration.scss';
 import { InputName } from '../../inputs/input-name/input-name';
 import { FormErrorMsg, IForm } from '../interfaces/forms';
 import { IInputBaseElement } from '../../inputs/interfaces/inputs';
@@ -28,7 +27,7 @@ export class FormRegistration extends Form implements IForm {
     this.validateElementContainer.push(this.email, this.password, this.name, confirmPass);
     this.htmlButtonSubmit.textContent = 'Зарегистрироваться';
     this.element.append(
-      new BaseElement('div', 'form__title', 'Заргистрируйся в RSLang!!!').element,
+      new BaseElement('div', 'form__title', 'Зарегистрируйся в RSLang!!!').element,
       new BaseElement(
         'div',
         'form__todo',

@@ -7,7 +7,7 @@ export class FormLogin extends BaseElement<'div'> {
   private htmlFormContainer: HTMLElement;
 
   constructor() {
-    super('div', 'autorization-container');
+    super('div', 'authorization-container');
     this.htmlFormContainer = new BaseElement('main').element;
     this.element.append(
       new BaseElement(
