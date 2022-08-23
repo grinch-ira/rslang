@@ -1,4 +1,4 @@
-import { Form } from '../form-base';
+import { Form } from '../form-base/form';
 import { BaseElement } from '../../../utils/base-element/base-element';
 import { InputEmail } from '../../inputs/input-email/input-email';
 import { InputPassword } from '../../inputs/input-password/input-password';

@@ -15,7 +15,7 @@ export enum FieldValidateError {
   fieldNeedSmallLetter = 'Пароль должен содержать хотябы одну букву в нижнем регистре',
   fieldNeedUpperLetter = 'Пароль должен содержать хотябы одну букву в верхнем регистре',
   fieldNeedSixOrMoreLength = 'Пароль состоит не менее чем из 6-ти символов',
-  notEqualyPassword = 'Блин, опять не совпадает...',
+  notEqualyPassword = 'Ещё не совпадает...',
 }
 
 export enum FieldPlaceholder {

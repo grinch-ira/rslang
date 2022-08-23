@@ -1,6 +1,6 @@
-import { BaseElement } from '../../utils/base-element/base-element';
-import { FormAutorization } from './form-authorization/form-authorization';
-import { FormRegistration } from './form-registration/form-registration';
+import { BaseElement } from '../../../utils/base-element/base-element';
+import { FormAutorization } from '../form-authorization/form-authorization';
+import { FormRegistration } from '../form-registration/form-registration';
 import './form-login.scss';
 
 export class FormLogin extends BaseElement<'div'> {
@@ -8,7 +8,7 @@ export class FormLogin extends BaseElement<'div'> {
 
   constructor() {
     super('div', 'authorization-container');
-    this.htmlFormContainer = new BaseElement('main').element;
+    this.htmlFormContainer = new BaseElement('main', 'main').element;
     this.element.append(
       new BaseElement(
         'header',
