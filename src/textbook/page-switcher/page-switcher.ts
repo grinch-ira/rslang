@@ -9,7 +9,7 @@ export class PageSwitcher extends BaseElement<'div'> implements IPublisher {
 
   private countPage: number;
 
-  private pagePerSlide = 5;
+  private pagePerSlide = 7;
 
   private buttonSpread: HTMLButtonElement;
 

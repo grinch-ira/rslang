@@ -5,13 +5,11 @@ import { Word } from '../word/word';
 import './words-list.scss';
 
 export class WordsList extends BaseElement<'div'> implements IPublisher {
-  // private readonly htmlWordsContainer: HTMLDivElement;
-
-  private wordsArray: IWord[];
+  private wordsArray: Word[];
 
   private subscribers: ISubscriber[];
 
-  public currentCheckWord: IWord;
+  public currentCheckWord: Word;
 
   constructor() {
     super('div', 'textbook__words-list');
@@ -31,24 +29,24 @@ export class WordsList extends BaseElement<'div'> implements IPublisher {
   }
 
   setWords(words: IWord[]): void {
-    this.wordsArray = words;
+    this.wordsArray = words.map((word) => new Word(word));
     this.listRefresh();
   }
 
   listRefresh(): void {
     this.element.innerHTML = '';
     this.wordsArray.forEach((word) => {
-      //BaseElement('div', 'textbook__word', word.word).element;
-      const wordTag = new Word(word).element;
-      wordTag.addEventListener('click', () => {
+      word.element.addEventListener('click', () => {
+        this.currentCheckWord.element.classList.remove('select');
         this.currentCheckWord = word;
+        this.currentCheckWord.element.classList.add('select');
         this.notify();
       });
-      this.element.append(wordTag);
+      this.element.append(word.element);
     });
-    // console.log(this.wordsArray);
     if (this.wordsArray.length) {
       this.currentCheckWord = this.wordsArray[0];
+      this.currentCheckWord.element.classList.add('select');
       this.notify();
     }
   }

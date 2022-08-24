@@ -10,7 +10,7 @@ export class WordPresenter extends BaseElement<'div'> implements ISubscriber {
   }
 
   update(pub: IPublisherWordList): void {
-    const word = pub.currentCheckWord;
+    const word = pub.currentCheckWord.word;
     const image = new BaseElement('img', 'word-presenter__image').element;
     image.setAttribute('src', `${BASE_URL}/${word.image}`);
     this.element.innerHTML = '';

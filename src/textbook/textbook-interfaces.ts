@@ -1,4 +1,6 @@
-import { IWord, WordDifficultyGroup } from '../api/api-interfaces';
+import { WordDifficultyGroup } from '../api/api-interfaces';
+import { Word } from './word/word';
+
 
 export interface IPublisher {
   register(subscriber: ISubscriber): void;
@@ -15,7 +17,7 @@ export interface ISubscriberLevelButton {
 }
 
 export interface IPublisherWordList extends IPublisher {
-  currentCheckWord: IWord;
+  currentCheckWord: Word;
 }
 
 export interface IPublisherLevelButton extends IPublisher {

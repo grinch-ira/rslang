@@ -3,14 +3,14 @@ import { BaseElement } from '../../utils/base-element/base-element';
 import './word.scss';
 
 export class Word extends BaseElement<'div'> {
-  id: string;
+  word: IWord;
 
-  constructor({ id, word, wordTranslate }: IWord) {
+  constructor(word: IWord) {
     super('div', 'word');
-    this.id = id;
+    this.word = word;
     this.element.append(
-      new BaseElement('p', 'word__text', word).element,
-      new BaseElement('p', 'word__translate', wordTranslate).element,
+      new BaseElement('p', 'word__text', word.word).element,
+      new BaseElement('p', 'word__translate', word.wordTranslate).element,
     );
   }
 }
