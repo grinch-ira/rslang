@@ -37,6 +37,13 @@ export interface IUserBasicInfoResponse extends IStatusCodeResponse {
   body: IUserBasicInfo | undefined;
 }
 
+export interface IUserWordResponse extends IStatusCodeResponse {
+  body: IWordBody | undefined;
+}
+export interface IArrayUserWordResponse extends IStatusCodeResponse {
+  body: IWordBody[] | undefined;
+}
+
 export interface ICustomResponse<T> extends IStatusCodeResponse {
   body: T | undefined;
 }
@@ -55,6 +62,12 @@ export interface IUserAuthInfo {
   name: string;
 }
 
+//TODO конкретизировать поле optional
+export interface IWordBody {
+  difficulty: WordDifficultyGroup;
+  optional: object;
+}
+
 export enum WordDifficultyGroup {
   A1 = '0',
   A2 = '1',
@@ -62,12 +75,6 @@ export enum WordDifficultyGroup {
   B2 = '3',
   C1 = '4',
   C2 = '5',
-}
-
-//TODO конкретизировать поле optional
-export interface IWordBody {
-  difficulty: WordDifficultyGroup;
-  optional: object;
 }
 
 export enum StatusCode {
