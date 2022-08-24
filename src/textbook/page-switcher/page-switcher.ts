@@ -11,8 +11,6 @@ export class PageSwitcher extends BaseElement<'div'> implements IPublisher {
 
   private pagePerSlide = 7;
 
-  private buttonSpread: HTMLButtonElement;
-
   private pages: HTMLButtonElement[];
 
   private sliderContainer: HTMLDivElement;
@@ -99,7 +97,7 @@ export class PageSwitcher extends BaseElement<'div'> implements IPublisher {
       }
     });
 
-    for (let i = 0; i < this.countPage; i += 1) {
+    for (let i = 0; i < this.countPage; i++) {
       const pageButton = new BaseElement(
         'button',
         'textbook__page-button',
