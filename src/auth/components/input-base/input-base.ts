@@ -1,28 +1,30 @@
-import { IInputBaseElement } from '../../models/inputs';
 import './input-base.scss';
-import { BaseElement } from '../../../shared/components/base-element/base-element';
+import { BaseComponent } from '../../../shared/components/base-element/base-component';
+import { InputType } from '../../models';
 
-export class InputBaseElement extends BaseElement<'div'> implements IInputBaseElement {
+export class InputBaseElement extends BaseComponent {
+  element: HTMLDivElement;
+
   private compareRegExp: [RegExp, string][];
 
   private value: string;
 
   private infoLabel: HTMLDivElement;
 
-  // TODO: use enum for type
-  constructor(type: string, placeholder: string, compareRegExp: [RegExp, string][]) {
-    super('div', 'field-container');
+  constructor(type: InputType, placeholder: string, compareRegExp: [RegExp, string][]) {
+    super('div', ['field-container']);
     this.compareRegExp = compareRegExp;
-    const input = new BaseElement('input', 'field__input').element;
+    const input = new BaseComponent('input', ['field__input']).element;
     input.setAttribute('type', type);
     input.setAttribute('placeholder', placeholder);
     input.setAttribute('spellcheck', 'false');
     input.addEventListener('input', (event) => this.handlerInput(event));
     input.addEventListener('blur', () => this.handlerBlur());
     input.addEventListener('focus', () => this.handlerFocus());
-    const field = new BaseElement('div', 'field', input).element;
+    const field = new BaseComponent('div', ['field']).element;
+    field.append(input);
     field.addEventListener('click', () => input.focus());
-    this.infoLabel = new BaseElement('div', 'info-label').element;
+    this.infoLabel = new BaseComponent('div', ['info-label']).element as HTMLDivElement;
     this.element.append(field, this.infoLabel);
     this.value = '';
   }

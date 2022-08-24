@@ -1,17 +1,20 @@
 import { IForm } from '../../models/forms';
 import { IInputBaseElement } from '../../models/inputs';
-import { BaseElement } from '../../../shared/components/base-element/base-element';
 import './form.scss';
+import { BaseComponent } from '../../../shared/components/base-element/base-component';
 
-export class Form extends BaseElement<'form'> implements IForm {
+export class Form extends BaseComponent implements IForm {
+  element: HTMLFormElement;
+
   protected readonly validateElementContainer: IInputBaseElement[];
 
   protected readonly htmlButtonSubmit: HTMLButtonElement;
 
   constructor() {
-    super('form', 'form');
+    super('form', ['form']);
     this.validateElementContainer = [];
-    this.htmlButtonSubmit = new BaseElement('button', 'form__button-submit').element;
+    this.htmlButtonSubmit = new BaseComponent('button', ['form__button-submit'])
+      .element as HTMLButtonElement;
   }
 
   public get isValid(): boolean {
@@ -19,9 +22,9 @@ export class Form extends BaseElement<'form'> implements IForm {
   }
 
   protected drawInfoMessage(message: string): void {
-    const infoMessage = new BaseElement(
+    const infoMessage = new BaseComponent(
       'div',
-      'form-error-message',
+      ['form-error-message'],
       message,
     ).element;
     infoMessage.addEventListener('click', () => infoMessage.remove());

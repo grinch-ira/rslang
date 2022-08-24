@@ -25,4 +25,4 @@ export enum FieldPlaceholder {
   enterConfirmPassword = 'Подтвердите пароль',
 }
 
-// export type InputType = 'email' | 'password' | '
+export type InputType = 'email' | 'password' | 'text';
