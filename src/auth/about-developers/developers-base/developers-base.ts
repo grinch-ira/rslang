@@ -17,7 +17,7 @@ export class DevelopersContainerBase extends BaseElement<'div'> {
     );
     this.textContainer = new BaseElement(
       'div',
-      `developer-subtitle-${className}`,
+      `developer-subtitle-${className} dev-subtitle`,
       `${title} <br><span> ${subtitle} </span>`,
     );
 
