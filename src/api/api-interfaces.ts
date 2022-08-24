@@ -15,6 +15,39 @@ export interface IWord {
   wordTranslate: string;
   textMeaningTranslate: string;
   textExampleTranslate: string;
+  userWord?: IWordBody;
+}
+
+export interface IUserBasicInfo {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export interface IUserAuthInfo {
+  message: string;
+  token: string;
+  refreshToken: string;
+  userId: string;
+  name: string;
+}
+
+//TODO конкретизировать поле optional
+export interface IWordBody {
+  difficulty: WordDifficultyGroup;
+  optional: object;
+}
+
+//TODO конкретизировать поле optional
+export interface IStatisticBody {
+  learnedWords: number;
+  optional: object;
+}
+
+//TODO конкретизировать поле optional
+export interface ISettingBody {
+  wordsPerDay: number;
+  optional: object;
 }
 
 export interface IStatusCodeResponse {
@@ -40,33 +73,27 @@ export interface IUserBasicInfoResponse extends IStatusCodeResponse {
 export interface IUserWordResponse extends IStatusCodeResponse {
   body: IWordBody | undefined;
 }
+
 export interface IArrayUserWordResponse extends IStatusCodeResponse {
   body: IWordBody[] | undefined;
+}
+
+export interface IUserAggregatedWordResponse extends IStatusCodeResponse {
+  body: IWord[] | undefined;
+}
+
+export interface IUserStatisticResponse extends IStatusCodeResponse {
+  body: IStatisticBody | undefined;
+}
+
+export interface IUserSettingResponse extends IStatusCodeResponse {
+  body: ISettingBody | undefined;
 }
 
 export interface ICustomResponse<T> extends IStatusCodeResponse {
   body: T | undefined;
 }
 
-export interface IUserBasicInfo {
-  name: string;
-  email: string;
-  password: string;
-}
-
-export interface IUserAuthInfo {
-  message: string;
-  token: string;
-  refreshToken: string;
-  userId: string;
-  name: string;
-}
-
-//TODO конкретизировать поле optional
-export interface IWordBody {
-  difficulty: WordDifficultyGroup;
-  optional: object;
-}
 
 export enum WordDifficultyGroup {
   A1 = '0',
