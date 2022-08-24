@@ -6,6 +6,7 @@ import { ISubscriber } from './textbook-interfaces';
 import { WordPresenter } from './word-presenter/word-presenter';
 import { WordsList } from './words-list/words-list';
 import './textbook.scss';
+import { StatusCode } from '../api/api-interfaces';
 
 export class Textbook extends BaseElement<'div'> implements ISubscriber {
   private levelSwitcher: LevelSwitcher;
@@ -26,7 +27,7 @@ export class Textbook extends BaseElement<'div'> implements ISubscriber {
     this.wordPresenter = new WordPresenter();
     this.wordList.register(this.wordPresenter);
 
-    this.pageSwitcher = new PageSwitcher();
+    this.pageSwitcher = new PageSwitcher(30);
     this.pageSwitcher.register(this);
 
     this.element.append(
@@ -49,13 +50,9 @@ export class Textbook extends BaseElement<'div'> implements ISubscriber {
       this.levelSwitcher.getCurrentLevel(),
       this.pageSwitcher.getCurrentPage().toString(),
     ).then((result) => {
-      if (result.statusCode === 200) {
+      if (result.statusCode === StatusCode.Success) {
         if (result.body) this.wordList.setWords(result.body);
       }
     });
   }
-
-  // public getHtmlTag(): HTMLDivElement {
-  //   return this.element;
-  // }
 }

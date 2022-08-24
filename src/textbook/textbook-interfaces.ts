@@ -10,10 +10,6 @@ export interface ISubscriber {
   update(publisher?: IPublisher): void;
 }
 
-// export interface ISubscriberPageButton {
-
-// }
-
 export interface ISubscriberLevelButton {
   update(publisher: IPublisherLevelButton): void;
 }
