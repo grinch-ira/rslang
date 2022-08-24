@@ -12,6 +12,7 @@
   transition: 0.2s;
   overflow: hidden;
   position: relative;
+  filter: grayscale(100%);
 
   &:hover {
     transform: scale(1.05);
@@ -30,5 +31,9 @@
     flex: 0 0 auto;
     position: absolute;
     right: -20px;
+  }
+
+  &.select {
+    filter: grayscale(0%);
   }
 }
