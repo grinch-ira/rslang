@@ -1,6 +1,6 @@
 export interface IForm {
   element: HTMLFormElement;
-  isValid(): boolean;
+  get isValid(): boolean;
 }
 
 export enum FormErrorMsg {

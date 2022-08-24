@@ -1,6 +1,6 @@
-import { IInputBaseElement } from '../interfaces/inputs';
+import { IInputBaseElement } from '../../models/inputs';
 import './input-base.scss';
-import { BaseElement } from '../../../utils/base-element/base-element';
+import { BaseElement } from '../../../shared/components/base-element/base-element';
 
 export class InputBaseElement extends BaseElement<'div'> implements IInputBaseElement {
   private compareRegExp: [RegExp, string][];
@@ -9,6 +9,7 @@ export class InputBaseElement extends BaseElement<'div'> implements IInputBaseEl
 
   private infoLabel: HTMLDivElement;
 
+  // TODO: use enum for type
   constructor(type: string, placeholder: string, compareRegExp: [RegExp, string][]) {
     super('div', 'field-container');
     this.compareRegExp = compareRegExp;

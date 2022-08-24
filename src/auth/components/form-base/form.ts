@@ -1,6 +1,6 @@
-import { IForm } from '../interfaces/forms';
-import { IInputBaseElement } from '../../inputs/interfaces/inputs';
-import { BaseElement } from '../../../utils/base-element/base-element';
+import { IForm } from '../../models/forms';
+import { IInputBaseElement } from '../../models/inputs';
+import { BaseElement } from '../../../shared/components/base-element/base-element';
 import './form.scss';
 
 export class Form extends BaseElement<'form'> implements IForm {
@@ -14,7 +14,7 @@ export class Form extends BaseElement<'form'> implements IForm {
     this.htmlButtonSubmit = new BaseElement('button', 'form__button-submit').element;
   }
 
-  public isValid(): boolean {
+  public get isValid(): boolean {
     return this.validateElementContainer.every((item) => item.validate());
   }
 
