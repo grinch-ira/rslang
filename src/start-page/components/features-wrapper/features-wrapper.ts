@@ -39,14 +39,14 @@ export class FeaturesWrapper extends BaseComponent {
       'textbook',
       'Учебник',
       '../../assets/textbook.jpg',
-      'более 3500 слов для изучения, разбитых на разделы по уровню твоей подготовки',
+      'Более 3500 слов для изучения, разбитых на разделы по уровню твоей подготовки',
     );
 
     this.dictionaryFeatures = new FeaturesContainerBase(
       'dictionary',
       'Словарь',
       '../../assets/dictionary.jpg',
-      'создай свой персональный словарь для изучения слов',
+      'Создай свой персональный словарь для изучения слов',
     );
 
     this.gamesFeatures = new FeaturesContainerBase(
