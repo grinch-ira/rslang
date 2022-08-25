@@ -1,10 +1,10 @@
 import { IWord } from '../../../api/api-interfaces';
-import { BaseElement } from '../../../utils/base-element/base-element';
+import { BaseComponent } from '../../../shared/components/base-element/base-component';
 import { IPublisher, ISubscriber } from '../../models/textbook-interfaces';
 import { Word } from '../word/word';
 import './words-list.scss';
 
-export class WordsList extends BaseElement<'div'> implements IPublisher {
+export class WordsList extends BaseComponent implements IPublisher {
   private wordsArray: Word[];
 
   private subscribers: ISubscriber[];
@@ -12,7 +12,7 @@ export class WordsList extends BaseElement<'div'> implements IPublisher {
   public currentCheckWord: Word;
 
   constructor() {
-    super('div', 'textbook__words-list');
+    super('div', ['textbook__words-list']);
     this.subscribers = [];
   }
 

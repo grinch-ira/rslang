@@ -1,5 +1,4 @@
 import { apiWords } from '../../../api/api-words';
-import { BaseElement } from '../../../utils/base-element/base-element';
 import { LevelSwitcher } from '../level-switcher/level-switcher';
 import { PageSwitcher } from '../page-switcher/page-switcher';
 import { ISubscriber } from '../../models/textbook-interfaces';
@@ -7,8 +6,9 @@ import { WordPresenter } from '../word-presenter/word-presenter';
 import { WordsList } from '../words-list/words-list';
 import './textbook.scss';
 import { StatusCode } from '../../../api/api-interfaces';
+import { BaseComponent } from '../../../shared/components/base-element/base-component';
 
-export class Textbook extends BaseElement<'div'> implements ISubscriber {
+export class Textbook extends BaseComponent implements ISubscriber {
   private levelSwitcher: LevelSwitcher;
 
   private pageSwitcher: PageSwitcher;
@@ -18,7 +18,7 @@ export class Textbook extends BaseElement<'div'> implements ISubscriber {
   private wordPresenter: WordPresenter;
 
   constructor() {
-    super('div', 'textbook');
+    super('div', ['textbook']);
     this.levelSwitcher = new LevelSwitcher();
     this.levelSwitcher.register(this);
 
@@ -29,13 +29,14 @@ export class Textbook extends BaseElement<'div'> implements ISubscriber {
 
     this.pageSwitcher = new PageSwitcher(30);
     this.pageSwitcher.register(this);
-
+    const wordCascade = new BaseComponent('div', ['textbook__word-cascade']).element;
+    wordCascade.append(
+      this.wordList.element,
+      this.wordPresenter.element,
+    );
     this.element.append(
       this.levelSwitcher.element,
-      new BaseElement('div', 'textbook__word-cascade', [
-        this.wordList.element,
-        this.wordPresenter.element,
-      ]).element,
+      wordCascade,
       this.pageSwitcher.element,
     );
     this.loadWords();

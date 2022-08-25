@@ -1,15 +1,14 @@
 import { WordDifficultyGroup } from '../../../api/api-interfaces';
-import { BaseElement } from '../../../utils/base-element/base-element';
 import { LevelButton } from '../level-button/level-button';
 import {
   IPublisher,
-  // IPublisherLevelButton,
   ISubscriber,
   ISubscriberLevelButton,
 } from '../../models/textbook-interfaces';
 import './level-switcher.scss';
+import { BaseComponent } from '../../../shared/components/base-element/base-component';
 
-export class LevelSwitcher extends BaseElement<'div'>
+export class LevelSwitcher extends BaseComponent
   implements IPublisher, ISubscriberLevelButton {
 
   private currentLevel: LevelButton;
@@ -19,7 +18,7 @@ export class LevelSwitcher extends BaseElement<'div'>
   private levelButtons: LevelButton[];
 
   constructor() {
-    super('div', 'textbook__level-switcher');
+    super('div', ['textbook__level-switcher']);
     const levelArr = Object.values(WordDifficultyGroup).sort();
     this.subscribers = [];
     this.levelButtons = levelArr.map((level) => {
@@ -30,19 +29,12 @@ export class LevelSwitcher extends BaseElement<'div'>
     });
     this.currentLevel = this.levelButtons[0];
     this.currentLevel.element.classList.add('select');
-    // for (let i = 0; i < levelArr.length; i += 1) {
-    //   const button = new LevelButton(levelArr[i]);
-    //   button.register(this);
-
-    //   this.element.append(button.element);
-    // }
   }
 
   update(publisher: LevelButton): void {
     this.currentLevel.element.classList.remove('select');
     this.currentLevel = publisher;
     this.currentLevel.element.classList.add('select');
-    // publisher.element.
     this.notify();
   }
 

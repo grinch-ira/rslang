@@ -1,23 +1,23 @@
 import { WordDifficultyGroup } from '../../../api/api-interfaces';
-import { BaseElement } from '../../../utils/base-element/base-element';
+import { BaseComponent } from '../../../shared/components/base-element/base-component';
 import { IPublisherLevelButton, ISubscriber } from '../../models/textbook-interfaces';
 import './level-button.scss';
 
-export class LevelButton extends BaseElement<'div'> implements IPublisherLevelButton {
+export class LevelButton extends BaseComponent implements IPublisherLevelButton {
   level: WordDifficultyGroup;
 
   subscribers: ISubscriber[];
 
   constructor(level: WordDifficultyGroup) {
     const levelTitle = Object.keys(WordDifficultyGroup).sort();
-    // ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-    super('div', 'level-button', [
-      new BaseElement(
+    super('div', ['level-button']);
+    this.element.append(
+      new BaseComponent(
         'div',
-        'level-button__label',
+        ['level-button__label'],
         (+level < 2) ? 'Easy' : (+level > 3) ? 'Hard' : 'Medium').element,
-      new BaseElement('div', 'level-button__value', levelTitle[+level]).element,
-    ]);
+      new BaseComponent('div', ['level-button__value'], levelTitle[+level]).element,
+    );
 
     this.level = level;
     this.element.addEventListener('click', () => this.notify());

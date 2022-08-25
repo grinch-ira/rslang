@@ -1,8 +1,8 @@
-import { BaseElement } from '../../../utils/base-element/base-element';
+import { BaseComponent } from '../../../shared/components/base-element/base-component';
 import { IPublisher, ISubscriber } from '../../models/textbook-interfaces';
 import './page-switcher.scss';
 
-export class PageSwitcher extends BaseElement<'div'> implements IPublisher {
+export class PageSwitcher extends BaseComponent implements IPublisher {
   private subscribers: ISubscriber[];
 
   private currentPage: number;
@@ -26,15 +26,20 @@ export class PageSwitcher extends BaseElement<'div'> implements IPublisher {
   private BUTTON_GAP = 10;
 
   constructor(countPage: number) {
-    super('div', 'textbook__page-switcher');
+    super('div', ['textbook__page-switcher']);
     this.countPage = countPage;
     this.subscribers = [];
     this.pages = [];
     this.currentPage = 0;
-    this.sliderContainer = new BaseElement('div', 'container').element;
-    this.sliderWrapper = new BaseElement('div', 'wrapper', this.sliderContainer).element;
-    this.beforeWrapper = new BaseElement('div', 'before-wrapper').element;
-    this.afterWrapper = new BaseElement('div', 'after-wrapper').element;
+    this.sliderContainer = document.createElement('div');
+    this.sliderContainer.classList.add('container');
+    this.sliderWrapper = document.createElement('div');
+    this.sliderWrapper.classList.add('wrapper');
+    this.sliderWrapper.append(this.sliderContainer);
+    this.beforeWrapper = document.createElement('div');
+    this.beforeWrapper.classList.add('before-wrapper');
+    this.afterWrapper = document.createElement('div');
+    this.afterWrapper.classList.add('after-wrapper');
     this.initPageSwitcher();
   }
 
@@ -55,11 +60,11 @@ export class PageSwitcher extends BaseElement<'div'> implements IPublisher {
   }
 
   initPageSwitcher(): void {
-    const slideLeft = new BaseElement(
+    const slideLeft = new BaseComponent(
       'button',
-      'textbook__page-button',
-      '&lt;&lt;',
+      ['textbook__page-button'],
     ).element;
+    slideLeft.innerHTML = '&lt;&lt;';
     slideLeft.addEventListener('click', () => {
       if (this.currentPage) {
         this.currentPage -= this.pagePerSlide;
@@ -67,28 +72,29 @@ export class PageSwitcher extends BaseElement<'div'> implements IPublisher {
         this.refrash();
       }
     });
-    const left = new BaseElement('button',
-      'textbook__page-button', '&lt;').element;
+    const left = new BaseComponent('button',
+      ['textbook__page-button']).element;
+    left.innerHTML = '&lt;';
     left.addEventListener('click', () => {
       if (this.currentPage) {
         this.currentPage -= 1;
         this.refrash();
       }
     });
-    const right = new BaseElement('button',
-      'textbook__page-button', '&gt;').element;
+    const right = new BaseComponent('button',
+      ['textbook__page-button']).element;
+    right.innerHTML = '&gt;';
     right.addEventListener('click', () => {
       if (this.currentPage < this.countPage - 1) {
         this.currentPage += 1;
         this.refrash();
       }
     });
-    const slideRight = new BaseElement(
+    const slideRight = new BaseComponent(
       'button',
-      'textbook__page-button',
-      '&gt;&gt;',
+      ['textbook__page-button'],
     ).element;
-
+    slideRight.innerHTML = '&gt;&gt;';
     slideRight.addEventListener('click', () => {
       if (this.currentPage < this.countPage - 1) {
         this.currentPage += (this.currentPage + this.pagePerSlide < this.countPage - 1)
@@ -98,15 +104,15 @@ export class PageSwitcher extends BaseElement<'div'> implements IPublisher {
     });
 
     for (let i = 0; i < this.countPage; i++) {
-      const pageButton = new BaseElement(
+      const pageButton = new BaseComponent(
         'button',
-        'textbook__page-button',
+        ['textbook__page-button'],
         `${ i + 1 }`).element;
       pageButton.addEventListener('click', () => {
         this.currentPage = i;
         this.refrash();
       });
-      this.pages.push(pageButton);
+      this.pages.push(pageButton as HTMLButtonElement);
     }
 
     this.element.append(
@@ -132,14 +138,14 @@ export class PageSwitcher extends BaseElement<'div'> implements IPublisher {
     if (this.currentPage > (2 + Math.floor(this.pagePerSlide / 2))) {
       this.beforeWrapper.innerHTML = '';
       this.beforeWrapper.append(
-        new BaseElement('button', 'textbook__page-button', '...').element,
+        new BaseComponent('button', ['textbook__page-button'], '...').element,
       );
       this.afterWrapper.innerHTML = '';
       if (this.currentPage > this.countPage - (4 + Math.floor(this.pagePerSlide / 2))) {
         this.afterWrapper.append(this.pages[this.pages.length - 2]);
       } else {
         this.afterWrapper.append(
-          new BaseElement('button', 'textbook__page-button', '...').element,
+          new BaseComponent('button', ['textbook__page-button'], '...').element,
         );
       }
 
@@ -148,7 +154,7 @@ export class PageSwitcher extends BaseElement<'div'> implements IPublisher {
       this.beforeWrapper.append(this.pages[1]);
       this.afterWrapper.innerHTML = '';
       this.afterWrapper.append(
-        new BaseElement('button', 'textbook__page-button', '...').element,
+        new BaseComponent('button', ['textbook__page-button'], '...').element,
       );
     }
     this.checkSlider();
