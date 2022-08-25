@@ -1,0 +1,85 @@
+.features-wrapper {
+  margin: 65px auto 100px auto;
+  max-width: 90%;
+}
+
+.application-features-title {
+  text-align: center;
+  font-size: 48px;
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.application-features-subtitle {
+  text-align: center;
+  font-size: 48px;
+  max-width: 940px;
+  margin: 10px auto;
+  font-size: 22px;
+}
+
+.app-feature-container {
+  margin: 60px auto 0 auto;
+  display: flex;
+  max-width: 1200px;
+  justify-content: space-between;
+}
+
+.app-feature {
+
+  &-textbook,
+  &-dictionary,
+  &-games,
+  &-statistic {
+    display: flex;
+    flex-direction: column;
+    max-width: 237px;
+    height: 450px;
+    font-size: 22px;
+    line-height: 28px;
+    text-align: center;
+    justify-content: space-around;
+    border-radius: 20px;
+    background-color: #f9f8fa;
+    box-shadow: 1px 3px 4px rgb(0 0 0 / 10%);
+  }
+
+  &-dictionary,
+  &-statistic {
+    flex-direction: column-reverse;
+  }
+
+  &-title {
+
+    &-textbook,
+    &-dictionary,
+    &-games,
+    &-statistic {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+@media(max-width:1220px) {
+  .app-feature-container {
+    max-width: 700px;
+    flex-wrap: wrap;
+  }
+
+  .app-feature-textbook {
+    margin-bottom: 25px;
+  }
+}
+
+@media(max-width:560px) {
+
+  .app-feature {
+
+    &-textbook,
+    &-dictionary,
+    &-games,
+    &-statistic {
+      margin: 0 auto 25px auto;
+    }
+  }
+}
