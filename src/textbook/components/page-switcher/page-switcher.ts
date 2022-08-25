@@ -1,5 +1,5 @@
-import { BaseElement } from '../../utils/base-element/base-element';
-import { IPublisher, ISubscriber } from '../textbook-interfaces';
+import { BaseElement } from '../../../utils/base-element/base-element';
+import { IPublisher, ISubscriber } from '../../models/textbook-interfaces';
 import './page-switcher.scss';
 
 export class PageSwitcher extends BaseElement<'div'> implements IPublisher {

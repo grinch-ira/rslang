@@ -1,5 +1,5 @@
-import { WordDifficultyGroup } from '../api/api-interfaces';
-import { Word } from './word/word';
+import { WordDifficultyGroup } from '../../api/api-interfaces';
+import { Word } from '../components/word/word';
 
 
 export interface IPublisher {

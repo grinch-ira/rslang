@@ -1,6 +1,6 @@
-import { BASE_URL } from '../../api/api-interfaces';
-import { BaseElement } from '../../utils/base-element/base-element';
-import { IPublisherWordList, ISubscriber } from '../textbook-interfaces';
+import { BASE_URL } from '../../../api/api-interfaces';
+import { BaseElement } from '../../../utils/base-element/base-element';
+import { IPublisherWordList, ISubscriber } from '../../models/textbook-interfaces';
 import './word-presenter.scss';
 
 export class WordPresenter extends BaseElement<'div'> implements ISubscriber {

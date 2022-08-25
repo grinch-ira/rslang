@@ -1,12 +1,12 @@
-import { apiWords } from '../api/api-words';
-import { BaseElement } from '../utils/base-element/base-element';
-import { LevelSwitcher } from './level-switcher/level-switcher';
-import { PageSwitcher } from './page-switcher/page-switcher';
-import { ISubscriber } from './textbook-interfaces';
-import { WordPresenter } from './word-presenter/word-presenter';
-import { WordsList } from './words-list/words-list';
+import { apiWords } from '../../../api/api-words';
+import { BaseElement } from '../../../utils/base-element/base-element';
+import { LevelSwitcher } from '../level-switcher/level-switcher';
+import { PageSwitcher } from '../page-switcher/page-switcher';
+import { ISubscriber } from '../../models/textbook-interfaces';
+import { WordPresenter } from '../word-presenter/word-presenter';
+import { WordsList } from '../words-list/words-list';
 import './textbook.scss';
-import { StatusCode } from '../api/api-interfaces';
+import { StatusCode } from '../../../api/api-interfaces';
 
 export class Textbook extends BaseElement<'div'> implements ISubscriber {
   private levelSwitcher: LevelSwitcher;

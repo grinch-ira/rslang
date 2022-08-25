@@ -1,6 +1,6 @@
-import { IWord } from '../../api/api-interfaces';
-import { BaseElement } from '../../utils/base-element/base-element';
-import { IPublisher, ISubscriber } from '../textbook-interfaces';
+import { IWord } from '../../../api/api-interfaces';
+import { BaseElement } from '../../../utils/base-element/base-element';
+import { IPublisher, ISubscriber } from '../../models/textbook-interfaces';
 import { Word } from '../word/word';
 import './words-list.scss';
 

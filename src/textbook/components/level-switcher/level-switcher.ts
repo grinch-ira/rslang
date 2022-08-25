@@ -1,12 +1,12 @@
-import { WordDifficultyGroup } from '../../api/api-interfaces';
-import { BaseElement } from '../../utils/base-element/base-element';
+import { WordDifficultyGroup } from '../../../api/api-interfaces';
+import { BaseElement } from '../../../utils/base-element/base-element';
 import { LevelButton } from '../level-button/level-button';
 import {
   IPublisher,
   // IPublisherLevelButton,
   ISubscriber,
   ISubscriberLevelButton,
-} from '../textbook-interfaces';
+} from '../../models/textbook-interfaces';
 import './level-switcher.scss';
 
 export class LevelSwitcher extends BaseElement<'div'>

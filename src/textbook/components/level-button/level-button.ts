@@ -1,6 +1,6 @@
-import { WordDifficultyGroup } from '../../api/api-interfaces';
-import { BaseElement } from '../../utils/base-element/base-element';
-import { IPublisherLevelButton, ISubscriber } from '../textbook-interfaces';
+import { WordDifficultyGroup } from '../../../api/api-interfaces';
+import { BaseElement } from '../../../utils/base-element/base-element';
+import { IPublisherLevelButton, ISubscriber } from '../../models/textbook-interfaces';
 import './level-button.scss';
 
 export class LevelButton extends BaseElement<'div'> implements IPublisherLevelButton {

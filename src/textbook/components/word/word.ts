@@ -1,5 +1,5 @@
-import { IWord } from '../../api/api-interfaces';
-import { BaseElement } from '../../utils/base-element/base-element';
+import { IWord } from '../../../api/api-interfaces';
+import { BaseElement } from '../../../utils/base-element/base-element';
 import './word.scss';
 
 export class Word extends BaseElement<'div'> {
