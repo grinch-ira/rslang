@@ -1,5 +1,6 @@
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
-import { ImageBaseElement } from '../image-base-element/image-base-element';
+// eslint-disable-next-line max-len
+import { ImageBaseElement } from '../../../shared/components/base-element/image-base-element';
 
 export class FeaturesContainerBase extends BaseComponent {
   imageContainer: ImageBaseElement;
@@ -14,7 +15,7 @@ export class FeaturesContainerBase extends BaseComponent {
     super('div', [`app-feature-${className}`]);
 
     this.imageContainer = new ImageBaseElement(
-      `app-feature-img-${className}`,
+      `app-feature-${className}`,
       src,
     );
     this.title = new BaseComponent(

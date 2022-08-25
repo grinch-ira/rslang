@@ -1,5 +1,6 @@
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
-import { ImageBaseElement } from '../image-base-element/image-base-element';
+// eslint-disable-next-line max-len
+import { ImageBaseElement } from '../../../shared/components/base-element/image-base-element';
 import './main-wrapper-image.scss';
 
 export class MainWrapperImage extends BaseComponent {
