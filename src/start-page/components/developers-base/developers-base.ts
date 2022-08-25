@@ -14,16 +14,18 @@ export class DevelopersContainerBase extends BaseComponent {
 
   githubLink: BaseComponent;
 
-  constructor(className: string, title: string, 
-    src: string, subtitle: string, url:string) {
+  constructor(
+    className: string,
+    title: string,
+    src: string,
+    subtitle: string,
+    url: string,
+  ) {
     super('div', ['developer', 'about-dev', className]);
 
     this.imageContainer = new ImageBaseElement(`developer-${className}`, src);
-    
-    this.textContainer = new BaseComponent(
-      'div',
-      ['developer-text-container'],
-    );
+
+    this.textContainer = new BaseComponent('div', ['developer-text-container']);
 
     this.developerTitle = new BaseComponent(
       'div',
@@ -37,11 +39,8 @@ export class DevelopersContainerBase extends BaseComponent {
       subtitle,
     );
 
-    this.githubLink = new BaseComponent(
-      'a',
-      ['dev-github-link'],
-      
-    );
+    this.githubLink = new BaseComponent('a', ['dev-github-link']);
+
     this.githubLink.element.setAttribute('href', url);
     this.element.appendChild(this.imageContainer.element);
     this.githubLink.element.appendChild(this.developerTitle.element);

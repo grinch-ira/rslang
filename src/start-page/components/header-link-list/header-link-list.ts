@@ -13,7 +13,7 @@ export class HeaderLinkList extends BaseComponent {
   private headerLinkLogin: BaseComponent;
 
   constructor() {
-    super('div', ['header-link-list']);
+    super('nav', ['header-link-list']);
     this.headerLinkMain = new BaseComponent('a', ['main'], 'Главная');
     this.headerLinkMain.element.setAttribute('href', '#');
     this.headerLinkTextBook = new BaseComponent('a', ['textbook'], 'Учебник');

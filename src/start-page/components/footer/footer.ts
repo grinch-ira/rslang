@@ -1,5 +1,4 @@
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
-// eslint-disable-next-line max-len
 import { ImageBaseElement } from '../image-base-element/image-base-element';
 import './footer.scss';
 export class Footer extends BaseComponent {
@@ -10,7 +9,7 @@ export class Footer extends BaseComponent {
   private groupNumberAndYear: BaseComponent;
 
   constructor() {
-    super('div', ['footer-wrapper']);
+    super('footer', ['footer-wrapper']);
     this.footerGitHubLink = new BaseComponent('a', ['footer-github-link']);
     this.footerGitHubLink.element.setAttribute('href', `https://github.com/
 rolling-scopes-school/tasks/blob/master/tasks/stage-2/rs-lang/rslang.md`);

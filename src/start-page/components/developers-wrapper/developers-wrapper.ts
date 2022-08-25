@@ -3,7 +3,6 @@ import { DevelopersContainerBase } from '../developers-base/developers-base';
 import './developers-wrapper.scss';
 
 export class DevelopersWrapper extends BaseComponent {
-
   private aboutDeveloperTitle: BaseComponent;
 
   private developerAnton: DevelopersContainerBase;
@@ -12,13 +11,14 @@ export class DevelopersWrapper extends BaseComponent {
 
   private developerIryna: DevelopersContainerBase;
 
-
   private developerContainer: BaseComponent;
 
   constructor() {
-    super('div', ['about-developers-wrapper']);
+    super('section', ['about-developers-wrapper']);
 
-    this.developerContainer = new BaseComponent('div', ['developers-container']);
+    this.developerContainer = new BaseComponent('div', [
+      'developers-container',
+    ]);
 
     this.aboutDeveloperTitle = new BaseComponent(
       'div',
@@ -29,7 +29,7 @@ export class DevelopersWrapper extends BaseComponent {
     this.developerAnton = new DevelopersContainerBase(
       'anton',
       'Anton',
-      '../../assets/anton.jpg',      
+      '../../assets/anton.jpg',
       'я люблю пиво',
       'https://github.com/mldx',
     );

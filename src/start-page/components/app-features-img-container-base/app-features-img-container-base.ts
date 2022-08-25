@@ -2,8 +2,6 @@ import { BaseComponent } from '../../../shared/components/base-element/base-comp
 import { ImageBaseElement } from '../image-base-element/image-base-element';
 
 export class FeaturesContainerBase extends BaseComponent {
-  elementWrapper: BaseComponent;
-
   imageContainer: ImageBaseElement;
 
   title: BaseComponent;
@@ -31,11 +29,7 @@ export class FeaturesContainerBase extends BaseComponent {
       subtitle,
     );
 
-    this.textContainer = new BaseComponent(
-      'div',
-      ['text-container'],
-      '',
-    );
+    this.textContainer = new BaseComponent('div', ['text-container'], '');
 
     this.element.appendChild(this.imageContainer.element);
     this.textContainer.element.appendChild(this.title.element);

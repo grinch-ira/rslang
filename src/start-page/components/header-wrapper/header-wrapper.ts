@@ -8,7 +8,7 @@ export class HeaderWrapper extends BaseComponent {
   private headerLinkList: HeaderLinkList;
 
   constructor() {
-    super('div', ['header-wrapper']);
+    super('header', ['header-wrapper']);
     this.headerLogo = new BaseComponent('div', ['header-logo'], 'RSLang');
     this.headerLinkList = new HeaderLinkList();
     this.element.appendChild(this.headerLogo.element);
