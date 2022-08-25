@@ -1,19 +1,22 @@
 import { BaseApi } from './base-api';
-import { IUserAggregatedWordResponse } from './api-interfaces';
+import {
+  IArrayUserAggregatedWordResponse,
+  IUserAggregatedWordResponse,
+  WordDifficultyGroup,
+} from './api-interfaces';
 
 export class ApiUsersAggregatedWords extends BaseApi {
 
-
-  //TODO Доделать этот запрос
   async getAllUserAggregatedWords(
     userId: string,
     page: string,
     wordsPerPage: string,
     token: string,
     filter: string,
-    group?: string,
-  ) {
-    const requestString = `${this.baseUrl}/users/${userId}/aggregatedWords?page=${page}&wordsPerPage=${wordsPerPage}`
+    group?: WordDifficultyGroup,
+  ): Promise<IArrayUserAggregatedWordResponse> {
+    const requestString = `${this.baseUrl}/users/${userId}/aggregatedWords?
+page=${page}&wordsPerPage=${wordsPerPage}`
       + (filter ? `&filter=${filter}` : '')
       + (group ? `&group=${group}` : '');
 

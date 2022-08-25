@@ -50,6 +50,11 @@ export interface ISettingBody {
   optional: object;
 }
 
+export interface IArrayAggregatedWordsBody {
+  paginatedResults: IWord[];
+  totalCount: { count: number }[];
+}
+
 export interface IStatusCodeResponse {
   statusCode: number;
 }
@@ -80,6 +85,10 @@ export interface IArrayUserWordResponse extends IStatusCodeResponse {
 
 export interface IUserAggregatedWordResponse extends IStatusCodeResponse {
   body: IWord[] | undefined;
+}
+
+export interface IArrayUserAggregatedWordResponse extends IStatusCodeResponse {
+  body: IArrayAggregatedWordsBody[] | undefined;
 }
 
 export interface IUserStatisticResponse extends IStatusCodeResponse {
