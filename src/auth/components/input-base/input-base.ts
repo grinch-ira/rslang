@@ -5,7 +5,7 @@ import { InputType } from '../../models';
 export class InputBaseElement extends BaseComponent {
   element: HTMLDivElement;
 
-  private compareRegExp: [RegExp, string][];
+  compareRegExp: [RegExp, string][];
 
   private value: string;
 

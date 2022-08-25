@@ -13,8 +13,8 @@ export class Form extends BaseComponent implements IForm {
   constructor() {
     super('form', ['form']);
     this.validateElementContainer = [];
-    this.htmlButtonSubmit = new BaseComponent('button', ['form__button-submit'])
-      .element as HTMLButtonElement;
+    this.htmlButtonSubmit = document.createElement('button');
+    this.htmlButtonSubmit.classList.add('form__button-submit');
   }
 
   public get isValid(): boolean {

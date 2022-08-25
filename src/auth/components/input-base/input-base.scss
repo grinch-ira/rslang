@@ -48,7 +48,7 @@
 
 .invalid {
   & .field::after {
-    content: "✗"; // last ❌
+    content: "✗";
     font-size: 2rem;
     color: #ff0000;
     position: absolute;

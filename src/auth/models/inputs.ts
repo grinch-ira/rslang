@@ -2,6 +2,7 @@ export interface IInputBaseElement {
   element: HTMLDivElement;
   validate(): boolean;
   getValue(): string;
+  compareRegExp: [RegExp, string][];
 }
 
 export enum FieldValidateError {

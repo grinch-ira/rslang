@@ -24,3 +24,8 @@ export const EMAIL_REGEXP: [RegExp, FieldValidateError][] = [
   [new RegExp('.{1,}', 'g'), FieldValidateError.emptyField],
   [new RegExp(emailRegexp), FieldValidateError.emailNotCorrect],
 ];
+
+export const CONFIRM_PASSWORD_REGEXP: [RegExp, FieldValidateError][] = [
+  [new RegExp('.{1,}', 'g'), FieldValidateError.emptyField],
+  [new RegExp(''), FieldValidateError.notEqualyPassword],
+];
