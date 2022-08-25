@@ -1,12 +1,12 @@
 import { IForm } from '../../models/forms';
-import { IInputBaseElement } from '../../models/inputs';
+import { IFieldInputElement } from '../../models/inputs';
 import './form.scss';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 
 export class Form extends BaseComponent implements IForm {
   element: HTMLFormElement;
 
-  protected readonly validateElementContainer: IInputBaseElement[];
+  protected readonly validateElementContainer: IFieldInputElement[];
 
   protected readonly htmlButtonSubmit: HTMLButtonElement;
 

@@ -1,8 +1,8 @@
-import './input-base.scss';
+import './field-input-element.scss';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
-import { InputType } from '../../models';
+import { FieldInputType } from '../../models';
 
-export class InputBaseElement extends BaseComponent {
+export class FieldInputElement extends BaseComponent {
   element: HTMLDivElement;
 
   compareRegExp: [RegExp, string][];
@@ -11,7 +11,11 @@ export class InputBaseElement extends BaseComponent {
 
   private infoLabel: HTMLDivElement;
 
-  constructor(type: InputType, placeholder: string, compareRegExp: [RegExp, string][]) {
+  constructor(
+    type: FieldInputType,
+    placeholder: string,
+    compareRegExp: [RegExp, string][],
+  ) {
     super('div', ['field-container']);
     this.compareRegExp = compareRegExp;
     const input = new BaseComponent('input', ['field__input']).element;

@@ -4,19 +4,23 @@ import { FormErrorMsg, IForm } from '../../models/forms';
 import { StatusCode } from '../../../api/api-interfaces';
 import { EMAIL_REGEXP, PASSWORD_REGEXP } from '../../models';
 import { FieldPlaceholder } from '../../models/inputs';
-import { InputBaseElement } from '..';
+import { FieldInputElement } from '..';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 
-export class FormAutorization extends Form implements IForm {
-  private email: InputBaseElement;
+export class FormAuthorization extends Form implements IForm {
+  private email: FieldInputElement;
 
-  private pass: InputBaseElement;
+  private pass: FieldInputElement;
 
   constructor() {
     super();
-    this.email = new InputBaseElement('email', FieldPlaceholder.enterEmail, EMAIL_REGEXP);
+    this.email = new FieldInputElement(
+      'email',
+      FieldPlaceholder.enterEmail,
+      EMAIL_REGEXP,
+    );
     this.validateElementContainer.push(this.email);
-    this.pass = new InputBaseElement(
+    this.pass = new FieldInputElement(
       'password',
       FieldPlaceholder.enterPassword,
       PASSWORD_REGEXP,

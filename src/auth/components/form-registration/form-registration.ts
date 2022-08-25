@@ -1,10 +1,10 @@
 import { Form } from '../form-base/form';
 import { FormErrorMsg, IForm } from '../../models/forms';
-import { FieldPlaceholder, IInputBaseElement } from '../../models/inputs';
+import { FieldPlaceholder } from '../../models/inputs';
 import { apiUsers } from '../../../api/api-users';
 import { apiSignIn } from '../../../api/api-sign-in';
 import { StatusCode } from '../../../api/api-interfaces';
-import { InputBaseElement } from '../../components';
+import { FieldInputElement } from '../../components';
 import {
   CONFIRM_PASSWORD_REGEXP,
   EMAIL_REGEXP,
@@ -14,25 +14,29 @@ import {
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 
 export class FormRegistration extends Form implements IForm {
-  private readonly email: IInputBaseElement;
+  private readonly email: FieldInputElement;
 
-  private readonly password: IInputBaseElement;
+  private readonly password: FieldInputElement;
 
-  private readonly name: IInputBaseElement;
+  private readonly name: FieldInputElement;
 
-  private readonly confirmPass: IInputBaseElement;
+  private readonly confirmPass: FieldInputElement;
 
   constructor() {
     super();
-    this.email = new InputBaseElement('email', FieldPlaceholder.enterEmail, EMAIL_REGEXP);
-    this.password = new InputBaseElement(
+    this.email = new FieldInputElement(
+      'email',
+      FieldPlaceholder.enterEmail,
+      EMAIL_REGEXP,
+    );
+    this.password = new FieldInputElement(
       'password',
       FieldPlaceholder.enterPassword,
       PASSWORD_REGEXP,
     );
-    this.name = new InputBaseElement('text', FieldPlaceholder.enterName, NAME_REGEXP);
+    this.name = new FieldInputElement('text', FieldPlaceholder.enterName, NAME_REGEXP);
 
-    this.confirmPass = new InputBaseElement(
+    this.confirmPass = new FieldInputElement(
       'password',
       FieldPlaceholder.enterConfirmPassword,
       CONFIRM_PASSWORD_REGEXP,

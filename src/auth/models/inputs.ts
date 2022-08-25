@@ -1,4 +1,4 @@
-export interface IInputBaseElement {
+export interface IFieldInputElement {
   element: HTMLDivElement;
   validate(): boolean;
   getValue(): string;
@@ -26,4 +26,4 @@ export enum FieldPlaceholder {
   enterConfirmPassword = 'Подтвердите пароль',
 }
 
-export type InputType = 'email' | 'password' | 'text';
+export type FieldInputType = 'email' | 'password' | 'text';
