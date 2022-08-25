@@ -1,4 +1,5 @@
 @import '../../../variables.scss';
+
 .header-wrapper {
   display: flex;
   justify-content: space-between;
@@ -6,7 +7,7 @@
   margin: 0 auto;
   padding: 25px 40px;
   height: 100px;
-  background: $violetBackground;
+  background: $violet-color;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -18,17 +19,18 @@
   width: 200px;
 }
 
-@media(max-width:720px){
-  .header-logo{
+@media(max-width:720px) {
+  .header-logo {
     font-size: 20px;
   }
-  .header-wrapper{
+
+  .header-wrapper {
     padding: 25px 20px;
   }
 }
 
-@media(max-width:420px){
-  .header-wrapper{
+@media(max-width:420px) {
+  .header-wrapper {
     padding: 25px 10px;
   }
 }
