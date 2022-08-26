@@ -9,7 +9,7 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
 
   private countPage: number;
 
-  private pagePerSlide = 7;
+  private pagePerSlide: number;
 
   private pages: HTMLButtonElement[];
 
@@ -25,12 +25,18 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
 
   private BUTTON_GAP = 10;
 
+  private matchWith5SliderButton: MediaQueryList;
+
+  private matchWith3SliderButton: MediaQueryList;
+
   constructor(countPage: number) {
     super('div', ['textbook__page-switcher']);
     this.countPage = countPage;
     this.subscribers = [];
     this.pages = [];
     this.currentPage = 0;
+    // this.pagePerSlide = 7;
+    this.checkWindowSize();
     this.sliderContainer = document.createElement('div');
     this.sliderContainer.classList.add('container');
     this.sliderWrapper = document.createElement('div');
@@ -182,6 +188,47 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
     if (mult > (this.countPage - 4 - this.pagePerSlide)) {
       mult = this.countPage - 4 - this.pagePerSlide;
     }
-    this.sliderContainer.style.left = `${10 - 40 * mult}px`;
+    this.sliderContainer.style.left = `${
+      this.BUTTON_GAP - (this.BUTTON_WIDTH + this.BUTTON_GAP) * mult
+    }px`;
+  }
+
+  checkWindowSize() {
+    this.matchWith5SliderButton = window.matchMedia(
+      `(max-width: ${Math.ceil((13 * (this.BUTTON_WIDTH + this.BUTTON_GAP)) / 0.8)}px)`,
+    );
+    this.matchWith5SliderButton.addEventListener('change', (e: MediaQueryListEvent) => {
+      if (e.matches) {
+        this.pagePerSlide = 5;
+      } else {
+        this.pagePerSlide = 7;
+      }
+      this.refrash();
+    });
+    this.matchWith3SliderButton = window.matchMedia(
+      `(max-width: ${Math.ceil((11 * (this.BUTTON_WIDTH + this.BUTTON_GAP)) / 0.8)}px)`,
+    );
+    this.matchWith3SliderButton.addEventListener('change', (e: MediaQueryListEvent) => {
+      if (e.matches) {
+        this.pagePerSlide = 3;
+      } else {
+        this.pagePerSlide = 5;
+      }
+      this.refrash();
+    });
+
+    switch (true) {
+
+      case this.matchWith3SliderButton.matches:
+        this.pagePerSlide = 3;
+        break;
+
+      case this.matchWith5SliderButton.matches:
+        this.pagePerSlide = 5;
+        break;
+
+      default:
+        this.pagePerSlide = 7;
+    }
   }
 }

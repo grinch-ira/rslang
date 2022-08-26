@@ -45,15 +45,15 @@ export class AudioPlayer {
     if (this.currentPlaylist.length) {
       const canPlayThrought = () => {
         this.player.play();
+        this.player.removeEventListener('canplaythrough', canPlayThrought);
         this.isPlaying = true;
         this.updateControlElement();
-        this.player.removeEventListener('canplaythrough', canPlayThrought);
       };
       const ended = () => {
+        this.player.removeEventListener('ended', ended);
         this.isPlaying = false;
         this.playNext();
         this.updateControlElement();
-        this.player.removeEventListener('ended', ended);
       };
       this.player.src = this.currentPlaylist.shift() as string;
       this.player.addEventListener('canplaythrough', canPlayThrought);
