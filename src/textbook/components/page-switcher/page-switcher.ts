@@ -35,7 +35,6 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
     this.subscribers = [];
     this.pages = [];
     this.currentPage = 0;
-    // this.pagePerSlide = 7;
     this.checkWindowSize();
     this.sliderContainer = document.createElement('div');
     this.sliderContainer.classList.add('container');
@@ -147,6 +146,7 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
         new BaseComponent('button', ['textbook__page-button'], '...').element,
       );
       this.afterWrapper.innerHTML = '';
+
       if (this.currentPage > this.countPage - (4 + Math.floor(this.pagePerSlide / 2))) {
         this.afterWrapper.append(this.pages[this.pages.length - 2]);
       } else {

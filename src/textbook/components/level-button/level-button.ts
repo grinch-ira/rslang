@@ -24,7 +24,6 @@ export class LevelButton extends BaseComponent implements IPublisherLevelButton 
     this.subscribers = [];
   }
 
-
   register(subscriber: ISubscriber): void {
     this.subscribers.push(subscriber);
   }

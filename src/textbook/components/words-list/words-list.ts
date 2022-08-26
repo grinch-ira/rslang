@@ -44,6 +44,7 @@ export class WordsList extends BaseComponent implements IPublisher {
       });
       this.element.append(word.element);
     });
+
     if (this.wordsArray.length) {
       this.currentCheckWord = this.wordsArray[0];
       this.currentCheckWord.element.classList.add('select');

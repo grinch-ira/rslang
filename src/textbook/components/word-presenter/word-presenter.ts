@@ -22,29 +22,22 @@ export class WordPresenter extends BaseComponent implements ISubscriber {
     const image = new BaseComponent('img', ['word-presenter__image']).element;
     image.setAttribute('src', `${BASE_URL}/${word.image}`);
     const description = new BaseComponent('div', ['word-presenter__description']).element;
-
     const wordText = new BaseComponent('p', ['word-presenter__word']).element;
     wordText.innerHTML = word.word;
     const translate = new BaseComponent('p', ['word-presenter__translate']).element;
     translate.innerHTML = word.wordTranslate;
-
     const transcriptionContainer = new BaseComponent(
       'div',
       ['word-presenter__transcription-container']).element;
-
-
     const transcription = new BaseComponent(
       'p',
       ['word-presenter__transcription'],
     ).element;
     transcription.innerHTML = word.transcription;
-
     const buttonPlay = document.createElement('button');
     buttonPlay.classList.add('word-presenter__audio-button');
     this.player.setControlElement(buttonPlay);
-
     transcriptionContainer.append(transcription, buttonPlay);
-
     const meaning = new BaseComponent('p', ['word-presenter__meaning']).element;
     meaning.innerHTML = word.textMeaning;
     const meaningTranslate = new BaseComponent(
@@ -59,7 +52,6 @@ export class WordPresenter extends BaseComponent implements ISubscriber {
       ['word-presenter__example-translate'],
     ).element;
     exampleTranslate.innerHTML = word.textExampleTranslate;
-
     description.append(
       wordText,
       translate,
@@ -71,7 +63,6 @@ export class WordPresenter extends BaseComponent implements ISubscriber {
       example,
       exampleTranslate,
     );
-
     this.element.innerHTML = '';
     this.element.append(
       image,
