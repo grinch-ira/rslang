@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1.3em;
-  font-weight: 700;
+  font-weight: $font-weight-bold;
   flex-wrap: wrap;
 }
 
@@ -23,12 +23,12 @@
 .game:hover,
 .statistics:hover,
 .login :hover {
-  color: $yellow-color;
+  color: $color-yellow-button;
   transition: all 0.5s ease-out;
 }
 
 .header-link-login {
-  background: $yellow-color;
+  background: $color-yellow-button;
   padding: 15px 20px;
   border-radius: 15px;
 }

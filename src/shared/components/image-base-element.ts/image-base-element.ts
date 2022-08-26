@@ -1,4 +1,4 @@
-import { BaseComponent } from './base-component';
+import { BaseComponent } from '../base-element/base-component';
 
 export class ImageBaseElement extends BaseComponent {
   element: HTMLImageElement;

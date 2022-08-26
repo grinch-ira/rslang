@@ -5,5 +5,5 @@ import './variables.scss';
 
 
 window.onload = () => {
-  new StartPage(document.body);
+  document.body.appendChild(new StartPage().element);
 };

@@ -36,9 +36,10 @@ export class DevelopersWrapper extends BaseComponent {
 
     this.developerVladimir = new DevelopersContainerBase(
       'vladimir',
-      'Vladimir',
+      'Vladimir | junior front-end developer',
       '../../assets/vladimir.jpg',
-      'я тоже люблю пиво',
+      // eslint-disable-next-line max-len
+      'Три недели получал удовольствие от командной работы и это было даже бесплатно. А ещё формы авторизации, учебник... и, может, ещё что -нибудь..',
       'https://github.com/dyexplode',
     );
 

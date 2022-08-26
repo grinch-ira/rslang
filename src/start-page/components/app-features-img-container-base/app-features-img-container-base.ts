@@ -1,6 +1,6 @@
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 // eslint-disable-next-line max-len
-import { ImageBaseElement } from '../../../shared/components/base-element/image-base-element';
+import { ImageBaseElement } from '../../../shared/components/image-base-element.ts/image-base-element';
 
 export class FeaturesContainerBase extends BaseComponent {
   imageContainer: ImageBaseElement;
@@ -30,7 +30,7 @@ export class FeaturesContainerBase extends BaseComponent {
       subtitle,
     );
 
-    this.textContainer = new BaseComponent('div', ['text-container'], '');
+    this.textContainer = new BaseComponent('div', ['text-container']);
 
     this.element.appendChild(this.imageContainer.element);
     this.textContainer.element.appendChild(this.title.element);

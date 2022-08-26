@@ -1,6 +1,6 @@
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 // eslint-disable-next-line max-len
-import { ImageBaseElement } from '../../../shared/components/base-element/image-base-element';
+import { ImageBaseElement } from '../../../shared/components/image-base-element.ts/image-base-element';
 
 export class DevelopersContainerBase extends BaseComponent {
   imageContainer: ImageBaseElement;
