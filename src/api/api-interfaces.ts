@@ -116,5 +116,6 @@ export enum WordDifficultyGroup {
 export enum StatusCode {
   Success = 200,
   Forbidden = 403,
+  ExpectationFailed = 417,
   UnprocessableEntity = 422,
 }
