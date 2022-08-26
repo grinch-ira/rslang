@@ -1,7 +1,9 @@
+@import '../../../variables.scss';
+
 .form {
   width: 320px;
   padding: 40px;
-  background-color: #804d98; // rgba(74, 2, 108, 0.7);
+  background-color: $color-violet-header;
   position: relative;
   border: 1px solid #000000;
   border-radius: 20px;
@@ -11,6 +13,7 @@
     height: 40px;
     font-size: 1.2rem;
     border-radius: 5px;
+    background-color: $color-yellow-button;
   }
 
   &__title {

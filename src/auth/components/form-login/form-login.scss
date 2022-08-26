@@ -1,8 +1,10 @@
+@import '../../../variables.scss';
+
 .authorization-container {
   width: 1280px;
   height: 100vh;
   margin: 0 auto;
-  background-color: bisque;
+  background-color: $color-lightgray-background;
   display: flex;
   flex-direction: column;
 
