@@ -1,9 +1,11 @@
+@import '../../../variables.scss';
+
 .word-presenter {
   width: 400px;
   padding: 5px;
   display: flex;
   flex-direction: column;
-  background-color: #d0cccc;
+  background-color: $color-medium-gray;
   flex: 0 0 auto;
 
   &__image {
@@ -37,8 +39,11 @@
   }
 
   &__audio-button {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
   }
 
   &__subheader {
