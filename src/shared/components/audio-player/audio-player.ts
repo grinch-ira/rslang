@@ -25,12 +25,7 @@ export class AudioPlayer {
   public setControlElement(element: HTMLElement): void {
     this.controlElement = element;
     this.controlElement.addEventListener('click', () => {
-      if (this.isPlaying) {
-        this.stopPlayer();
-      } else {
-        this.currentPlaylist = [...this.playlist];
-        this.playNext();
-      }
+      this.controlElementClick();
     });
     this.updateControlElement();
   }
@@ -48,15 +43,21 @@ export class AudioPlayer {
 
   private playNext(): void {
     if (this.currentPlaylist.length) {
-      this.player.src = this.currentPlaylist.shift() as string;
-      this.player.addEventListener('canplaythrough', () => {
+      const canPlayThrought = () => {
         this.player.play();
         this.isPlaying = true;
         this.updateControlElement();
-      });
-      this.player.addEventListener('ended', () => {
+        this.player.removeEventListener('canplaythrough', canPlayThrought);
+      };
+      const ended = () => {
+        this.isPlaying = false;
         this.playNext();
-      });
+        this.updateControlElement();
+        this.player.removeEventListener('ended', ended);
+      };
+      this.player.src = this.currentPlaylist.shift() as string;
+      this.player.addEventListener('canplaythrough', canPlayThrought);
+      this.player.addEventListener('ended', ended);
     } else {
       this.isPlaying = false;
       this.updateControlElement();
@@ -66,7 +67,7 @@ export class AudioPlayer {
   private stopPlayer(): void {
     this.player.pause();
     this.player.src = '';
-    this.player.currentTime = 0;
+    this.player = new Audio();
     this.isPlaying = false;
     this.updateControlElement();
   }
@@ -74,6 +75,15 @@ export class AudioPlayer {
   private updateControlElement(): void {
     if (this.controlElement) {
       this.controlElement.innerHTML = this.getPlayIcon(this.isPlaying);
+    }
+  }
+
+  private controlElementClick(): void {
+    if (this.isPlaying) {
+      this.stopPlayer();
+    } else {
+      this.currentPlaylist = [...this.playlist];
+      this.playNext();
     }
   }
 }
