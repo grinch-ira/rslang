@@ -1,0 +1,26 @@
+@import '../../../variables.scss';
+
+.footer-wrapper {
+  margin: 65px auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  min-width: 100%;
+  padding: 25px 40px;
+  background: $color-violet-header;
+}
+
+.footer-github-link {
+  height: 90%;
+  width: 100px;
+}
+
+.footer-github-image {
+  width: 100%;
+  height: 100%;
+}
+
+.group-number-year {
+  display: flex;
+  align-items: center;
+}
