@@ -1,0 +1,40 @@
+@import '../../../variables.scss';
+
+.authorization-container {
+  width: 1280px;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: $color-lightgray-background;
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    padding: 40px;
+    font-size: 4rem;
+    font-weight: 900;
+    flex: 0 0 auto;
+  }
+
+  .main {
+    flex: 1 0 auto;
+    padding-left: 40px;
+    .form__subtext {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.form-error-message {
+  width: 90%;
+  height: 35%;
+  color: #804d98;
+  background-color: #eaf36f;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  top: 60%;
+  left: 5%;
+}
