@@ -1,0 +1,45 @@
+@import '../../../variables.scss';
+
+.header-link-list {
+  width: 436px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.3em;
+  font-weight: $font-weight-bold;
+  flex-wrap: wrap;
+}
+
+.main,
+.textbook,
+.game,
+.statistics,
+.login {
+  color: #ffffff;
+}
+
+.main:hover,
+.textbook:hover,
+.game:hover,
+.statistics:hover,
+.login :hover {
+  color: $color-yellow-button;
+  transition: all 0.5s ease-out;
+}
+
+.header-link-login {
+  background: $color-yellow-button;
+  padding: 15px 20px;
+  border-radius: 15px;
+}
+
+@media(max-width:720px) {
+  .header-link-list {
+    font-size: 1em;
+  }
+
+  .header-link-login {
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+}
