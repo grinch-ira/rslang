@@ -13,11 +13,11 @@ export class SessionSaver {
 
   private static instance: SessionSaver;
 
-  private actualToken: string;
+  private tokenActual: string;
 
   private refreshToken: string;
 
-  private userId: string;
+  private userIdActual: string;
 
   private isActiveSession: boolean;
 
@@ -28,9 +28,9 @@ export class SessionSaver {
     const auth = localStorage.getItem('auth');
     if (auth) {
       const authData: IUserStorageInfo = JSON.parse(auth);
-      this.actualToken = authData.token;
+      this.tokenActual = authData.token;
       this.refreshToken = authData.refreshToken;
-      this.userId = authData.userId;
+      this.userIdActual = authData.userId;
       this.isActiveSession = true;
       this.updaterTokens = setTimeout(() => this.checkSession(), 3600000);
     } else {
@@ -47,8 +47,8 @@ export class SessionSaver {
           this.logout();
         } else {
           const newAuthData: IUserStorageInfo = JSON.parse(event.newValue);
-          this.userId = newAuthData.userId;
-          this.actualToken = newAuthData.token;
+          this.userIdActual = newAuthData.userId;
+          this.tokenActual = newAuthData.token;
           this.refreshToken = newAuthData.refreshToken;
         }
       }
@@ -60,16 +60,20 @@ export class SessionSaver {
   }
 
   public get token(): string {
-    return this.actualToken;
+    return this.tokenActual;
+  }
+
+  public get userId(): string {
+    return this.userIdActual;
   }
 
   public async checkSession(): Promise<boolean> {
-    return apiUsers.getNewUserTokens(this.userId, this.refreshToken)
+    return apiUsers.getNewUserTokens(this.userIdActual, this.refreshToken)
       .then((data) => {
         if (data.statusCode === StatusCode.Success) {
           const newAuthData = data.body;
           if (newAuthData) {
-            this.actualToken = newAuthData.token;
+            this.tokenActual = newAuthData.token;
             this.refreshToken = newAuthData.refreshToken;
             this.saveToStorage();
             this.isActiveSession = true;
@@ -85,23 +89,23 @@ export class SessionSaver {
 
   public logout(): void {
     if (this.isActiveSession) {
-      apiUsers.getNewUserTokens(this.userId, this.refreshToken);
+      apiUsers.getNewUserTokens(this.userIdActual, this.refreshToken);
       localStorage.removeItem('auth');
-      this.actualToken = '';
-      this.userId = '';
+      this.tokenActual = '';
+      this.userIdActual = '';
       this.refreshToken = '';
       this.isActiveSession = false;
     } else {
-      this.actualToken = '';
-      this.userId = '';
+      this.tokenActual = '';
+      this.userIdActual = '';
       this.refreshToken = '';
     }
     clearTimeout(this.updaterTokens);
   }
 
   public startSession(userId: string, token: string, refreshToken: string): void {
-    this.userId = userId;
-    this.actualToken = token;
+    this.userIdActual = userId;
+    this.tokenActual = token;
     this.refreshToken = refreshToken;
     this.isActiveSession = true;
     this.saveToStorage();
@@ -110,8 +114,8 @@ export class SessionSaver {
 
   private saveToStorage(): void {
     localStorage.setItem('auth', JSON.stringify({
-      userId: this.userId,
-      token: this.actualToken,
+      userId: this.userIdActual,
+      token: this.tokenActual,
       refreshToken: this.refreshToken,
     }));
   }
