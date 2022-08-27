@@ -1,8 +1,8 @@
 import { BaseApi } from './base-api';
 import {
   IStatusCodeResponse,
-  IUserAuthInfoResponse,
   IUserBasicInfoResponse,
+  IUserNewTokenInfoResponse,
 } from './api-interfaces';
 
 class ApiUsers extends BaseApi {
@@ -56,11 +56,14 @@ class ApiUsers extends BaseApi {
     }).then(response => ({ statusCode: response.status }));
   }
 
-  async getNewUserTokens(id: string, token: string): Promise<IUserAuthInfoResponse> {
+  async getNewUserTokens(
+    id: string,
+    refreshToken: string,
+  ): Promise<IUserNewTokenInfoResponse> {
     return fetch(`${this.baseUrl}/${this.usersUrl}/${id}/tokens`, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `Bearer ${refreshToken}`,
       },
     }).then(async (response) => this.changeResponseOnCustom(response));
   }
