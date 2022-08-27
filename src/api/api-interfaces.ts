@@ -32,6 +32,11 @@ export interface IUserAuthInfo {
   name: string;
 }
 
+export interface IUserNewTokenInfo {
+  refreshToken: string;
+  token: string;
+}
+
 //TODO конкретизировать поле optional
 export interface IWordBody {
   difficulty: WordDifficultyGroup;
@@ -69,6 +74,10 @@ export interface IArrayWordResponse extends IStatusCodeResponse {
 
 export interface IUserAuthInfoResponse extends IStatusCodeResponse {
   body: IUserAuthInfo | undefined;
+}
+
+export interface IUserNewTokenInfoResponse extends IStatusCodeResponse {
+  body: IUserNewTokenInfo | undefined;
 }
 
 export interface IUserBasicInfoResponse extends IStatusCodeResponse {
