@@ -16,8 +16,8 @@ export class WordPresenter extends BaseComponent implements ISubscriber {
     const word = pub.currentCheckWord.word;
     this.player.addInPlaylist(
       this.makeURL(word.audio),
-      this.makeURL(word.audioExample),
       this.makeURL(word.audioMeaning),
+      this.makeURL(word.audioExample),
     );
     const image = new BaseComponent('img', ['word-presenter__image']).element;
     image.setAttribute('src', `${BASE_URL}/${word.image}`);
