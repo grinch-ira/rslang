@@ -7,7 +7,8 @@ export class SessionSaver {
     if (SessionSaver.instance) {
       return SessionSaver.instance;
     }
-    return new SessionSaver();
+    SessionSaver.instance = new SessionSaver();
+    return SessionSaver.instance;
   }
 
   private static instance: SessionSaver;
@@ -20,7 +21,21 @@ export class SessionSaver {
 
   private isActiveSession: boolean;
 
+  private updaterTokens: NodeJS.Timer;
+
   private constructor() {
+    this.isActiveSession = false;
+    const auth = localStorage.getItem('auth');
+    if (auth) {
+      const authData: IUserStorageInfo = JSON.parse(auth);
+      this.actualToken = authData.token;
+      this.refreshToken = authData.refreshToken;
+      this.userId = authData.userId;
+      this.isActiveSession = true;
+      this.updaterTokens = setTimeout(() => this.checkSession(), 3600000);
+    } else {
+      this.isActiveSession = false;
+    }
     window.addEventListener('storage', (event) => {
       if (!event.key) {
         this.isActiveSession = false;
@@ -48,29 +63,24 @@ export class SessionSaver {
     return this.actualToken;
   }
 
-  public async loadSessionFromLocalStorage(): Promise<boolean> {
-    const auth = localStorage.getItem('auth');
-    if (auth) {
-      const authData: IUserStorageInfo = JSON.parse(auth);
-      apiUsers.getNewUserTokens(authData.userId, authData.refreshToken)
-        .then((data) => {
-          if (data.statusCode === StatusCode.Success) {
-            const newAuthData = data.body;
-            if (newAuthData) {
-              this.actualToken = newAuthData.token;
-              this.refreshToken = newAuthData.refreshToken;
-              this.userId = authData.userId;
-              this.saveToStorage();
-              this.isActiveSession = true;
-            }
+  public async checkSession(): Promise<boolean> {
+    return apiUsers.getNewUserTokens(this.userId, this.refreshToken)
+      .then((data) => {
+        if (data.statusCode === StatusCode.Success) {
+          const newAuthData = data.body;
+          if (newAuthData) {
+            this.actualToken = newAuthData.token;
+            this.refreshToken = newAuthData.refreshToken;
+            this.saveToStorage();
+            this.isActiveSession = true;
+            this.updaterTokens = setTimeout(() => this.checkSession(), 3600000);
+            return this.isActiveSession;
           }
-        }).then(() => {
-          return this.isActiveSession;
-        });
-    } else {
-      this.isActiveSession = false;
-    }
-    return this.isActiveSession;
+        }
+        this.logout();
+        this.isActiveSession = false;
+        return this.isActiveSession;
+      });
   }
 
   public logout(): void {
@@ -86,6 +96,7 @@ export class SessionSaver {
       this.userId = '';
       this.refreshToken = '';
     }
+    clearTimeout(this.updaterTokens);
   }
 
   public startSession(userId: string, token: string, refreshToken: string): void {
@@ -94,6 +105,7 @@ export class SessionSaver {
     this.refreshToken = refreshToken;
     this.isActiveSession = true;
     this.saveToStorage();
+    this.updaterTokens = setTimeout(() => this.checkSession(), 3600000);
   }
 
   private saveToStorage(): void {

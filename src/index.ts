@@ -7,10 +7,7 @@ import { SessionSaver } from './core/services/session-saver/session-saver';
 
 
 window.onload = () => {
-  console.log(SessionSaver.getInstance().loadSessionFromLocalStorage());
-  // SessionSaver.getInstance().loadSessionFromLocalStorage().then(console.log);
-
+  SessionSaver.getInstance();
   document.body.appendChild(new StartPage().element);
-  console.log('test');
   document.body.append(new FormLogin().element);
 };
