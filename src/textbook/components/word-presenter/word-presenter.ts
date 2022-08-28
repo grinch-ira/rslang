@@ -1,4 +1,5 @@
 import { BASE_URL } from '../../../api/api-interfaces';
+import { SessionSaver } from '../../../core/services/session-saver/session-saver';
 import { AudioPlayer } from '../../../shared/components/audio-player/audio-player';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 import { IPublisherWordList, ISubscriber } from '../../models/textbook-interfaces';
@@ -38,6 +39,21 @@ export class WordPresenter extends BaseComponent implements ISubscriber {
     buttonPlay.classList.add('word-presenter__audio-button');
     this.player.setControlElement(buttonPlay);
     transcriptionContainer.append(transcription, buttonPlay);
+    // Add buttons word manage
+    const session = SessionSaver.getInstance();
+    if (session.isActive) {
+      const manageContainer = new BaseComponent(
+        'div',
+        ['word-presenter__manage-button-containner'],
+      ).element;
+      const buttonHard = document.createElement('button');
+      buttonHard.classList.add('word-presenter__manage-button-hard');
+      buttonHard.addEventListener('click', () => {
+
+      });
+    }
+
+
     const meaning = new BaseComponent('p', ['word-presenter__meaning']).element;
     meaning.innerHTML = word.textMeaning;
     const meaningTranslate = new BaseComponent(
@@ -72,5 +88,16 @@ export class WordPresenter extends BaseComponent implements ISubscriber {
 
   private makeURL(link: string): string {
     return `${BASE_URL}/${link}`;
+  }
+
+  private userWordIsExist(): Promise<boolean> {
+    apiUsersWords.getAUserWordById(session.userId, word.id, session.token)
+        .then((response) => {
+          if (response.statusCode === StatusCode.Success) {
+            const options = response.body;
+  }
+
+  private putUserWordtoHard() {
+
   }
 }
