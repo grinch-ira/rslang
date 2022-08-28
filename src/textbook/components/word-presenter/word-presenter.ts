@@ -3,6 +3,7 @@ import { SessionSaver } from '../../../core/services/session-saver/session-saver
 import { AudioPlayer } from '../../../shared/components/audio-player/audio-player';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 import { IPublisherWordList, ISubscriber } from '../../models/textbook-interfaces';
+import { proxyApi } from '../proxy-api/proxy-api';
 import './word-presenter.scss';
 
 export class WordPresenter extends BaseComponent implements ISubscriber {
@@ -39,17 +40,56 @@ export class WordPresenter extends BaseComponent implements ISubscriber {
     buttonPlay.classList.add('word-presenter__audio-button');
     this.player.setControlElement(buttonPlay);
     transcriptionContainer.append(transcription, buttonPlay);
+
     // Add buttons word manage
     const session = SessionSaver.getInstance();
-    if (session.isActive) {
-      const manageContainer = new BaseComponent(
-        'div',
-        ['word-presenter__manage-button-containner'],
-      ).element;
-      const buttonHard = document.createElement('button');
-      buttonHard.classList.add('word-presenter__manage-button-hard');
-      buttonHard.addEventListener('click', () => {
+    const manageContainer = new BaseComponent(
+      'div',
+      ['word-presenter__manage-containner'],
+    ).element;
 
+    if (session.isActive) {
+      proxyApi.getAUserWordById(word.id).then((userOptions) => {
+        const buttonHard = document.createElement('button');
+        buttonHard.classList.add('word-presenter__manage-hard');
+        if (userOptions) {
+        // If word is inited later
+
+          if (userOptions.isHard) {
+          // If word already in HARD
+            buttonHard.addEventListener('click', () => {
+              userOptions.isHard = false;
+              proxyApi.updateAUserWord(word.id, userOptions).then(() => {
+                pub.currentCheckWord.update();
+                this.update(pub);
+              });
+            });
+            buttonHard.textContent = 'Убрать из тяжелых';
+          } else {
+          // If word not in HARD
+            buttonHard.addEventListener('click', () => {
+              userOptions.isHard = true;
+              proxyApi.updateAUserWord(word.id, userOptions).then(() => {
+                pub.currentCheckWord.update();
+                this.update(pub);
+              });
+            });
+            buttonHard.textContent = 'Добавить в тяжелые';
+          }
+        } else {
+        // If word is not inited
+          buttonHard.addEventListener('click', () => {
+            proxyApi.createAUserWord(word.id).then((result) => {
+              result.isHard = true;
+              proxyApi.updateAUserWord(word.id, result).then(() => {
+                pub.currentCheckWord.update();
+                this.update(pub);
+              });
+            });
+          });
+          buttonHard.textContent = 'Добавить в тяжелые';
+        }
+        manageContainer.append(buttonHard);
       });
     }
 
@@ -72,6 +112,7 @@ export class WordPresenter extends BaseComponent implements ISubscriber {
       wordText,
       translate,
       transcriptionContainer,
+      manageContainer,
       new BaseComponent('p', ['word-presenter__subheader'], 'Значение').element,
       meaning,
       meaningTranslate,
@@ -88,16 +129,5 @@ export class WordPresenter extends BaseComponent implements ISubscriber {
 
   private makeURL(link: string): string {
     return `${BASE_URL}/${link}`;
-  }
-
-  private userWordIsExist(): Promise<boolean> {
-    apiUsersWords.getAUserWordById(session.userId, word.id, session.token)
-        .then((response) => {
-          if (response.statusCode === StatusCode.Success) {
-            const options = response.body;
-  }
-
-  private putUserWordtoHard() {
-
   }
 }

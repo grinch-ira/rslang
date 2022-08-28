@@ -11,14 +11,26 @@
     transition: 0.2s;
     background: #55cc55;
   }
-}
 
-.word__text {
-  font-weight: 900;
-}
+  &.select {
+    background: #8a4a9a;
+  }
 
-.word__translate {
-  padding-top: 5px;
-  text-align: right;
-  font-size: 1.4rem;
+  &__difficulty-hard {
+    background-color: red;
+  }
+
+  &__difficulty-hard.select {
+    background-color: darkred;
+  }
+
+  &__text {
+    font-weight: 900;
+  }
+
+  &__translate {
+    padding-top: 5px;
+    text-align: right;
+    font-size: 1.4rem;
+  }
 }
