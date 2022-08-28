@@ -6,6 +6,7 @@ import { EMAIL_REGEXP, PASSWORD_REGEXP } from '../../models';
 import { FieldPlaceholder } from '../../models/inputs';
 import { FieldInputElement } from '..';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
+import { SessionSaver } from '../../../core/services/session-saver/session-saver';
 
 export class FormAuthorization extends Form implements IForm {
   private email: FieldInputElement;
@@ -47,8 +48,15 @@ export class FormAuthorization extends Form implements IForm {
           if (result.statusCode !== StatusCode.Success) {
             this.drawInfoMessage(FormErrorMsg.notValidEmailPassword);
           } else {
-            localStorage.setItem('auth', JSON.stringify(result.body));
-          // TODO: redirect to Router!!!
+            if (result.body) {
+              const authorizationData = result.body;
+              SessionSaver.getInstance().startSession(
+                authorizationData.userId,
+                authorizationData.token,
+                authorizationData.refreshToken,
+              );
+            // TODO: redirect to Router!!!
+            }
           }
         });
     } else {
