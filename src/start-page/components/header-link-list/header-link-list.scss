@@ -10,19 +10,19 @@
   flex-wrap: wrap;
 }
 
-.main,
-.textbook,
-.game,
-.statistics,
-.login {
+.header-main,
+.header-textbook,
+.header-game,
+.header-statistics,
+.header-login {
   color: #ffffff;
 }
 
-.main:hover,
-.textbook:hover,
-.game:hover,
-.statistics:hover,
-.login :hover {
+.header-main:hover,
+.header-textbook:hover,
+.header-game:hover,
+.header-statistics:hover,
+.header-login :hover {
   color: $color-yellow-button;
   transition: all 0.5s ease-out;
 }

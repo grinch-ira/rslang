@@ -3,10 +3,12 @@ import { FormLogin } from '../../auth/components/form-login/form-login';
 import { HeaderWrapper } from '../../start-page/components/header-wrapper/header-wrapper';
 import { BaseComponent } from '../../shared/components/base-element/base-component';
 import { Footer } from '../../start-page/components/footer/footer';
+import { Textbook } from '../../textbook';
 
 export const enum PageHash {
   startPage = 'main',
   formLogin = 'login',
+  textbook = 'textbook',
 }
 
 export class App {
@@ -26,6 +28,10 @@ export class App {
       }
       case PageHash.formLogin: {
         page = new FormLogin();
+        break;
+      }
+      case PageHash.textbook: {
+        page = new Textbook();
         break;
       }
       //TODO: добавить оставшиеся

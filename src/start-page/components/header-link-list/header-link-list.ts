@@ -14,15 +14,15 @@ export class HeaderLinkList extends BaseComponent {
 
   constructor() {
     super('nav', ['header-link-list']);
-    this.headerLinkMain = new BaseComponent('a', ['main'], 'Главная');
+    this.headerLinkMain = new BaseComponent('a', ['header-main'], 'Главная');
     this.headerLinkMain.element.setAttribute('href', '#main');
-    this.headerLinkTextBook = new BaseComponent('a', ['textbook'], 'Учебник');
-    this.headerLinkTextBook.element.setAttribute('href', '#');
-    this.headerLinkGame = new BaseComponent('a', ['game'], 'Игры');
+    this.headerLinkTextBook = new BaseComponent('a', ['header-textbook'], 'Учебник');
+    this.headerLinkTextBook.element.setAttribute('href', '#textbook');
+    this.headerLinkGame = new BaseComponent('a', ['header-game'], 'Игры');
     this.headerLinkGame.element.setAttribute('href', '#');
     this.headerLinkStatistics = new BaseComponent(
       'a',
-      ['statistics'],
+      ['header-statistics'],
       'Статистика',
     );
     this.headerLinkStatistics.element.setAttribute('href', '#');
