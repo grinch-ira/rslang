@@ -60,7 +60,6 @@ class ProxyApi {
       '3600',
       this.session.token,
       filter).then((response) => {
-      console.log(response);
       return (
         response.body as IArrayAggregatedWordsBody[]
       )[0] as IArrayAggregatedWordsBody;

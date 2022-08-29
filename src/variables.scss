@@ -17,8 +17,21 @@ $color-background-level-4: #06aaf6;
 $color-background-level-5: #660af2;
 $color-background-level-6: #815555;
 
+$color-background-level-default: #eca2ec;
+
 @mixin header-style {
   font-size: 3rem;
   font-weight: 800;
   color: #220c0c;
 }
+
+$color-level-selector-circle: #f5f5f5;
+
+// colors for word card
+
+$color-background-word-default: #d3cc0d;
+$color-background-word-hover: #55cc55;
+$color-background-word-select: #8a4a9a;
+$color-background-word-difficult: #b84848;
+$color-background-word-difficult-select: #2d0a0a;
+// $color-background-word-difficult-hover:

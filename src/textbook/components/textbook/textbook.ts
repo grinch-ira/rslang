@@ -70,10 +70,8 @@ export class Textbook extends BaseComponent implements ISubscriber {
           proxyApi.getAllUserAggregatedWords(
             '{"$and":[{"userWord.optional.isHard":true}]}',
           ).then((result) => {
-            // console.log('resulticus', result);
             if (result.totalCount[0].count > 0 ) {
               if (result.paginatedResults) {
-                console.log('pagin Result -->', result.paginatedResults);
                 this.wordList.setWords(result.paginatedResults);
               }
             }

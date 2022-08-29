@@ -24,25 +24,31 @@ export class App {
     switch (componentName) {
       case PageHash.startPage: {
         page = new StartPage();
+        // this.header = new HeaderWrapper();
         break;
       }
       case PageHash.formLogin: {
         page = new FormLogin();
+        // this.header = new HeaderWrapper();
         break;
       }
       case PageHash.textbook: {
         page = new Textbook();
+        // this.header = new HeaderWrapper();
         break;
       }
       //TODO: добавить оставшиеся
       default: {
         page = new StartPage();
+        // this.header = new HeaderWrapper();
       }
     }
 
     if (page) {
       this.main.element.innerHTML = '';
       this.main.element.append(page.element);
+      this.header.element.innerHTML = '';
+      this.header.element.append(...new HeaderWrapper().element.childNodes);
     }
   }
 

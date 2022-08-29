@@ -1,4 +1,5 @@
 import { SessionSaver } from '../../../core/services/session-saver/session-saver';
+import { PageHash } from '../../../routing/models/routing';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 import './header-link-list.scss';
 
@@ -37,11 +38,11 @@ export class HeaderLinkList extends BaseComponent {
       this.headerLinkLogin.element.addEventListener('click', () => {
         SessionSaver.getInstance().logout();
         // May be need it, if page not refresh...
-        // const newUrl = document.URL.includes('#')
-        //   ? document.URL.split('#')[0]
-        //   : `${document.URL.split('#')[0]}#${PageHash.startPage}`;
-        // document.location = newUrl;
-        document.location = document.URL;
+        const newUrl = document.URL.includes('#')
+          ? document.URL.split('#')[0]
+          : `${document.URL.split('#')[0]}#${PageHash.startPage}`;
+        document.location = newUrl;
+        // document.location = document.URL;
       });
     } else {
       this.headerLinkLogin = new BaseComponent(
