@@ -10,13 +10,11 @@ export const enum PageHash {
 }
 
 export class App {
-
   private header: HeaderWrapper;
 
   private main: BaseComponent;
 
   private footer: Footer;
-
 
   private renderNewPage(componentName: string) {
     let page: BaseComponent | undefined;
@@ -60,11 +58,9 @@ export class App {
     document.body.append(this.main.element);
     document.body.append(this.footer.element);
 
-    //Проверка хеша при загрузке страницы
     const hash = window.location.hash.slice(1);
     this.renderNewPage(hash);
 
-    //Навесить событие this.renderNewPage
     this.enableRouteChange();
   }
 }
