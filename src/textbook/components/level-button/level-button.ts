@@ -1,6 +1,10 @@
 import { WordDifficultyGroup } from '../../../api/api-interfaces';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
-import { IPublisherLevelButton, ISubscriber } from '../../models/textbook-interfaces';
+import {
+  IPublisherLevelButton,
+  ISubscriber,
+  TEXTBOOK_LEVEL_DISCRIPTION,
+} from '../../models/textbook-interfaces';
 import './level-button.scss';
 
 export class LevelButton extends BaseComponent implements IPublisherLevelButton {
@@ -15,7 +19,9 @@ export class LevelButton extends BaseComponent implements IPublisherLevelButton 
       new BaseComponent(
         'div',
         ['level-button__label'],
-        (+level < 2) ? 'Easy' : (+level > 3) ? 'Hard' : 'Medium').element,
+        // (+level < 2) ? 'Easy' : (+level > 3) ? 'Hard' : 'Medium').element,
+        TEXTBOOK_LEVEL_DISCRIPTION[+level],
+      ).element,
       new BaseComponent('div', ['level-button__value'], levelTitle[+level]).element,
     );
 

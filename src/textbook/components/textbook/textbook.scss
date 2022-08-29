@@ -4,12 +4,18 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
+
+  &__header {
+    @include header-style();
+  }
+
+  &__word-cascade {
+    display: flex;
+    gap: 30px;
+  }
 }
 
-.textbook__word-cascade {
-  display: flex;
-  gap: 30px;
-}
+
 
 .level-0 .select {
   background-color: $color-background-level-0;

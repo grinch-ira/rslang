@@ -7,6 +7,7 @@ import { WordsList } from '../words-list/words-list';
 import './textbook.scss';
 import { StatusCode, WordDifficultyGroup } from '../../../api/api-interfaces';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
+import { proxyApi } from '../proxy-api/proxy-api';
 
 export class Textbook extends BaseComponent implements ISubscriber {
   private levelSwitcher: LevelSwitcher;
@@ -37,6 +38,7 @@ export class Textbook extends BaseComponent implements ISubscriber {
       this.wordPresenter.element,
     );
     this.element.append(
+      new BaseComponent('div', ['textbook__header'], 'Учебник').element,
       this.levelSwitcher.element,
       wordCascade,
       this.pageSwitcher.element,
@@ -53,13 +55,31 @@ export class Textbook extends BaseComponent implements ISubscriber {
     const newLevel = this.levelSwitcher.getCurrentLevel();
     this.element.classList.add(`level-${newLevel}`);
     this.level = newLevel;
-    apiWords.getAChunkOfWords(
-      this.level,
-      this.pageSwitcher.getCurrentPage().toString(),
-    ).then((result) => {
-      if (result.statusCode === StatusCode.Success) {
-        if (result.body) this.wordList.setWords(result.body);
+    if (+newLevel < 6) {
+      apiWords.getAChunkOfWords(
+        this.level,
+        this.pageSwitcher.getCurrentPage().toString(),
+      ).then((result) => {
+        if (result.statusCode === StatusCode.Success) {
+          if (result.body) this.wordList.setWords(result.body);
+        }
+      });
+    } else {
+      switch (newLevel) {
+        case '6':
+          proxyApi.getAllUserAggregatedWords(
+            '{"$and":[{"userWord.optional.isHard":true}]}',
+          ).then((result) => {
+            // console.log('resulticus', result);
+            if (result.totalCount[0].count > 0 ) {
+              if (result.paginatedResults) {
+                console.log('pagin Result -->', result.paginatedResults);
+                this.wordList.setWords(result.paginatedResults);
+              }
+            }
+          });
+          break;
       }
-    });
+    }
   }
 }

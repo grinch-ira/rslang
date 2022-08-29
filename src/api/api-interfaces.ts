@@ -16,6 +16,7 @@ export interface IWord {
   textMeaningTranslate: string;
   textExampleTranslate: string;
   userWord?: IWordBody;
+  _id?: string;
 }
 
 export interface IUserBasicInfo {
@@ -120,6 +121,7 @@ export enum WordDifficultyGroup {
   B2 = '3',
   C1 = '4',
   C2 = '5',
+  HW = '6',
 }
 
 export enum StatusCode {

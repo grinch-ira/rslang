@@ -7,6 +7,7 @@ import {
 } from '../../models/textbook-interfaces';
 import './level-switcher.scss';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
+import { SessionSaver } from '../../../core/services/session-saver/session-saver';
 
 export class LevelSwitcher extends BaseComponent
   implements IPublisher, ISubscriberLevelButton {
@@ -19,7 +20,12 @@ export class LevelSwitcher extends BaseComponent
 
   constructor() {
     super('div', ['textbook__level-switcher']);
-    const levelArr = Object.values(WordDifficultyGroup).sort();
+    let levelArr = Object.values(WordDifficultyGroup).sort();
+
+    if (!SessionSaver.getInstance().isActive) {
+      levelArr = levelArr.filter((item) => +item < 6);
+    }
+
     this.subscribers = [];
     this.levelButtons = levelArr.map((level) => {
       const button = new LevelButton(level);

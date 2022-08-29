@@ -32,7 +32,7 @@ export class SessionSaver {
       this.refreshToken = authData.refreshToken;
       this.userIdActual = authData.userId;
       this.isActiveSession = true;
-      this.updaterTokens = setTimeout(() => this.checkSession(), 3600000);
+      this.updaterTokens = setTimeout(() => this.checkSession(), 600000);
     } else {
       this.isActiveSession = false;
     }
@@ -77,7 +77,7 @@ export class SessionSaver {
             this.refreshToken = newAuthData.refreshToken;
             this.saveToStorage();
             this.isActiveSession = true;
-            this.updaterTokens = setTimeout(() => this.checkSession(), 3600000);
+            this.updaterTokens = setTimeout(() => this.checkSession(), 600000);
             return this.isActiveSession;
           }
         }
@@ -109,7 +109,7 @@ export class SessionSaver {
     this.refreshToken = refreshToken;
     this.isActiveSession = true;
     this.saveToStorage();
-    this.updaterTokens = setTimeout(() => this.checkSession(), 3600000);
+    this.updaterTokens = setTimeout(() => this.checkSession(), 600000);
   }
 
   private saveToStorage(): void {

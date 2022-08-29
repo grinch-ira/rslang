@@ -1,4 +1,9 @@
-import { IWordBody, StatusCode } from '../../../api/api-interfaces';
+import {
+  IArrayAggregatedWordsBody,
+  IWordBody,
+  StatusCode,
+} from '../../../api/api-interfaces';
+import { apiUsersAggregatedWords } from '../../../api/api-users-aggregated-words';
 import { apiUsersWords } from '../../../api/api-users-words';
 import { SessionSaver } from '../../../core/services/session-saver/session-saver';
 import { IUserWordOptions } from './proxy-interface';
@@ -45,6 +50,20 @@ class ProxyApi {
       this.session.token,
     ).then((result) => {
       return result.body?.optional as IUserWordOptions;
+    });
+  }
+
+  async getAllUserAggregatedWords(filter: string): Promise<IArrayAggregatedWordsBody> {
+    return apiUsersAggregatedWords.getAllUserAggregatedWords(
+      this.session.userId,
+      '',
+      '3600',
+      this.session.token,
+      filter).then((response) => {
+      console.log(response);
+      return (
+        response.body as IArrayAggregatedWordsBody[]
+      )[0] as IArrayAggregatedWordsBody;
     });
   }
 }

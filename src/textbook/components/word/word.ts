@@ -14,6 +14,7 @@ export class Word extends BaseComponent {
 
   constructor(word: IWord) {
     super('div', ['word']);
+    if (word._id) word.id = word._id;
     this.word = word;
     this.userOptions = null;
     this.element.append(
