@@ -5,7 +5,7 @@ import { ISubscriber } from '../../models/textbook-interfaces';
 import { WordPresenter } from '../word-presenter/word-presenter';
 import { WordsList } from '../words-list/words-list';
 import './textbook.scss';
-import { StatusCode } from '../../../api/api-interfaces';
+import { StatusCode, WordDifficultyGroup } from '../../../api/api-interfaces';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 
 export class Textbook extends BaseComponent implements ISubscriber {
@@ -16,6 +16,8 @@ export class Textbook extends BaseComponent implements ISubscriber {
   private wordList: WordsList;
 
   private wordPresenter: WordPresenter;
+
+  private level: WordDifficultyGroup;
 
   constructor() {
     super('div', ['textbook']);
@@ -47,8 +49,12 @@ export class Textbook extends BaseComponent implements ISubscriber {
   }
 
   private loadWords(): void {
+    this.element.classList.remove(`level-${this.level}`);
+    const newLevel = this.levelSwitcher.getCurrentLevel();
+    this.element.classList.add(`level-${newLevel}`);
+    this.level = newLevel;
     apiWords.getAChunkOfWords(
-      this.levelSwitcher.getCurrentLevel(),
+      this.level,
       this.pageSwitcher.getCurrentPage().toString(),
     ).then((result) => {
       if (result.statusCode === StatusCode.Success) {

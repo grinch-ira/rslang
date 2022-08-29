@@ -10,7 +10,7 @@ export class LevelButton extends BaseComponent implements IPublisherLevelButton 
 
   constructor(level: WordDifficultyGroup) {
     const levelTitle = Object.keys(WordDifficultyGroup).sort();
-    super('div', ['level-button']);
+    super('div', ['level-button', `level-${+level}`]);
     this.element.append(
       new BaseComponent(
         'div',
