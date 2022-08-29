@@ -7,6 +7,7 @@ import { FieldPlaceholder } from '../../models/inputs';
 import { FieldInputElement } from '..';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 import { SessionSaver } from '../../../core/services/session-saver/session-saver';
+import { PageHash } from '../../../routing/models/routing';
 
 export class FormAuthorization extends Form implements IForm {
   private email: FieldInputElement;
@@ -55,7 +56,7 @@ export class FormAuthorization extends Form implements IForm {
                 authorizationData.token,
                 authorizationData.refreshToken,
               );
-            // TODO: redirect to Router!!!
+              document.location = `${document.URL.split('#')[0]}#${PageHash.startPage}`;
             }
           }
         });
