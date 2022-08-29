@@ -12,6 +12,7 @@ import {
   PASSWORD_REGEXP,
 } from '../../models';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
+import { SessionSaver } from '../../../core/services/session-saver/session-saver';
 
 export class FormRegistration extends Form implements IForm {
   private readonly email: FieldInputElement;
@@ -87,9 +88,15 @@ export class FormRegistration extends Form implements IForm {
                 if (resultAuth.statusCode !== StatusCode.Success) {
                   this.drawInfoMessage(FormErrorMsg.notValidEmailPassword);
                 } else {
-                  localStorage.setItem('auth', JSON.stringify(resultAuth.body));
+                  if (resultAuth.body) {
+                    const authorizationData = resultAuth.body;
+                    SessionSaver.getInstance().startSession(
+                      authorizationData.userId,
+                      authorizationData.token,
+                      authorizationData.refreshToken,
+                    );
                   // TODO: redirect to Router!!!
-                  // console.log(resultAuth);
+                  }
                 }
 
               });
