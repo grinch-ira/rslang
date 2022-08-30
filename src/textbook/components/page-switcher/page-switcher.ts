@@ -137,8 +137,12 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
 
   refrash() {
     this.notify();
-    this.switchSelectButton();
-    this.updateSliderWidth();
+    this.switchSelectButtonStyle();
+    this.renderPagination();
+  }
+
+  renderPagination() {
+    this.updateSliderWrapperWidth();
 
     if (this.currentPage > (2 + Math.floor(this.pagePerSlide / 2))) {
       this.beforeWrapper.innerHTML = '';
@@ -163,10 +167,11 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
         new BaseComponent('button', ['textbook__page-button'], '...').element,
       );
     }
-    this.checkSlider();
+    // Move slider
+    this.checkMoveSlider();
   }
 
-  switchSelectButton() {
+  switchSelectButtonStyle() {
     this.pages.forEach((item, index) => {
       if (index === this.currentPage) {
         item.classList.add('select');
@@ -176,13 +181,14 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
     });
   }
 
-  updateSliderWidth() {
+  updateSliderWrapperWidth() {
     this.sliderWrapper
       .style.width = `${this.BUTTON_WIDTH * this.pagePerSlide +
       this.BUTTON_GAP * (this.pagePerSlide - 1) + this.BUTTON_GAP * 2}px`;
   }
 
-  checkSlider() {
+  // Move slider
+  checkMoveSlider() {
     let mult = this.currentPage - 2 - Math.floor(this.pagePerSlide / 2);
     if (mult < 0) mult = 0;
     if (mult > (this.countPage - 4 - this.pagePerSlide)) {
@@ -192,6 +198,8 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
       this.BUTTON_GAP - (this.BUTTON_WIDTH + this.BUTTON_GAP) * mult
     }px`;
   }
+
+
 
   checkWindowSize() {
     this.matchWith5SliderButton = window.matchMedia(
@@ -203,7 +211,8 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
       } else {
         this.pagePerSlide = 7;
       }
-      this.refrash();
+      this.renderPagination();
+      // this.refrash();
     });
     this.matchWith3SliderButton = window.matchMedia(
       `(max-width: ${Math.ceil((11 * (this.BUTTON_WIDTH + this.BUTTON_GAP)) / 0.8)}px)`,
@@ -214,7 +223,8 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
       } else {
         this.pagePerSlide = 5;
       }
-      this.refrash();
+      this.renderPagination();
+      // this.refrash();
     });
 
     switch (true) {
