@@ -20,7 +20,7 @@
     &:hover {
       color: $color-violet-header;
       text-decoration: underline;
-      transition: all 0.5s ease-out;
+      transition: all 0.25s ease-out;
     }
   }
 }
@@ -41,4 +41,9 @@
   top: 78%;
   left: 5%;
   box-shadow: 5px 5px 5px rgba(175, 9, 9, 0.25);
+  padding: 0 15px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
