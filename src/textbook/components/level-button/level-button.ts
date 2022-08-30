@@ -3,7 +3,7 @@ import { BaseComponent } from '../../../shared/components/base-element/base-comp
 import {
   IPublisherLevelButton,
   ISubscriber,
-  TEXTBOOK_LEVEL_DISCRIPTION,
+  TEXTBOOK_LEVEL_DESCRIPTION,
 } from '../../models/textbook-interfaces';
 import './level-button.scss';
 
@@ -20,7 +20,7 @@ export class LevelButton extends BaseComponent implements IPublisherLevelButton 
         'div',
         ['level-button__label'],
         // (+level < 2) ? 'Easy' : (+level > 3) ? 'Hard' : 'Medium').element,
-        TEXTBOOK_LEVEL_DISCRIPTION[+level],
+        TEXTBOOK_LEVEL_DESCRIPTION[+level],
       ).element,
       new BaseComponent('div', ['level-button__value'], levelTitle[+level]).element,
     );

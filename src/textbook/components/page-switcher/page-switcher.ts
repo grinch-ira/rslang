@@ -35,7 +35,7 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
     this.subscribers = [];
     this.pages = [];
     this.currentPage = 0;
-    this.checkWindowSize();
+    this.checkWindowWidth();
     this.sliderContainer = document.createElement('div');
     this.sliderContainer.classList.add('container');
     this.sliderWrapper = document.createElement('div');
@@ -62,6 +62,14 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
 
   getCurrentPage(): number {
     return this.currentPage;
+  }
+
+  setCurrentPage(pageNumber: number): void {
+    if (pageNumber < this.countPage) {
+      this.currentPage = pageNumber;
+      this.switchSelectButtonStyle();
+      this.renderPagination();
+    }
   }
 
   initPageSwitcher(): void {
@@ -208,7 +216,7 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
     }px`;
   }
 
-  checkWindowSize() {
+  checkWindowWidth() {
     this.matchWith5SliderButton = window.matchMedia(
       `(max-width: ${Math.ceil((13 * (this.BUTTON_WIDTH + this.BUTTON_GAP)) / 0.8)}px)`,
     );

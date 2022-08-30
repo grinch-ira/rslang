@@ -24,7 +24,7 @@ export interface IPublisherLevelButton extends IPublisher {
   level: WordDifficultyGroup;
 }
 
-export const TEXTBOOK_LEVEL_DISCRIPTION = [
+export const TEXTBOOK_LEVEL_DESCRIPTION = [
   'Изи',
   'Легко',
   'Средне',

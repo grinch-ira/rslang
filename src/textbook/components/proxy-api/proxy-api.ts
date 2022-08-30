@@ -15,15 +15,15 @@ class ProxyApi {
     this.session = SessionSaver.getInstance();
   }
 
-  async getAUserWordById(wodrId: string): Promise<IUserWordOptions | undefined> {
-    return apiUsersWords.getAUserWordById(this.session.userId, wodrId, this.session.token)
+  async getAUserWordById(wordId: string): Promise<IUserWordOptions | undefined> {
+    return apiUsersWords.getAUserWordById(this.session.userId, wordId, this.session.token)
       .then((response) => {
         return response.statusCode === StatusCode.Success
           ? response.body?.optional as IUserWordOptions : undefined;
       });
   }
 
-  async createAUserWord(wodrId: string): Promise<IUserWordOptions> {
+  async createAUserWord(wordId: string): Promise<IUserWordOptions> {
     const defaultOptions = {
       optional: {
         isHard: false,
@@ -31,7 +31,7 @@ class ProxyApi {
     };
     return apiUsersWords.createAUserWord(
       this.session.userId,
-      wodrId,
+      wordId,
       defaultOptions as IWordBody,
       this.session.token,
     ).then((result) => {

@@ -45,7 +45,7 @@ export class WordPresenter extends BaseComponent implements ISubscriber {
     const session = SessionSaver.getInstance();
     const manageContainer = new BaseComponent(
       'div',
-      ['word-presenter__manage-containner'],
+      ['word-presenter__manage-container'],
     ).element;
 
     if (session.isActive) {

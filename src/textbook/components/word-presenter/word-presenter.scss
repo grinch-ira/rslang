@@ -7,6 +7,7 @@
   flex-direction: column;
   background-color: $color-medium-gray;
   flex: 0 0 auto;
+  @include shadow-box-default();
 
   &__image {
     min-height: 260px;

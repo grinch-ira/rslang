@@ -56,6 +56,9 @@ export class Textbook extends BaseComponent implements ISubscriber {
     this.element.classList.add(`level-${newLevel}`);
     // TODO: Добавить логику проверки смены уровня сложности и
     // обнулить страницу, чтобы после смены уровня попадать на первую страницу.
+    if (this.level !== newLevel) {
+      this.pageSwitcher.setCurrentPage(0);
+    }
     this.level = newLevel;
     if (+newLevel < 6) {
       apiWords.getAChunkOfWords(
