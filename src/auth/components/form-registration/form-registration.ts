@@ -57,11 +57,11 @@ export class FormRegistration extends Form implements IForm {
       this.confirmPass);
     this.htmlButtonSubmit.textContent = 'Зарегистрироваться';
     this.element.append(
-      new BaseComponent('div', ['form__title'], 'Зарегистрируйся в RSLang!!!').element,
+      new BaseComponent('div', ['form__title'], 'Зарегистрируйся в RSLang').element,
       new BaseComponent(
         'div',
         ['form__todo'],
-        '... и изучай английский вместе с нами',
+        '...и изучай английский вместе с нами',
       ).element,
       this.email.element,
       this.name.element,

@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: $font-weight-bold;
   flex-wrap: wrap;
 }
@@ -24,7 +24,7 @@
 .statistics:hover,
 .login :hover {
   color: $color-yellow-button;
-  transition: all 0.5s ease-out;
+  transition: all 0.25s ease-out;
 }
 
 .header-link-login {
