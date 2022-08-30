@@ -7,14 +7,17 @@
   flex-direction: column;
   flex: 1 0 auto;
   margin-top: 100px;
+
   .form__subtext {
     font-size: 1.3rem;
     margin-top: 20px;
     text-align: center;
   }
-  .link-to-next-form{
+
+  .link-to-next-form {
     cursor: pointer;
-    &:hover{
+
+    &:hover {
       color: $color-violet-header;
       text-decoration: underline;
       transition: all 0.5s ease-out;
@@ -35,8 +38,7 @@
   align-items: center;
   position: absolute;
   z-index: 10;
-  top: 0%;
+  top: 75%;
   left: 5%;
-  box-shadow: 5px 5px 5px rgba(175, 9, 9, 0.25),
-
+  box-shadow: 5px 5px 5px rgba(175, 9, 9, 0.25);
 }
