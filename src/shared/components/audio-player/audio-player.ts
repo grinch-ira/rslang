@@ -17,7 +17,9 @@ export class AudioPlayer {
   }
 
   public addInPlaylist(...samples: string[]): void {
-    if (this.isPlaying) this.stopPlayer();
+    if (this.isPlaying) {
+      this.stopPlayer();
+    }
     this.cleanPlayList();
     this.playlist = [...samples];
   }

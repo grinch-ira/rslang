@@ -13,7 +13,7 @@ import {
 } from '../../models';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 import { SessionSaver } from '../../../core/services/session-saver/session-saver';
-import { PageHash } from '../../../routing/models/routing';
+import { PageHash } from '../../../routing/components/routing';
 
 export class FormRegistration extends Form implements IForm {
   private readonly email: FieldInputElement;

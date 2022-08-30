@@ -54,6 +54,8 @@ export class Textbook extends BaseComponent implements ISubscriber {
     this.element.classList.remove(`level-${this.level}`);
     const newLevel = this.levelSwitcher.getCurrentLevel();
     this.element.classList.add(`level-${newLevel}`);
+    // TODO: Добавить логику проверки смены уровня сложности и
+    // обнулить страницу, чтобы после смены уровня попадать на первую страницу.
     this.level = newLevel;
     if (+newLevel < 6) {
       apiWords.getAChunkOfWords(
@@ -61,19 +63,26 @@ export class Textbook extends BaseComponent implements ISubscriber {
         this.pageSwitcher.getCurrentPage().toString(),
       ).then((result) => {
         if (result.statusCode === StatusCode.Success) {
-          if (result.body) this.wordList.setWords(result.body);
+
+          if (result.body) {
+            this.wordList.setWords(result.body);
+          }
+
         }
       });
     } else {
+
       switch (newLevel) {
         case '6':
           proxyApi.getAllUserAggregatedWords(
             '{"$and":[{"userWord.optional.isHard":true}]}',
           ).then((result) => {
             if (result.totalCount[0].count > 0 ) {
+
               if (result.paginatedResults) {
                 this.wordList.setWords(result.paginatedResults);
               }
+
             }
           });
           break;

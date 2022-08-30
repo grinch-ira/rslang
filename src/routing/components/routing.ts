@@ -24,23 +24,20 @@ export class App {
     switch (componentName) {
       case PageHash.startPage: {
         page = new StartPage();
-        // this.header = new HeaderWrapper();
         break;
       }
       case PageHash.formLogin: {
         page = new FormLogin();
-        // this.header = new HeaderWrapper();
         break;
       }
       case PageHash.textbook: {
         page = new Textbook();
-        // this.header = new HeaderWrapper();
         break;
       }
+
       //TODO: добавить оставшиеся
       default: {
         page = new StartPage();
-        // this.header = new HeaderWrapper();
       }
     }
 

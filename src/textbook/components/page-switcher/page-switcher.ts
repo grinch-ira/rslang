@@ -73,8 +73,12 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
     slideLeft.addEventListener('click', () => {
       if (this.currentPage) {
         this.currentPage -= this.pagePerSlide;
-        if (this.currentPage < 0) this.currentPage = 0;
-        this.refrash();
+
+        if (this.currentPage < 0) {
+          this.currentPage = 0;
+        }
+
+        this.refresh();
       }
     });
     const left = new BaseComponent('button',
@@ -83,7 +87,7 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
     left.addEventListener('click', () => {
       if (this.currentPage) {
         this.currentPage -= 1;
-        this.refrash();
+        this.refresh();
       }
     });
     const right = new BaseComponent('button',
@@ -92,7 +96,7 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
     right.addEventListener('click', () => {
       if (this.currentPage < this.countPage - 1) {
         this.currentPage += 1;
-        this.refrash();
+        this.refresh();
       }
     });
     const slideRight = new BaseComponent(
@@ -104,7 +108,7 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
       if (this.currentPage < this.countPage - 1) {
         this.currentPage += (this.currentPage + this.pagePerSlide < this.countPage - 1)
           ? this.pagePerSlide : this.countPage - (1 + this.currentPage);
-        this.refrash();
+        this.refresh();
       }
     });
 
@@ -115,7 +119,7 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
         `${ i + 1 }`).element;
       pageButton.addEventListener('click', () => {
         this.currentPage = i;
-        this.refrash();
+        this.refresh();
       });
       this.pages.push(pageButton as HTMLButtonElement);
     }
@@ -132,10 +136,10 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
       slideRight,
     );
     this.sliderContainer.append(...this.pages.slice(2, this.pages.length - 2));
-    this.refrash();
+    this.refresh();
   }
 
-  refrash() {
+  refresh() {
     this.notify();
     this.switchSelectButtonStyle();
     this.renderPagination();
@@ -190,16 +194,19 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
   // Move slider
   checkMoveSlider() {
     let mult = this.currentPage - 2 - Math.floor(this.pagePerSlide / 2);
-    if (mult < 0) mult = 0;
+
+    if (mult < 0) {
+      mult = 0;
+    }
+
     if (mult > (this.countPage - 4 - this.pagePerSlide)) {
       mult = this.countPage - 4 - this.pagePerSlide;
     }
+
     this.sliderContainer.style.left = `${
       this.BUTTON_GAP - (this.BUTTON_WIDTH + this.BUTTON_GAP) * mult
     }px`;
   }
-
-
 
   checkWindowSize() {
     this.matchWith5SliderButton = window.matchMedia(
@@ -212,7 +219,6 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
         this.pagePerSlide = 7;
       }
       this.renderPagination();
-      // this.refrash();
     });
     this.matchWith3SliderButton = window.matchMedia(
       `(max-width: ${Math.ceil((11 * (this.BUTTON_WIDTH + this.BUTTON_GAP)) / 0.8)}px)`,
@@ -224,7 +230,6 @@ export class PageSwitcher extends BaseComponent implements IPublisher {
         this.pagePerSlide = 5;
       }
       this.renderPagination();
-      // this.refrash();
     });
 
     switch (true) {

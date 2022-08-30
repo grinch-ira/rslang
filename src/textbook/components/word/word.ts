@@ -14,7 +14,11 @@ export class Word extends BaseComponent {
 
   constructor(word: IWord) {
     super('div', ['word']);
-    if (word._id) word.id = word._id;
+
+    if (word._id) {
+      word.id = word._id;
+    }
+
     this.word = word;
     this.userOptions = null;
     this.element.append(
@@ -30,6 +34,7 @@ export class Word extends BaseComponent {
       proxyApi.getAUserWordById(this.word.id).then((result) => {
         if (result) {
           this.userOptions = result;
+
           if (this.userOptions.isHard) {
             this.element.classList.add('word__difficulty-hard');
           } else {

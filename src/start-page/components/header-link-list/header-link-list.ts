@@ -1,5 +1,5 @@
 import { SessionSaver } from '../../../core/services/session-saver/session-saver';
-import { PageHash } from '../../../routing/models/routing';
+import { PageHash } from '../../../routing/components/routing';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 import './header-link-list.scss';
 

@@ -7,7 +7,7 @@ import { FieldPlaceholder } from '../../models/inputs';
 import { FieldInputElement } from '..';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 import { SessionSaver } from '../../../core/services/session-saver/session-saver';
-import { PageHash } from '../../../routing/models/routing';
+import { PageHash } from '../../../routing/components/routing';
 
 export class FormAuthorization extends Form implements IForm {
   private email: FieldInputElement;
