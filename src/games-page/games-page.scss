@@ -1,0 +1,37 @@
+@import '../variables.scss';
+
+.games-page-title{
+  text-align: center;
+  font-size: $font-size-title;
+  max-width: 940px;
+  margin: 60px auto;
+  font-weight: $font-weight-bold;
+}
+
+.images-wrapper{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.link-to-sprint,
+.link-to-audiocall {
+  display: block;
+  width: 250px;
+  height: 250px;
+}
+
+.sprint-name,
+.audiocall-name{
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: $font-weight-bold;
+}
+
+.sprint-image,
+.audiocall-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px #0000001a;
+}

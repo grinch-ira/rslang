@@ -19,7 +19,7 @@ export class HeaderLinkList extends BaseComponent {
     this.headerLinkTextBook = new BaseComponent('a', ['textbook'], 'Учебник');
     this.headerLinkTextBook.element.setAttribute('href', '#');
     this.headerLinkGame = new BaseComponent('a', ['game'], 'Игры');
-    this.headerLinkGame.element.setAttribute('href', '#');
+    this.headerLinkGame.element.setAttribute('href', '#games');
     this.headerLinkStatistics = new BaseComponent(
       'a',
       ['statistics'],
