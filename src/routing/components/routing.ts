@@ -4,11 +4,13 @@ import { HeaderWrapper } from '../../start-page/components/header-wrapper/header
 import { BaseComponent } from '../../shared/components/base-element/base-component';
 import { Footer } from '../../start-page/components/footer/footer';
 import { Textbook } from '../../textbook';
+import { GamesPage } from '../../games-page/games-page';
 
 export const enum PageHash {
   startPage = 'main',
   formLogin = 'login',
   textbook = 'textbook',
+  gamesPage = 'games',
 }
 
 export class App {
@@ -30,8 +32,13 @@ export class App {
         page = new FormLogin();
         break;
       }
+
       case PageHash.textbook: {
         page = new Textbook();
+        break;
+      }
+      case PageHash.gamesPage: {
+        page = new GamesPage();
         break;
       }
 
