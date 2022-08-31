@@ -13,6 +13,7 @@ import {
 } from '../../models';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 import { SessionSaver } from '../../../core/services/session-saver/session-saver';
+import { PageHash } from '../../../routing/components/routing';
 
 export class FormRegistration extends Form implements IForm {
   private readonly email: FieldInputElement;
@@ -95,7 +96,9 @@ export class FormRegistration extends Form implements IForm {
                       authorizationData.token,
                       authorizationData.refreshToken,
                     );
-                  // TODO: redirect to Router!!!
+                    // TODO: redirect to Router!!!
+                    const url = document.URL.split('#')[0];
+                    document.location = `${url}#${PageHash.startPage}`;
                   }
                 }
 

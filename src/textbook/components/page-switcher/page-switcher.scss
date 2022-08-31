@@ -1,0 +1,43 @@
+@import '../../../variables.scss';
+
+.level-6 .textbook__page-switcher {
+  display: none;
+}
+
+.textbook__page-switcher {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+  }
+
+.textbook__page-button {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  background-color: #d69a19;
+  border-radius: 10px;
+
+  &.select {
+    background-color: #8d08e6;
+  }
+}
+
+.wrapper {
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: nowrap;
+  position: absolute;
+  transition: 0.5s;
+
+  & .textbook__page-button {
+    flex: 0 0 auto;
+  }
+}
