@@ -5,7 +5,7 @@
   height: 80px;
   padding: 15px;
   background-color: $color-background-level-default;
-  border-radius: 15px;
+  @include card-level();
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,11 +15,10 @@
   overflow: hidden;
   position: relative;
   filter: grayscale(100%);
-  @include shadow-box-default();
-
 
   &:hover {
     transform: scale(1.05);
+    filter: grayscale(80%)
   }
 
   &__value {
@@ -38,6 +37,10 @@
 
   &.select {
     filter: grayscale(0%);
+
+    & .level-button__value {
+      transform: rotate(0deg);
+    }
   }
 
 }

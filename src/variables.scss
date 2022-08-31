@@ -48,3 +48,15 @@ $color-background-word-difficult-select: #2d0a0a;
   background-color: $color-yellow-button;
   font-size: 0.65em;
 }
+
+@mixin card-word {
+  @include shadow-box-default();
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+
+@mixin card-level {
+  @include card-word();
+  border-radius: 15px;
+}

@@ -9,6 +9,8 @@ import './word-presenter.scss';
 export class WordPresenter extends BaseComponent implements ISubscriber {
   player: AudioPlayer;
 
+  hardUpdate: (() => void) | null | undefined;
+
   constructor() {
     super('div', ['word-presenter']);
     this.player = new AudioPlayer();
@@ -69,6 +71,9 @@ export class WordPresenter extends BaseComponent implements ISubscriber {
             buttonHard.addEventListener('click', () => {
               userOptions.isHard = false;
               proxyApi.updateAUserWord(word.id, userOptions).then(() => {
+                if (this.hardUpdate) {
+                  this.hardUpdate();
+                }
                 pub.currentCheckWord.update();
                 this.update(pub);
               });

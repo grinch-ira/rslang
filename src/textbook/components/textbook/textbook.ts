@@ -68,6 +68,7 @@ export class Textbook extends BaseComponent implements ISubscriber {
 
           if (result.body) {
             this.wordList.setWords(result.body);
+            this.wordPresenter.hardUpdate = null;
           }
 
         }
@@ -79,13 +80,13 @@ export class Textbook extends BaseComponent implements ISubscriber {
           proxyApi.getAllUserAggregatedWords(
             '{"$and":[{"userWord.optional.isHard":true}]}',
           ).then((result) => {
-            console.log(result);
             if (result.totalCount.length) {
 
               if (result.totalCount[0].count > 0 ) {
 
                 if (result.paginatedResults) {
                   this.wordList.setWords(result.paginatedResults);
+                  this.wordPresenter.hardUpdate = () => { this.loadWords(); };
                 }
 
               }
