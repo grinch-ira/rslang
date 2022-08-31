@@ -13,6 +13,7 @@ import {
 } from '../../models';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 import { SessionSaver } from '../../../core/services/session-saver/session-saver';
+import { PageHash } from '../../../routing/components/routing';
 
 export class FormRegistration extends Form implements IForm {
   private readonly email: FieldInputElement;
@@ -57,11 +58,11 @@ export class FormRegistration extends Form implements IForm {
       this.confirmPass);
     this.htmlButtonSubmit.textContent = 'Зарегистрироваться';
     this.element.append(
-      new BaseComponent('div', ['form__title'], 'Зарегистрируйся в RSLang!!!').element,
+      new BaseComponent('div', ['form__title'], 'Зарегистрируйся в RSLang').element,
       new BaseComponent(
         'div',
         ['form__todo'],
-        '... и изучай английский вместе с нами',
+        '...и изучай английский вместе с нами',
       ).element,
       this.email.element,
       this.name.element,
@@ -95,7 +96,9 @@ export class FormRegistration extends Form implements IForm {
                       authorizationData.token,
                       authorizationData.refreshToken,
                     );
-                  // TODO: redirect to Router!!!
+                    // TODO: redirect to Router!!!
+                    const url = document.URL.split('#')[0];
+                    document.location = `${url}#${PageHash.startPage}`;
                   }
                 }
 

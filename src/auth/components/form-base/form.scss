@@ -1,19 +1,23 @@
 @import '../../../variables.scss';
 
 .form {
-  width: 320px;
+  max-width: 360px;
   padding: 40px;
-  background-color: $color-violet-header;
+  background-color: $color-violet-form;
   position: relative;
-  border: 1px solid #000000;
   border-radius: 20px;
+  margin: 0 auto;
+  @include shadow-box-default();
 
   &__button-submit {
-    width: 100%;
+    display: block;
+    width: 80%;
     height: 40px;
     font-size: 1.2rem;
     border-radius: 5px;
     background-color: $color-yellow-button;
+    margin: 0 auto;
+    @include shadow-box-default();
   }
 
   &__title {

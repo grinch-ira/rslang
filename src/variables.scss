@@ -1,5 +1,50 @@
 $color-violet-header: #2907f5a1;
+$color-violet-form: #2b07f58e;
 $color-yellow-button: #f28c1e;
-$color-lightgray-background: #F5F5F5;
-$font-weight-bold:800;
-$font-size-title:48px;
+$color-violet-border: #4a026c;
+$color-lightgray-background: #f5f5f5;
+$color-medium-gray: #d0cccc;
+$color-input-background: #dddcdcd8;
+
+$font-weight-bold: 800;
+$font-size-title: 48px;
+$color-red-error: #bb0c0c;
+// colors for diffrent levels
+
+$color-background-level-0: #bd1cbd;
+$color-background-level-1: #e0ef0b;
+$color-background-level-2: #178b05;
+$color-background-level-3: #06f6ca;
+$color-background-level-4: #06aaf6;
+$color-background-level-5: #660af2;
+$color-background-level-6: #815555;
+
+$color-background-level-default: #eca2ec;
+
+@mixin header-style {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #220c0c;
+}
+
+$color-level-selector-circle: #f5f5f5;
+
+// colors for word card
+
+$color-background-word-default: $color-medium-gray;
+$color-background-word-hover: #55cc55;
+$color-background-word-select: #8a4a9a;
+$color-background-word-difficult: #b84848;
+$color-background-word-difficult-select: #2d0a0a;
+// $color-background-word-difficult-hover:
+
+@mixin shadow-box-default {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@mixin button-default {
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: $color-yellow-button;
+  font-size: 0.65em;
+}

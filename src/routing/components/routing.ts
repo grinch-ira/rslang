@@ -3,10 +3,13 @@ import { FormLogin } from '../../auth/components/form-login/form-login';
 import { HeaderWrapper } from '../../start-page/components/header-wrapper/header-wrapper';
 import { BaseComponent } from '../../shared/components/base-element/base-component';
 import { Footer } from '../../start-page/components/footer/footer';
+import { Textbook } from '../../textbook';
+
 import { GamesPage } from '../../games-page/games-page';
 export const enum PageHash {
   startPage = 'main',
   formLogin = 'login',
+  textbook = 'textbook',
   gamesPage = 'games',
 }
 
@@ -29,10 +32,16 @@ export class App {
         page = new FormLogin();
         break;
       }
-      case PageHash.gamesPage:{
+
+      case PageHash.textbook: {
+        page = new Textbook();
+        break;
+      }
+      case PageHash.gamesPage: {
         page = new GamesPage();
         break;
       }
+
       //TODO: добавить оставшиеся
       default: {
         page = new StartPage();
@@ -42,6 +51,8 @@ export class App {
     if (page) {
       this.main.element.innerHTML = '';
       this.main.element.append(page.element);
+      this.header.element.innerHTML = '';
+      this.header.element.append(...new HeaderWrapper().element.childNodes);
     }
   }
 
