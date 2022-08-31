@@ -14,7 +14,15 @@ export class WordPresenter extends BaseComponent implements ISubscriber {
     this.player = new AudioPlayer();
   }
 
-  update(pub: IPublisherWordList): void {
+  public hide() {
+    this.element.classList.add('word-presenter__hide');
+  }
+
+  public show() {
+    this.element.classList.remove('word-presenter__hide');
+  }
+
+  public update(pub: IPublisherWordList): void {
     const word = pub.currentCheckWord.word;
     this.player.addInPlaylist(
       this.makeURL(word.audio),

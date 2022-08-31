@@ -1,21 +1,33 @@
 @import '../../../variables.scss';
 
 .textbook {
+  padding: 40px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 60px;
 
   &__header {
     @include header-style();
   }
 
   &__word-cascade {
+    padding-top: 40px;
     display: flex;
     gap: 30px;
+    justify-content: space-between;
+  }
+
+  &__empty_message {
+    @include button-default();
+    @include shadow-box-default();
+    height: 150px;
+    background-color: $color-background-word-default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 }
-
-
 
 .level-0 .select {
   background-color: $color-background-level-0;

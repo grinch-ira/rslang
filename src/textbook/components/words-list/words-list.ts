@@ -51,4 +51,15 @@ export class WordsList extends BaseComponent implements IPublisher {
       this.notify();
     }
   }
+
+  drawEmpty() {
+    this.element.innerHTML = '';
+    const emptyContainer = new BaseComponent(
+      'div',
+      ['textbook__empty_message'],
+    ).element;
+    emptyContainer.innerHTML = 'На  данный момент в данной категории ничего нет.' +
+      '<br>Продолжайте обучение...';
+    this.element.append(emptyContainer);
+  }
 }

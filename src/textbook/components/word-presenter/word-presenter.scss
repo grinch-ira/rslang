@@ -9,6 +9,10 @@
   flex: 0 0 auto;
   @include shadow-box-default();
 
+  &__hide {
+    display: none;
+  }
+
   &__image {
     min-height: 260px;
     border-radius: 5px 20px 5px 20px;
