@@ -1,0 +1,64 @@
+@import '../variables.scss';
+
+.games-page-title {
+  text-align: center;
+  font-size: $font-size-title;
+  max-width: 940px;
+  margin: 60px auto;
+  font-weight: $font-weight-bold;
+}
+
+.images-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.link-to-sprint,
+.link-to-audiocall {
+  display: block;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+}
+
+.link-to-sprint:hover,
+.link-to-audiocall:hover {
+
+  .sprint-name,
+  .audiocall-name {
+    font-size: 1.7rem;
+    color: $color-yellow-button;
+  }
+
+  .sprint-image,
+  .audiocall-image {
+    width: 260px;
+    height: 260px;
+    box-shadow: 8px 8px 8px #0000001a;
+  }
+}
+
+.sprint-name,
+.audiocall-name {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: $font-weight-bold;
+  transition: all 0.5s ease-out;
+}
+
+.sprint-image,
+.audiocall-image {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px #0000001a;
+  transition: all 0.5s ease-out;
+}
+
+@media(max-width:620px) {
+
+  .link-to-sprint {
+    margin-bottom: 25px;
+  }
+}
