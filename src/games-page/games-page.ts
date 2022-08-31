@@ -21,7 +21,6 @@ export class GamesPage extends BaseComponent {
 
   private audioCallGameName: BaseComponent;
 
-
   constructor() {
     super('div', ['games-page']);
     this.gamesPageTitle = new BaseComponent('div', ['games-page-title'], 'Игры');
