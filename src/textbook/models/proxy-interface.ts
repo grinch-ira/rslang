@@ -7,4 +7,5 @@ export interface IUserWordOptionsResponse {
 
 export interface IUserWordOptions {
   isHard: boolean;
+  isStudied: boolean;
 }

@@ -6,7 +6,8 @@ import {
 import { apiUsersAggregatedWords } from '../../../api/api-users-aggregated-words';
 import { apiUsersWords } from '../../../api/api-users-words';
 import { SessionSaver } from '../../../core/services/session-saver/session-saver';
-import { IUserWordOptions } from './proxy-interface';
+import { OPTION_DEFAULT } from '../../models/default-optional';
+import { IUserWordOptions } from '../../models/proxy-interface';
 
 class ProxyApi {
   session: SessionSaver;
@@ -24,15 +25,11 @@ class ProxyApi {
   }
 
   async createAUserWord(wordId: string): Promise<IUserWordOptions> {
-    const defaultOptions = {
-      optional: {
-        isHard: false,
-      },
-    };
+
     return apiUsersWords.createAUserWord(
       this.session.userId,
       wordId,
-      defaultOptions as IWordBody,
+      OPTION_DEFAULT as IWordBody,
       this.session.token,
     ).then((result) => {
       return result.body?.optional as IUserWordOptions;

@@ -2,7 +2,7 @@ import { IWord } from '../../../api/api-interfaces';
 import { SessionSaver } from '../../../core/services/session-saver/session-saver';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 import { proxyApi } from '../proxy-api/proxy-api';
-import { IUserWordOptions } from '../proxy-api/proxy-interface';
+import { IUserWordOptions } from '../../models/proxy-interface';
 import './word.scss';
 
 export class Word extends BaseComponent {
@@ -39,6 +39,12 @@ export class Word extends BaseComponent {
             this.element.classList.add('word__difficulty-hard');
           } else {
             this.element.classList.remove('word__difficulty-hard');
+          }
+
+          if (this.userOptions.isStudied) {
+            this.element.classList.add('word__difficulty-studied');
+          } else {
+            this.element.classList.remove('word__difficulty-studied');
           }
         }
       });

@@ -60,4 +60,20 @@
   &__example-translate {
     padding-top: 10px;
   }
+
+  &__manage-button-container {
+    margin-top: 5px;
+    height: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  &__button-hard {
+    @include button-default();
+  }
+
+  &__button-studied {
+    @include button-default();
+  }
 }

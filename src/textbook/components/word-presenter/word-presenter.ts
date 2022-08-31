@@ -45,16 +45,17 @@ export class WordPresenter extends BaseComponent implements ISubscriber {
     const session = SessionSaver.getInstance();
     const manageContainer = new BaseComponent(
       'div',
-      ['word-presenter__manage-container'],
+      ['word-presenter__manage-button-container'],
     ).element;
 
     if (session.isActive) {
       proxyApi.getAUserWordById(word.id).then((userOptions) => {
         const buttonHard = document.createElement('button');
-        buttonHard.classList.add('word-presenter__manage-hard');
+        buttonHard.classList.add('word-presenter__button-hard');
+        const buttonStudied = document.createElement('button');
+        buttonStudied.classList.add('word-presenter__button-studied');
         if (userOptions) {
         // If word is inited later
-
           if (userOptions.isHard) {
           // If word already in HARD
             buttonHard.addEventListener('click', () => {
@@ -65,19 +66,60 @@ export class WordPresenter extends BaseComponent implements ISubscriber {
               });
             });
             buttonHard.textContent = 'Убрать из тяжелых';
-          } else {
-          // If word not in HARD
-            buttonHard.addEventListener('click', () => {
-              userOptions.isHard = true;
+            buttonStudied.addEventListener('click', () => {
+              userOptions.isHard = false;
+              userOptions.isStudied = true;
               proxyApi.updateAUserWord(word.id, userOptions).then(() => {
                 pub.currentCheckWord.update();
                 this.update(pub);
               });
             });
-            buttonHard.textContent = 'Добавить в тяжелые';
+            buttonStudied.textContent = 'Добавить в изученные';
+          } else {
+            // If word in STUDIED
+            if (userOptions.isStudied) {
+              buttonStudied.addEventListener('click', () => {
+                userOptions.isHard = false;
+                userOptions.isStudied = false;
+                proxyApi.updateAUserWord(word.id, userOptions).then(() => {
+                  pub.currentCheckWord.update();
+                  this.update(pub);
+                });
+              });
+              buttonStudied.textContent = 'Убрать из изученных';
+              buttonHard.addEventListener('click', () => {
+                userOptions.isHard = true;
+                userOptions.isStudied = false;
+                proxyApi.updateAUserWord(word.id, userOptions).then(() => {
+                  pub.currentCheckWord.update();
+                  this.update(pub);
+                });
+              });
+              buttonHard.textContent = 'Добавить в тяжелые';
+            } else {
+              // If word not in HARD
+              buttonHard.addEventListener('click', () => {
+                userOptions.isHard = true;
+                userOptions.isStudied = false;
+                proxyApi.updateAUserWord(word.id, userOptions).then(() => {
+                  pub.currentCheckWord.update();
+                  this.update(pub);
+                });
+              });
+              buttonHard.textContent = 'Добавить в тяжелые';
+              buttonStudied.addEventListener('click', () => {
+                userOptions.isHard = false;
+                userOptions.isStudied = true;
+                proxyApi.updateAUserWord(word.id, userOptions).then(() => {
+                  pub.currentCheckWord.update();
+                  this.update(pub);
+                });
+              });
+              buttonStudied.textContent = 'Добавить в изученные';
+            }
           }
         } else {
-        // If word is not inited
+          // If word is not inited
           buttonHard.addEventListener('click', () => {
             proxyApi.createAUserWord(word.id).then((result) => {
               result.isHard = true;
@@ -88,12 +130,21 @@ export class WordPresenter extends BaseComponent implements ISubscriber {
             });
           });
           buttonHard.textContent = 'Добавить в тяжелые';
+          buttonStudied.addEventListener('click', () => {
+            proxyApi.createAUserWord(word.id).then((result) => {
+              result.isHard = false;
+              result.isStudied = true;
+              proxyApi.updateAUserWord(word.id, result).then(() => {
+                pub.currentCheckWord.update();
+                this.update(pub);
+              });
+            });
+          });
+          buttonStudied.textContent = 'Добавить в изученные';
         }
-        manageContainer.append(buttonHard);
+        manageContainer.append(buttonHard, buttonStudied);
       });
     }
-
-
     const meaning = new BaseComponent('p', ['word-presenter__meaning']).element;
     meaning.innerHTML = word.textMeaning;
     const meaningTranslate = new BaseComponent(
