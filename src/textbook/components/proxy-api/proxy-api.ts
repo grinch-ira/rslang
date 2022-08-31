@@ -1,8 +1,10 @@
 import {
   IArrayAggregatedWordsBody,
+  IUserBasicInfoResponse,
   IWordBody,
   StatusCode,
 } from '../../../api/api-interfaces';
+import { apiUsers } from '../../../api/api-users';
 import { apiUsersAggregatedWords } from '../../../api/api-users-aggregated-words';
 import { apiUsersWords } from '../../../api/api-users-words';
 import { SessionSaver } from '../../../core/services/session-saver/session-saver';
@@ -61,6 +63,16 @@ class ProxyApi {
         response.body as IArrayAggregatedWordsBody[]
       )[0] as IArrayAggregatedWordsBody;
     });
+  }
+
+  async getUser(): Promise<IUserBasicInfoResponse> {
+    return apiUsers.getUser(this.session.userId, this.session.token)
+      .then((response) => {
+        if (response.statusCode !== StatusCode.Success) {
+          this.session.logout();
+        }
+        return response;
+      });
   }
 }
 

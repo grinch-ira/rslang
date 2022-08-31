@@ -1,5 +1,6 @@
 import { StatusCode } from '../../../api/api-interfaces';
 import { apiUsers } from '../../../api/api-users';
+// import { proxyApi } from '../../../textbook/components/proxy-api/proxy-api';
 import { IUserStorageInfo } from '../../models/storage-data';
 
 export class SessionSaver {
@@ -33,6 +34,7 @@ export class SessionSaver {
       this.userIdActual = authData.userId;
       this.isActiveSession = true;
       this.updaterTokens = setTimeout(() => this.checkSession(), 600000);
+      this.testSession();
     } else {
       this.isActiveSession = false;
     }
@@ -67,7 +69,16 @@ export class SessionSaver {
     return this.userIdActual;
   }
 
-  public async checkSession(): Promise<boolean> {
+  private testSession() {
+    apiUsers.getUser(this.userId, this.token)
+      .then((response) => {
+        if (response.statusCode !== StatusCode.Success) {
+          this.logout();
+        }
+      });
+  }
+
+  private async checkSession(): Promise<boolean> {
     return apiUsers.getNewUserTokens(this.userIdActual, this.refreshToken)
       .then((data) => {
         if (data.statusCode === StatusCode.Success) {
