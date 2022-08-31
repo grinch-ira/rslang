@@ -27,6 +27,46 @@
     align-items: center;
     text-align: center;
   }
+
+  &__game-header {
+    @include header-style();
+  }
+
+  &__game-link-wrapper {
+    padding: 40px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  &__game-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    transition: 0.5s;
+  }
+
+  &__game-link:hover {
+    transform: scale(1.05);
+
+    .textbook__game-title {
+      color: $color-yellow-button;
+    }
+  }
+
+  &__game-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: $color-title-default;
+    transition: 0.5s;
+  }
+
+  &__game-img {
+    @include button-game-img();
+  }
 }
 
 .level-0 .select {

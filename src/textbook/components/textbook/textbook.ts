@@ -4,10 +4,10 @@ import { PageSwitcher } from '../page-switcher/page-switcher';
 import { ISubscriber } from '../../models/textbook-interfaces';
 import { WordPresenter } from '../word-presenter/word-presenter';
 import { WordsList } from '../words-list/words-list';
-import './textbook.scss';
 import { StatusCode, WordDifficultyGroup } from '../../../api/api-interfaces';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 import { proxyApi } from '../proxy-api/proxy-api';
+import './textbook.scss';
 
 export class Textbook extends BaseComponent implements ISubscriber {
   private levelSwitcher: LevelSwitcher;
@@ -37,11 +37,13 @@ export class Textbook extends BaseComponent implements ISubscriber {
       this.wordList.element,
       this.wordPresenter.element,
     );
+
     this.element.append(
       new BaseComponent('div', ['textbook__header'], 'Учебник').element,
       this.levelSwitcher.element,
       wordCascade,
       this.pageSwitcher.element,
+      this.getGameLinkContainer(),
     );
     this.loadWords();
   }
@@ -99,5 +101,52 @@ export class Textbook extends BaseComponent implements ISubscriber {
           break;
       }
     }
+  }
+
+  private getGameLinkContainer(): HTMLDivElement {
+    const gameLinkContainer = document.createElement('div');
+    gameLinkContainer.classList.add('textbook__game-link-container');
+
+    const gameLinkWrapper = document.createElement('div');
+    gameLinkWrapper.classList.add('textbook__game-link-wrapper');
+
+    const gameLinkHeader = document.createElement('h2');
+    gameLinkHeader.classList.add('textbook__game-header');
+    gameLinkHeader.textContent = 'Давай поиграем )))';
+
+    const linkSprint = document.createElement('a');
+    linkSprint.classList.add('textbook__game-link');
+    linkSprint.setAttribute('href', '#');
+
+    const linkAudiocall = document.createElement('a');
+    linkAudiocall.classList.add('textbook__game-link');
+    linkAudiocall.setAttribute('href', '#');
+
+    const titleSprint = document.createElement('p');
+    titleSprint.classList.add('textbook__game-title');
+    titleSprint.textContent = 'Спринт';
+
+    const titleAudiocall = document.createElement('p');
+    titleAudiocall.classList.add('textbook__game-title');
+    titleAudiocall.textContent = 'Аудиовызов';
+
+    const iconSprint = document.createElement('img');
+    iconSprint.classList.add('textbook__game-img');
+    iconSprint.setAttribute('src', './assets/sprint.jpg');
+    iconSprint.setAttribute('alt', 'Icon Sprint Game');
+
+    const iconAudiocall = document.createElement('img');
+    iconAudiocall.classList.add('textbook__game-img');
+    iconAudiocall.setAttribute('src', './assets/audiocall.jpg');
+    iconAudiocall.setAttribute('alt', 'Icon Audiocall Game');
+
+    linkSprint.append(titleSprint, iconSprint);
+    linkAudiocall.append(titleAudiocall, iconAudiocall);
+
+    gameLinkWrapper.append(linkSprint, linkAudiocall);
+
+    gameLinkContainer.append(gameLinkHeader, gameLinkWrapper);
+
+    return gameLinkContainer;
   }
 }
