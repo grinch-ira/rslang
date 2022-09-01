@@ -1,0 +1,27 @@
+.active {
+  color: white;
+
+  &.game-sprint__button-A1 {
+    background-color: #FFC53D;
+  }
+
+  &.game-sprint__button-A2 {
+    background-color: #9CD7F9;
+  }
+
+  &.game-sprint__button-B1 {
+    background-color: #4CCBB7;
+  }
+
+  &.game-sprint__button-B2 {
+    background-color: #FF7171;
+  }
+
+  &.game-sprint__button-C1 {
+    background-color: #5D7CFD;
+  }
+
+  &.game-sprint__button-C2 {
+    background-color: #8A78FA;
+  }
+}

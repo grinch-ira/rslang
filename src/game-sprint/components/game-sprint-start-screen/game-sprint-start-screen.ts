@@ -9,6 +9,9 @@ import { WordDifficultyGroup } from '../../../api/api-interfaces';
 import {
   ButtonBaseElement,
 } from '../../../shared/components/button-base-element/button-base-element';
+import {
+  GameSprintActiveScreen,
+} from '../game-sprint-active-screen/game-sprint-active-screen';
 
 export class GameSprintStartScreen extends BaseComponent {
 
@@ -30,6 +33,10 @@ export class GameSprintStartScreen extends BaseComponent {
     if (level) {
       this.selectedLevel = level;
     }
+
+    this.startGameButton.element.addEventListener('click', () => {
+      this.element.replaceWith(new GameSprintActiveScreen(this.selectedLevel).element);
+    });
   }
 
   createBlock1() {
@@ -82,8 +89,6 @@ export class GameSprintStartScreen extends BaseComponent {
           const index = arrayLevelButtons.findIndex(val => val === button);
           this.selectedLevel = difficultyGroupVal[index];
         });
-
-
 
         blockLevelButtons.element.append(button.element);
       });
