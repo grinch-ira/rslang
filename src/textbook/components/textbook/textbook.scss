@@ -1,21 +1,73 @@
 @import '../../../variables.scss';
 
 .textbook {
+  padding: 40px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 60px;
 
   &__header {
     @include header-style();
   }
 
   &__word-cascade {
+    padding-top: 40px;
     display: flex;
     gap: 30px;
+    justify-content: space-between;
+  }
+
+  &__empty_message {
+    @include button-default();
+    @include shadow-box-default();
+    height: 150px;
+    background-color: $color-background-word-default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__game-header {
+    @include header-style();
+  }
+
+  &__game-link-wrapper {
+    padding: 40px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  &__game-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    transition: 0.5s;
+  }
+
+  &__game-link:hover {
+    transform: scale(1.05);
+
+    .textbook__game-title {
+      color: $color-yellow-button;
+    }
+  }
+
+  &__game-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: $color-title-default;
+    transition: 0.5s;
+  }
+
+  &__game-img {
+    @include button-game-img();
   }
 }
-
-
 
 .level-0 .select {
   background-color: $color-background-level-0;

@@ -5,9 +5,7 @@
   height: 80px;
   padding: 10px;
   background: $color-background-word-default;
-  border-radius: 5px;
-  transition: 0.2s;
-  @include shadow-box-default();
+  @include card-word();
 
   &:hover {
     transform: scale(1.05);

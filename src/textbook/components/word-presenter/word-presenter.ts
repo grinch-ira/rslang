@@ -9,12 +9,22 @@ import './word-presenter.scss';
 export class WordPresenter extends BaseComponent implements ISubscriber {
   player: AudioPlayer;
 
+  hardUpdate: (() => void) | null | undefined;
+
   constructor() {
     super('div', ['word-presenter']);
     this.player = new AudioPlayer();
   }
 
-  update(pub: IPublisherWordList): void {
+  public hide() {
+    this.element.classList.add('word-presenter__hide');
+  }
+
+  public show() {
+    this.element.classList.remove('word-presenter__hide');
+  }
+
+  public update(pub: IPublisherWordList): void {
     const word = pub.currentCheckWord.word;
     this.player.addInPlaylist(
       this.makeURL(word.audio),
@@ -61,6 +71,9 @@ export class WordPresenter extends BaseComponent implements ISubscriber {
             buttonHard.addEventListener('click', () => {
               userOptions.isHard = false;
               proxyApi.updateAUserWord(word.id, userOptions).then(() => {
+                if (this.hardUpdate) {
+                  this.hardUpdate();
+                }
                 pub.currentCheckWord.update();
                 this.update(pub);
               });

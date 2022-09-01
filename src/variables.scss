@@ -38,6 +38,8 @@ $color-background-word-difficult: #b84848;
 $color-background-word-difficult-select: #2d0a0a;
 // $color-background-word-difficult-hover:
 
+$color-title-default: #1d0808;
+
 @mixin shadow-box-default {
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -47,4 +49,24 @@ $color-background-word-difficult-select: #2d0a0a;
   border-radius: 10px;
   background-color: $color-yellow-button;
   font-size: 0.65em;
+}
+
+@mixin card-word {
+  @include shadow-box-default();
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+
+@mixin card-level {
+  @include card-word();
+  border-radius: 15px;
+}
+
+@mixin button-game-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px #0000001a;
+  transition: all 0.5s ease-out;
 }
