@@ -58,8 +58,8 @@ export class WordsList extends BaseComponent implements IPublisher {
       'div',
       ['textbook__empty_message'],
     ).element;
-    emptyContainer.innerHTML = 'На  данный момент в данной категории ничего нет.' +
-      '<br>Продолжайте обучение...';
+    emptyContainer.innerHTML = `На  данный момент в данной категории ничего нет.
+    <br>Продолжайте обучение...`;
     this.element.append(emptyContainer);
   }
 }

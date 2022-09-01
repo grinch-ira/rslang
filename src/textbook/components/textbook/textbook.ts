@@ -112,7 +112,7 @@ export class Textbook extends BaseComponent implements ISubscriber {
 
     const gameLinkHeader = document.createElement('h2');
     gameLinkHeader.classList.add('textbook__game-header');
-    gameLinkHeader.textContent = 'Давай поиграем )))';
+    gameLinkHeader.textContent = 'Игры';
 
     const linkSprint = document.createElement('a');
     linkSprint.classList.add('textbook__game-link');
