@@ -3,24 +3,47 @@
 .footer-wrapper {
   margin: 65px auto 0 auto;
   display: flex;
-  justify-content: space-between;
-  height: 100px;
+  flex-direction: column;
+  align-items: center;
   min-width: 100%;
   padding: 25px 40px;
   background: $color-violet-header;
 }
 
-.footer-github-link {
-  height: 90%;
-  width: 100px;
-}
-
-.footer-github-image {
+.footer-content {
   width: 100%;
-  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.group-number-year {
+.footer__course-image {
+  width: 120px;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.footer__author-link-container {
   display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.footer__author-link {
+  display: flex;
+  gap: 10px;
   align-items: center;
+  color: $color-title-default;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.footer__author-git {
+  width: 20px;
 }
