@@ -5,15 +5,18 @@ import { Word } from '../word/word';
 import './words-list.scss';
 
 export class WordsList extends BaseComponent implements IPublisher {
-  private wordsArray: Word[];
+  public wordsArray: Word[];
 
   private subscribers: ISubscriber[];
 
   public currentCheckWord: Word;
 
-  constructor() {
+  checkStudies: () => void;
+
+  constructor(check: () => void) {
     super('div', ['textbook__words-list']);
     this.subscribers = [];
+    this.checkStudies = check;
   }
 
   public register(subscriber: ISubscriber): void {
@@ -29,7 +32,7 @@ export class WordsList extends BaseComponent implements IPublisher {
   }
 
   setWords(words: IWord[]): void {
-    this.wordsArray = words.map((word) => new Word(word));
+    this.wordsArray = words.map((word) => new Word(word, () => this.checkStudies()));
     this.listRefresh();
   }
 

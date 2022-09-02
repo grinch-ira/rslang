@@ -12,13 +12,15 @@ export class Word extends BaseComponent {
 
   difficulty: string;
 
-  constructor(word: IWord) {
+  checkStudies: () => void;
+
+  constructor(word: IWord, checkStudies: () => void) {
     super('div', ['word']);
 
     if (word._id) {
       word.id = word._id;
     }
-
+    this.checkStudies = checkStudies;
     this.word = word;
     this.userOptions = null;
     this.element.append(
@@ -46,6 +48,7 @@ export class Word extends BaseComponent {
           } else {
             this.element.classList.remove('word__difficulty-studied');
           }
+          this.checkStudies();
         }
       });
     }

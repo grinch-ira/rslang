@@ -25,7 +25,7 @@ export class Textbook extends BaseComponent implements ISubscriber {
     this.levelSwitcher = new LevelSwitcher();
     this.levelSwitcher.register(this);
 
-    this.wordList = new WordsList();
+    this.wordList = new WordsList(() => { this.checkStudies(); });
 
     this.wordPresenter = new WordPresenter();
     this.wordList.register(this.wordPresenter);
@@ -52,6 +52,17 @@ export class Textbook extends BaseComponent implements ISubscriber {
     this.loadWords();
   }
 
+  private checkStudies(): void {
+    const result = this.wordList.wordsArray.every((word) => {
+      return word.userOptions && (word.userOptions.isHard || word.userOptions.isStudied);
+    });
+    if (result) {
+      this.element.classList.add('textbook__all-studied');
+    } else {
+      this.element.classList.remove('textbook__all-studied');
+    }
+  }
+
   private loadWords(): void {
     this.element.classList.remove(`level-${this.level}`);
     const newLevel = this.levelSwitcher.getCurrentLevel();
@@ -72,7 +83,6 @@ export class Textbook extends BaseComponent implements ISubscriber {
             this.wordList.setWords(result.body);
             this.wordPresenter.hardUpdate = null;
           }
-
         }
       });
     } else {
