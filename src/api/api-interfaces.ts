@@ -16,6 +16,7 @@ export interface IWord {
   textMeaningTranslate: string;
   textExampleTranslate: string;
   userWord?: IWordBody;
+  _id?: string;
 }
 
 export interface IUserBasicInfo {
@@ -30,6 +31,11 @@ export interface IUserAuthInfo {
   refreshToken: string;
   userId: string;
   name: string;
+}
+
+export interface IUserNewTokenInfo {
+  refreshToken: string;
+  token: string;
 }
 
 //TODO конкретизировать поле optional
@@ -69,6 +75,10 @@ export interface IArrayWordResponse extends IStatusCodeResponse {
 
 export interface IUserAuthInfoResponse extends IStatusCodeResponse {
   body: IUserAuthInfo | undefined;
+}
+
+export interface IUserNewTokenInfoResponse extends IStatusCodeResponse {
+  body: IUserNewTokenInfo | undefined;
 }
 
 export interface IUserBasicInfoResponse extends IStatusCodeResponse {
@@ -111,6 +121,7 @@ export enum WordDifficultyGroup {
   B2 = '3',
   C1 = '4',
   C2 = '5',
+  HW = '6',
 }
 
 export enum StatusCode {

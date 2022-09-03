@@ -1,0 +1,106 @@
+@import '../../../variables.scss';
+
+.textbook {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+
+  &__header {
+    @include header-style();
+  }
+
+  &__word-cascade {
+    padding-top: 40px;
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+  }
+
+  &__empty_message {
+    @include button-default();
+    @include shadow-box-default();
+    height: 150px;
+    background-color: $color-background-word-default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  &.textbook__all-studied .textbook__game-link-container {
+    display: none;
+  }
+
+  &__game-header {
+    @include header-style();
+  }
+
+  &__game-link-wrapper {
+    padding: 40px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  &__game-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    transition: 0.5s;
+  }
+
+  &__game-link:hover {
+    transform: scale(1.05);
+
+    .textbook__game-title {
+      color: $color-yellow-button;
+    }
+  }
+
+  &__game-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: $color-title-default;
+    transition: 0.5s;
+  }
+
+  &__game-img {
+    @include button-game-img();
+  }
+}
+
+.level-0 .select {
+  background-color: $color-background-level-0;
+}
+
+.level-1 .select {
+  background-color: $color-background-level-1;
+}
+
+.level-2 .select {
+  background-color: $color-background-level-2;
+}
+
+.level-3 .select {
+  background-color: $color-background-level-3;
+}
+
+.level-4 .select {
+  background-color: $color-background-level-4;
+}
+
+.level-5 .select {
+  background-color: $color-background-level-5;
+}
+
+.level-6 .select {
+  background-color: $color-background-level-6;
+}
+
+.textbook__all-studied {
+  background-color: $color-background-all-studied;
+}

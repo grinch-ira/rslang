@@ -1,40 +1,49 @@
 @import '../../../variables.scss';
 
 .authorization-container {
-  width: 1280px;
-  height: 100vh;
-  margin: 0 auto;
+  max-width: 100%;
   background-color: $color-lightgray-background;
   display: flex;
   flex-direction: column;
+  flex: 1 0 auto;
+  margin-top: 100px;
 
-  .header {
-    padding: 40px;
-    font-size: 4rem;
-    font-weight: 900;
-    flex: 0 0 auto;
+  .form__subtext {
+    font-size: 1.3rem;
+    margin-top: 20px;
+    text-align: center;
   }
 
-  .main {
-    flex: 1 0 auto;
-    padding-left: 40px;
-    .form__subtext {
-      font-size: 1.3rem;
+  .link-to-next-form {
+    cursor: pointer;
+
+    &:hover {
+      color: $color-violet-header;
+      text-decoration: underline;
+      transition: all 0.25s ease-out;
     }
   }
 }
 
 .form-error-message {
   width: 90%;
-  height: 35%;
-  color: #804d98;
-  background-color: #eaf36f;
+  height: 15%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: $color-red-error;
+  background-color: $color-input-background;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   z-index: 10;
-  top: 60%;
+  top: 78%;
   left: 5%;
+  box-shadow: 5px 5px 5px rgba(175, 9, 9, 0.25);
+  padding: 0 15px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

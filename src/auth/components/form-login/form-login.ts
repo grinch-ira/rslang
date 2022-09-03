@@ -4,16 +4,8 @@ import { FormRegistration } from '../form-registration/form-registration';
 import './form-login.scss';
 
 export class FormLogin extends BaseComponent {
-  private htmlFormContainer: HTMLElement;
-
   constructor() {
     super('div', ['authorization-container']);
-    this.htmlFormContainer = new BaseComponent('main', ['main']).element;
-    const header = new BaseComponent( 'header', ['header']).element;
-    const logo = new BaseComponent('h1', ['logo'], 'RSLang').element;
-    const footer = new BaseComponent('footer', ['footer']).element;
-    header.append(logo);
-    this.element.append(header, this.htmlFormContainer, footer);
     this.selectAuthorization();
   }
 
@@ -25,13 +17,13 @@ export class FormLogin extends BaseComponent {
       event.preventDefault();
       this.selectRegistration();
     });
-    this.htmlFormContainer.innerHTML = '';
+    this.element.innerHTML = '';
     const subText = new BaseComponent('div', ['form__subtext']).element;
     subText.append(
       new BaseComponent('span', [], 'Ещё не с нами? Тогда ').element,
       link,
     );
-    this.htmlFormContainer.append(new FormAuthorization().element, subText);
+    this.element.append(new FormAuthorization().element, subText);
   }
 
   private selectRegistration(): void {
@@ -40,13 +32,12 @@ export class FormLogin extends BaseComponent {
       event.preventDefault();
       this.selectAuthorization();
     });
-    this.htmlFormContainer.innerHTML = '';
+    this.element.innerHTML = '';
     const subText = new BaseComponent('div', ['form__subtext']).element;
     subText.append(
       new BaseComponent('span', [], 'Уже есть аккаунт? ').element,
       link,
     );
-    this.htmlFormContainer.append(new FormRegistration().element, subText);
+    this.element.append(new FormRegistration().element, subText);
   }
-
 }
