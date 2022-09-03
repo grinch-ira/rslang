@@ -73,7 +73,7 @@ export class GameSprintStartScreen extends BaseComponent {
       const arrayLevelButtons: ButtonBaseElement[] = [];
       for (let i = 0; i < 6; i++) {
         arrayLevelButtons.push(new ButtonBaseElement(
-          [`game-sprint__button-${difficultyGroup[i]}`],
+          [`game-sprint__button-${difficultyGroup[i]}`, 'sprint-level-button'],
           difficultyGroup[i],
         ));
       }

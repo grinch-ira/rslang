@@ -1,27 +1,99 @@
+@import '../../../variables.scss';
+
 .active {
-  color: white;
 
   &.game-sprint__button-A1 {
-    background-color: #FFC53D;
+    background-color: $color-background-level-0;
   }
 
   &.game-sprint__button-A2 {
-    background-color: #9CD7F9;
+    background-color: $color-background-level-1;
   }
 
   &.game-sprint__button-B1 {
-    background-color: #4CCBB7;
+    background-color: $color-background-level-2;
   }
 
   &.game-sprint__button-B2 {
-    background-color: #FF7171;
+    background-color: $color-background-level-3;
   }
 
   &.game-sprint__button-C1 {
-    background-color: #5D7CFD;
+    background-color: $color-background-level-4;
   }
 
   &.game-sprint__button-C2 {
-    background-color: #8A78FA;
+    background-color: $color-background-level-5;
+  }
+}
+
+
+.sprint-level-button {
+  font-weight: 700;
+  width: 40px;
+  height: 40px;
+  transition: background-color .15s;
+  color: $color-lightgray-background;
+  border-radius: 50%;
+
+  &:active:not(.active) {
+    transform: scale(.96);
+  }
+}
+
+
+.game-sprint__start-screen {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 100px auto 0;
+  cursor: default;
+  user-select: none;
+  text-align: center;
+  row-gap: 200px;
+}
+
+.game-sprint__block-1 {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+
+  .game-sprint__title {
+    font-size: 36px;
+    font-weight: 700;
+  }
+
+  .game-sprint__description {
+    line-height: 130%;
+  }
+}
+
+.game-sprint__block-2 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 15px;
+
+  .game-sprint__block-2-selected-button {
+    width: 150px;
+    padding: 5px 10px;
+    transition: background-color .1s, color .1s;
+    color: $color-lightgray-background;
+    background-color: #989898;
+
+    &:disabled {
+      color: #8b8b8b;
+      background-color: #aeaeae;
+    }
+
+    &:hover {
+      background-color: darken(#989898, 10);
+    }
+  }
+
+  .game-sprint__block-2-level-buttons {
+    display: flex;
+    column-gap: 10px;
   }
 }
