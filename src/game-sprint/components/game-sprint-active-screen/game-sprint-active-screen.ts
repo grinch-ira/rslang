@@ -23,10 +23,6 @@ export class GameSprintActiveScreen extends BaseComponent {
 
   incorrectButton = new ButtonBaseElement(['incorrect-button'], 'incorrect');
 
-  streak = new BaseComponent('div', ['streak'], 'Streak: 0');
-
-  winRate = new BaseComponent('div', ['win-rate'], 'Winrate: 0 %');
-
   timer = new BaseComponent('div', ['timer'], 'Timer: 0 c');
 
   rounds = 0;
@@ -65,16 +61,13 @@ export class GameSprintActiveScreen extends BaseComponent {
         this.counterIncrease();
         this.streakCount += 1;
         this.roundsWin += 1;
-        this.renderStreak();
       } else {
         this.resultGame.mistake.push(this.wordContainer.wordPair[0]);
         this.streakCount = 0;
-        this.renderStreak();
       }
 
       await this.wordContainer.setWordPair(this.wordsData);
       await this.wordContainer.renderWordPair();
-      this.renderWinRate();
     });
 
     this.incorrectButton.element.addEventListener('click', async () => {
@@ -88,16 +81,13 @@ export class GameSprintActiveScreen extends BaseComponent {
         this.counterIncrease();
         this.streakCount += 1;
         this.roundsWin += 1;
-        this.renderStreak();
       } else {
         this.resultGame.mistake.push(this.wordContainer.wordPair[0]);
         this.streakCount = 0;
-        this.renderStreak();
       }
 
       await this.wordContainer.setWordPair(this.wordsData);
       await this.wordContainer.renderWordPair();
-      this.renderWinRate();
     });
   }
 
@@ -126,25 +116,15 @@ export class GameSprintActiveScreen extends BaseComponent {
     this.points.renderPoints();
   }
 
-  renderStreak() {
-    this.streak.element.textContent = `Streak:  ${this.streakCount.toString()}`;
-  }
-
-  renderWinRate() {
-    this.winRate.element.textContent =
-      `Winrate: ${(this.roundsWin / this.rounds * 100).toFixed(0)} %`;
-  }
-
-
-  anim = (timestamp: DOMHighResTimeStamp) => {
+  timerAnim = (timestamp: DOMHighResTimeStamp) => {
     if (!this.startTimeAnimation) {
       this.startTimeAnimation = timestamp;
     }
-    const progress = (timestamp - this.startTimeAnimation) / 1000;
+    const progress = 10 - (timestamp - this.startTimeAnimation) / 1000;
 
     this.timer.element.textContent = `Timer: ${progress.toFixed(0)} с`;
-    if (progress < 3) {
-      window.requestAnimationFrame(this.anim);
+    if (progress > 0) {
+      window.requestAnimationFrame(this.timerAnim);
     } else {
       this.sortResult();
       this.element.innerHTML = '';
@@ -167,14 +147,12 @@ export class GameSprintActiveScreen extends BaseComponent {
       this.wordContainer.element,
       this.correctButton.element,
       this.incorrectButton.element,
-      this.streak.element,
-      this.winRate.element,
       this.timer.element,
     );
 
     await this.wordContainer.setWordPair(this.wordsData);
     await this.wordContainer.renderWordPair();
 
-    window.requestAnimationFrame(this.anim);
+    window.requestAnimationFrame(this.timerAnim);
   }
 }
