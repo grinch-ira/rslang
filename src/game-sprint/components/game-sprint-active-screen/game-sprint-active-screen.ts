@@ -17,6 +17,8 @@ export class GameSprintActiveScreen extends BaseComponent {
 
   points = new SprintPoints();
 
+  gameIsActive = true;
+
   wordContainer = new SprintWordContainer();
 
   correctButton = new ButtonBaseElement(['correct-button'], 'correct');
@@ -51,32 +53,25 @@ export class GameSprintActiveScreen extends BaseComponent {
     this.start();
 
     this.correctButton.element.addEventListener('click', async () => {
-      if (this.wordDataIsEmpty()) {
-        await this.getWordData();
-      }
-      this.rounds += 1;
-
-      if (this.wordContainer.isCorrectAnswer()) {
-        this.resultGame.correct.push(this.wordContainer.wordPair[0]);
-        this.counterIncrease();
-        this.streakCount += 1;
-        this.roundsWin += 1;
-      } else {
-        this.resultGame.mistake.push(this.wordContainer.wordPair[0]);
-        this.streakCount = 0;
-      }
-
-      await this.wordContainer.setWordPair(this.wordsData);
-      await this.wordContainer.renderWordPair();
+      this.gameLogicOnAnswer(true);
     });
 
     this.incorrectButton.element.addEventListener('click', async () => {
+      this.gameLogicOnAnswer(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      this.keyboardKeyPressListener(e);
+    });
+  }
+
+  async gameLogicOnAnswer(isCorrectButton: boolean) {
+    if (this.gameIsActive) {
       if (this.wordDataIsEmpty()) {
         await this.getWordData();
       }
       this.rounds += 1;
-
-      if (!this.wordContainer.isCorrectAnswer()) {
+      if (this.wordContainer.isCorrectAnswer() === isCorrectButton) {
         this.resultGame.correct.push(this.wordContainer.wordPair[0]);
         this.counterIncrease();
         this.streakCount += 1;
@@ -88,11 +83,24 @@ export class GameSprintActiveScreen extends BaseComponent {
 
       await this.wordContainer.setWordPair(this.wordsData);
       await this.wordContainer.renderWordPair();
-    });
+    }
   }
 
   wordDataIsEmpty() {
     return (this.wordsData !== undefined) && (this.wordsData.length === 0);
+  }
+
+  keyboardKeyPressListener(e: KeyboardEvent) {
+    switch (e.keyCode) {
+      case 37: {
+        this.gameLogicOnAnswer(true);
+        break;
+      }
+      case 39: {
+        this.gameLogicOnAnswer(false);
+        break;
+      }
+    }
   }
 
   async getWordData() {
@@ -120,12 +128,13 @@ export class GameSprintActiveScreen extends BaseComponent {
     if (!this.startTimeAnimation) {
       this.startTimeAnimation = timestamp;
     }
-    const progress = 10 - (timestamp - this.startTimeAnimation) / 1000;
+    const progress = 3 - (timestamp - this.startTimeAnimation) / 1000;
 
     this.timer.element.textContent = `Timer: ${progress.toFixed(0)} с`;
     if (progress > 0) {
       window.requestAnimationFrame(this.timerAnim);
     } else {
+      this.gameIsActive = false;
       this.sortResult();
       this.element.innerHTML = '';
       this.element.replaceWith(new GameSprintResultScreen(this.resultGame).element);
