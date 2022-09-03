@@ -70,12 +70,13 @@ export class GameSprintStartScreen extends BaseComponent {
         .sort((a, b) => a.localeCompare(b));
       const difficultyGroupVal = Object.values(WordDifficultyGroup);
 
-      const arrayLevelButtons = difficultyGroup.map(difficulty => {
-        return new ButtonBaseElement(
-          [`game-sprint__button-${difficulty}`],
-          difficulty,
-        );
-      });
+      const arrayLevelButtons: ButtonBaseElement[] = [];
+      for (let i = 0; i < 6; i++) {
+        arrayLevelButtons.push(new ButtonBaseElement(
+          [`game-sprint__button-${difficultyGroup[i]}`],
+          difficultyGroup[i],
+        ));
+      }
 
       arrayLevelButtons.forEach(button => {
         button.element.addEventListener('click', () => {

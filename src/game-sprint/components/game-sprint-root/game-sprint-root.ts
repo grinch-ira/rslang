@@ -7,7 +7,7 @@ import { WordDifficultyGroup } from '../../../api/api-interfaces';
 export class GameSprintRoot extends BaseComponent {
   element: HTMLDivElement;
 
-  constructor(level: WordDifficultyGroup | null) {
+  constructor(level: WordDifficultyGroup | null = null) {
     super('div', ['game-sprint-wrapper']);
     this.element.append(new GameSprintStartScreen(level).element);
   }

@@ -58,5 +58,9 @@ export class GameSprintResultScreen extends BaseComponent {
     this.oneMoreGameButton.element.addEventListener('click', () => {
       this.element.replaceWith(new GameSprintStartScreen(null).element);
     });
+
+    this.textbookButton.element.addEventListener('click', () => {
+      window.location.hash = '#textbook';
+    });
   }
 }

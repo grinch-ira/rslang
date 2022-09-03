@@ -128,7 +128,7 @@ export class GameSprintActiveScreen extends BaseComponent {
     if (!this.startTimeAnimation) {
       this.startTimeAnimation = timestamp;
     }
-    const progress = 3 - (timestamp - this.startTimeAnimation) / 1000;
+    const progress = 15 - (timestamp - this.startTimeAnimation) / 1000;
 
     this.timer.element.textContent = `Timer: ${progress.toFixed(0)} с`;
     if (progress > 0) {

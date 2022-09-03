@@ -126,7 +126,7 @@ export class Textbook extends BaseComponent implements ISubscriber {
 
     const linkSprint = document.createElement('a');
     linkSprint.classList.add('textbook__game-link');
-    linkSprint.setAttribute('href', '#');
+    linkSprint.setAttribute('href', '#sprint-game');
 
     const linkAudiocall = document.createElement('a');
     linkAudiocall.classList.add('textbook__game-link');

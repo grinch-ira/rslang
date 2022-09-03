@@ -5,12 +5,16 @@ import { BaseComponent } from '../../shared/components/base-element/base-compone
 import { Footer } from '../../start-page/components/footer/footer';
 import { Textbook } from '../../textbook';
 import { GamesPage } from '../../games-page/games-page';
+import {
+  GameSprintRoot,
+} from '../../game-sprint/components/game-sprint-root/game-sprint-root';
 
 export const enum PageHash {
   startPage = 'main',
   formLogin = 'login',
   textbook = 'textbook',
   gamesPage = 'games',
+  sprintGame = 'sprint-game',
 }
 
 export class App {
@@ -39,6 +43,10 @@ export class App {
       }
       case PageHash.gamesPage: {
         page = new GamesPage();
+        break;
+      }
+      case PageHash.sprintGame: {
+        page = new GameSprintRoot();
         break;
       }
 
