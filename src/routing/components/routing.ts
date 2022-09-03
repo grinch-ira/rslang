@@ -25,6 +25,12 @@ export class App {
   private footer: Footer;
 
   private renderNewPage(componentName: string) {
+    if (componentName === PageHash.sprintGame) {
+      this.footer.element.style.display = 'none';
+    } else {
+      this.footer.element.style.display = 'flex';
+    }
+
     let page: BaseComponent | undefined;
 
     switch (componentName) {
