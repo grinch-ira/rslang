@@ -28,6 +28,10 @@
     text-align: center;
   }
 
+  &.textbook__all-studied .textbook__game-link-container {
+    display: none;
+  }
+
   &__game-header {
     @include header-style();
   }
@@ -95,4 +99,8 @@
 
 .level-6 .select {
   background-color: $color-background-level-6;
+}
+
+.textbook__all-studied {
+  background-color: $color-background-all-studied;
 }
