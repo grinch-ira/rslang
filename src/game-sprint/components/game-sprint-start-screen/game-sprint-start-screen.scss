@@ -87,7 +87,7 @@
       background-color: #aeaeae;
     }
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: darken(#989898, 10);
     }
   }
