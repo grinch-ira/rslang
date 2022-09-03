@@ -1,6 +1,6 @@
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 // eslint-disable-next-line max-len
-import { ImageBaseElement } from '../../../shared/components/image-base-element.ts/image-base-element';
+import { ImageBaseElement } from '../../../shared/components/image-base-element/image-base-element';
 import './footer.scss';
 export class Footer extends BaseComponent {
   private footerGitHubLink: BaseComponent;
