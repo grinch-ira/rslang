@@ -32,6 +32,10 @@
   gap: 5px;
 }
 
+.footer__author-header {
+  @include header-small-style();
+}
+
 .footer__author-link {
   display: flex;
   gap: 10px;
@@ -46,4 +50,8 @@
 
 .footer__author-git {
   width: 20px;
+}
+
+.group-number-year {
+  user-select: none;
 }

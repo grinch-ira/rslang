@@ -10,7 +10,14 @@ export class Footer extends BaseComponent {
 
     const footerGitContainer = document.createElement('div');
     footerGitContainer.classList.add('footer__author-link-container');
+
+    const authorHeader = document.createElement('h2');
+    authorHeader.classList.add('footer__author-header');
+    authorHeader.textContent = 'Разработчики';
+
+
     footerGitContainer.append(
+      authorHeader,
       this.getGitAuthor('Ирина', 'https://github.com/grinch-ira'),
       this.getGitAuthor('Антон', 'https://github.com/mldx'),
       this.getGitAuthor('Владимир', 'https://github.com/dyexplode'),
