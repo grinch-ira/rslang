@@ -8,14 +8,13 @@ export class SprintWordContainer extends BaseComponent {
   wordPair: [IWord, string];
 
   constructor() {
-    super('div', ['word-container']);
+    super('div', ['game-sprint__active-screen-word-container']);
   }
 
   setWordPair(wordData: IWord[]) {
     const index = getRandomNumber(0, wordData.length - 1);
     const randomWord = wordData.splice(index, 1)[0];
 
-    //TODO перепесать (сложно понять что происходит тут)
     const randomAnswer = wordData.length
       ? [
         randomWord.wordTranslate,

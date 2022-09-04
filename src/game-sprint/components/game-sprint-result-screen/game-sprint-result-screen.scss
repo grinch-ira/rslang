@@ -1,12 +1,13 @@
-.word-audio{
+.word-audio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 20px;
   height: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0;
 }
-.word-container{
+
+.word-container {
   display: flex;
   column-gap: 10px;
 }

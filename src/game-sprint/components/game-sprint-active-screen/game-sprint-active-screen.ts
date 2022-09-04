@@ -21,11 +21,13 @@ export class GameSprintActiveScreen extends BaseComponent {
 
   wordContainer = new SprintWordContainer();
 
-  correctButton = new ButtonBaseElement(['correct-button'], 'correct');
+  correctButton =
+    new ButtonBaseElement(['game-sprint__active-screen-correct-button'], 'верно');
 
-  incorrectButton = new ButtonBaseElement(['incorrect-button'], 'incorrect');
+  incorrectButton =
+    new ButtonBaseElement(['game-sprint__active-screen-incorrect-button'], 'не верно');
 
-  timer = new BaseComponent('div', ['timer'], 'Timer: 0 c');
+  timer = new BaseComponent('div', ['game-sprint__active-screen-sprint-timer']);
 
   rounds = 0;
 
@@ -43,9 +45,9 @@ export class GameSprintActiveScreen extends BaseComponent {
     correct: IWord[],
     mistake: IWord[]
   } = {
-      correct: [],
-      mistake: [],
-    };
+    correct: [],
+    mistake: [],
+  };
 
   constructor(private level: WordDifficultyGroup) {
     super('div', ['game-sprint__active-screen']);
@@ -128,15 +130,15 @@ export class GameSprintActiveScreen extends BaseComponent {
     if (!this.startTimeAnimation) {
       this.startTimeAnimation = timestamp;
     }
-    const progress = 5 - (timestamp - this.startTimeAnimation) / 1000;
+    const timer = 20;
+    const progress = timer - (timestamp - this.startTimeAnimation) / 1000;
 
-    this.timer.element.textContent = `Timer: ${progress.toFixed(0)} с`;
+    this.timer.element.textContent = `${progress.toFixed(0)} с`;
     if (progress > 0) {
       window.requestAnimationFrame(this.timerAnim);
     } else {
       this.gameIsActive = false;
       this.sortResult();
-      this.element.innerHTML = '';
       this.element.replaceWith(new GameSprintResultScreen(this.resultGame).element);
     }
   };

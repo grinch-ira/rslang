@@ -6,7 +6,7 @@ export class SprintPoints extends BaseComponent {
   private points = 0;
 
   constructor() {
-    super('div', ['sprint-points'], '0');
+    super('div', ['sprint-points'], 'Очки: 0');
   }
 
   get value() {
@@ -22,7 +22,7 @@ export class SprintPoints extends BaseComponent {
   }
 
   renderPoints() {
-    this.element.textContent = `${this.points}`;
+    this.element.textContent = `Очки: ${this.points}`;
   }
 
 }

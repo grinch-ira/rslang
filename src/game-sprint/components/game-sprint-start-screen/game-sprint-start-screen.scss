@@ -1,47 +1,5 @@
 @import '../../../variables.scss';
 
-.active {
-
-  &.game-sprint__button-A1 {
-    background-color: $color-background-level-0;
-  }
-
-  &.game-sprint__button-A2 {
-    background-color: $color-background-level-1;
-  }
-
-  &.game-sprint__button-B1 {
-    background-color: $color-background-level-2;
-  }
-
-  &.game-sprint__button-B2 {
-    background-color: $color-background-level-3;
-  }
-
-  &.game-sprint__button-C1 {
-    background-color: $color-background-level-4;
-  }
-
-  &.game-sprint__button-C2 {
-    background-color: $color-background-level-5;
-  }
-}
-
-
-.sprint-level-button {
-  font-weight: 700;
-  width: 40px;
-  height: 40px;
-  transition: background-color .15s;
-  color: $color-lightgray-background;
-  border-radius: 50%;
-
-  &:active:not(.active) {
-    transform: scale(.96);
-  }
-}
-
-
 .game-sprint__start-screen {
   font-size: 20px;
   display: flex;
@@ -73,22 +31,64 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  row-gap: 15px;
+  row-gap: 35px;
 
   .game-sprint__block-2-selected-button {
     width: 150px;
     padding: 5px 10px;
     transition: background-color .1s, color .1s;
     color: $color-lightgray-background;
+    border-radius: 10px;
     background-color: #989898;
 
     &:disabled {
       color: #8b8b8b;
       background-color: #aeaeae;
+      cursor: default;
     }
 
     &:hover:not(:disabled) {
       background-color: darken(#989898, 10);
+    }
+  }
+
+  .sprint-level-button {
+    font-weight: 700;
+    width: 40px;
+    height: 40px;
+    transition: background-color .15s;
+    color: $color-lightgray-background;
+    border-radius: 50%;
+    background-color: #989898;
+
+    &:active:not(.active) {
+      transform: scale(.96);
+    }
+
+    &.active {
+      &.game-sprint__button-A1 {
+        background-color: $color-background-level-0;
+      }
+
+      &.game-sprint__button-A2 {
+        background-color: $color-background-level-1;
+      }
+
+      &.game-sprint__button-B1 {
+        background-color: $color-background-level-2;
+      }
+
+      &.game-sprint__button-B2 {
+        background-color: $color-background-level-3;
+      }
+
+      &.game-sprint__button-C1 {
+        background-color: $color-background-level-4;
+      }
+
+      &.game-sprint__button-C2 {
+        background-color: $color-background-level-5;
+      }
     }
   }
 

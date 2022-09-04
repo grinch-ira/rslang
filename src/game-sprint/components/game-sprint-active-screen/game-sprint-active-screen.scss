@@ -1,20 +1,44 @@
-.correct-button {
-  margin-right: 20px;
-  margin-left: 20px;
+.game-sprint__active-screen {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 100px auto 0;
+  cursor: default;
+  user-select: none;
+  text-align: center;
+  row-gap: 20px;
+}
+
+.game-sprint__active-screen-word-container {
+  font-size: 36px;
+}
+
+.game-sprint__active-screen-correct-button {
+  width: 100px;
+  padding: 5px 10px;
+  border-radius: 10px;
   background-color: #c6ffc6;
 }
-.incorrect-button {
+
+.game-sprint__active-screen-incorrect-button {
+  width: 100px;
+  padding: 5px 10px;
+  border-radius: 10px;
   background-color: #ffc0c0;
 }
 
-button {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 1px 4px;
-  border-radius: 10px;
-  background-color: #989898;
+.game-sprint__active-screen:fullscreen {
+  background-color: #f9f8fa;
 }
 
-.game-sprint__active-screen:fullscreen{
-  background-color: #f9f8fa;
+.game-sprint__active-screen-sprint-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border: 1px darken(#f9f8fa, 25) solid;
+  border-radius: 50%;
 }
