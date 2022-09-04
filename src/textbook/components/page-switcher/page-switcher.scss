@@ -15,12 +15,8 @@
   width: 30px;
   height: 30px;
   padding: 5px;
-  background-color: #d69a19;
+  background-color: $color-medium-gray;
   border-radius: 10px;
-
-  &.select {
-    background-color: #8d08e6;
-  }
 }
 
 .wrapper {
