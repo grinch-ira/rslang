@@ -1,10 +1,7 @@
 import { BaseComponent } from '../shared/components/base-element/base-component';
 // eslint-disable-next-line max-len
-import {
-  ImageBaseElement,
-} from '../shared/components/image-base-element.ts/image-base-element';
+import { ImageBaseElement } from '../shared/components/image-base-element/image-base-element';
 import './games-page.scss';
-import { PageHash } from '../routing/components/routing';
 
 export class GamesPage extends BaseComponent {
 
@@ -28,14 +25,14 @@ export class GamesPage extends BaseComponent {
     super('div', ['games-page']);
     this.gamesPageTitle = new BaseComponent('div', ['games-page-title'], 'Игры');
     this.linkToSprintGame = new BaseComponent('a', ['link-to-sprint']);
-    this.linkToSprintGame.element.setAttribute('href', `#${PageHash.sprintGame}`);
+    this.linkToSprintGame.element.setAttribute('href', '#');
     this.linkToAudioCallGame = new BaseComponent('a', ['link-to-audiocall']);
     this.linkToAudioCallGame.element.setAttribute('href', '#');
     this.sprintGameName = new BaseComponent('p', ['sprint-name'], 'Спринт');
     this.audioCallGameName = new BaseComponent('p', ['audiocall-name'], 'Аудиовызов');
-    this.sprintImage = new ImageBaseElement('sprint', '../../assets/sprint.jpg');
+    this.sprintImage = new ImageBaseElement('sprint', '../../assets/sprint.jpg' );
     this.audioCallImage = new ImageBaseElement(
-      'audiocall', '../../assets/audiocall.jpg');
+      'audiocall', '../../assets/audiocall.jpg' );
     this.imagesWrapper = new BaseComponent('div', ['images-wrapper']);
 
     this.element.appendChild(this.gamesPageTitle.element);

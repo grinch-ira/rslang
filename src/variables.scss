@@ -29,6 +29,16 @@ $color-background-all-studied: #31ae6f;
   color: #220c0c;
 }
 
+@mixin subheader-style {
+  padding: 20px 0 10px 10px;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+@mixin header-small-style {
+  font-weight: 800;
+}
+
 $color-level-selector-circle: #f5f5f5;
 
 // colors for word card
