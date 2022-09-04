@@ -56,7 +56,7 @@ export class Textbook extends BaseComponent implements ISubscriber {
     const result = this.wordList.wordsArray.every((word) => {
       return word.userOptions && (word.userOptions.isHard || word.userOptions.isStudied);
     });
-    if (result) {
+    if (result && this.level !== WordDifficultyGroup.HW) {
       this.element.classList.add('textbook__all-studied');
     } else {
       this.element.classList.remove('textbook__all-studied');

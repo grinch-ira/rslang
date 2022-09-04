@@ -48,8 +48,8 @@ export class Word extends BaseComponent {
           } else {
             this.element.classList.remove('word__difficulty-studied');
           }
-          this.checkStudies();
         }
+        this.checkStudies();
       });
     }
   }
