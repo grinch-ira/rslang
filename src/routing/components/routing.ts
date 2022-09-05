@@ -5,6 +5,10 @@ import { BaseComponent } from '../../shared/components/base-element/base-compone
 import { Footer } from '../../start-page/components/footer/footer';
 import { Textbook } from '../../textbook';
 import { GamesPage } from '../../games-page/games-page';
+import {
+  GameSprintRoot,
+} from '../../game-sprint/components/game-sprint-root/game-sprint-root';
+import { WordDifficultyGroup } from '../../api/api-interfaces';
 
 export const enum PageHash {
   startPage = 'main',
@@ -38,6 +42,14 @@ export class App {
       page = new Textbook();
     } else if (componentName === PageHash.gamesPage) {
       page = new GamesPage();
+    } else if (componentName.includes(PageHash.sprintGame)) {
+      const [level, pageWord] = componentName.split('/').slice(1);
+      if (level) {
+        const currentLevel = Object.values(WordDifficultyGroup).sort()[+level];
+        page = new GameSprintRoot(currentLevel, pageWord);
+      } else {
+        page = new GameSprintRoot();
+      }
     } else {
       page = new StartPage();
     }

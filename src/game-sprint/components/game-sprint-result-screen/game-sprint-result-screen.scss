@@ -1,0 +1,67 @@
+@import '../../../variables.scss';
+
+.game-sprint__result-screen {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 100px auto 0;
+
+  .result-screen__title {
+    font-size: 36px;
+  }
+
+  .result-screen__main {
+    display: flex;
+    overflow-y: auto;
+    min-height: 30px;
+    max-height: 540px;
+    margin-top: 30px;
+    column-gap: 100px;
+
+    .result-screen__correct-answer,
+    .result-screen__incorrect-answer {
+      display: flex;
+      flex-direction: column;
+      row-gap: 5px;
+    }
+
+    .word-container:first-child {
+      margin-top: 20px;
+    }
+  }
+}
+
+.word-audio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.word-container {
+  display: flex;
+  column-gap: 10px;
+}
+
+.game-sprint__result-screen-button-container {
+  display: flex;
+  margin-top: 30px;
+  column-gap: 25px;
+}
+
+.result-screen__textbook,
+.result-screen__one-more-game {
+  font-size: 18px;
+  padding: 5px 10px;
+  color: $color-lightgray-background;
+  border-radius: 10px;
+  background-color: #989898;
+
+  &:hover {
+    background-color: darken(#989898, 10);
+  }
+}
