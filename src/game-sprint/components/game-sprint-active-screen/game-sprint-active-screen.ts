@@ -57,13 +57,12 @@ export class GameSprintActiveScreen extends BaseComponent {
     correct: IWord[],
     mistake: IWord[]
   } = {
-    correct: [],
-    mistake: [],
-  };
+      correct: [],
+      mistake: [],
+    };
 
-  constructor(private level: WordDifficultyGroup) {
+  constructor(private level: WordDifficultyGroup, private pageWords?: string) {
     super('div', ['game-sprint__active-screen']);
-
     this.start();
 
     this.correctButton.element.addEventListener('click', async () => {
@@ -81,9 +80,6 @@ export class GameSprintActiveScreen extends BaseComponent {
 
   async gameLogicOnAnswer(isCorrectButton: boolean) {
     if (this.gameIsActive) {
-      if (this.wordDataIsEmpty()) {
-        await this.getWordData();
-      }
       this.rounds += 1;
       if (this.wordContainer.isCorrectAnswer() === isCorrectButton) {
         this.resultGame.correct.push(this.wordContainer.wordPair[0]);
@@ -95,6 +91,16 @@ export class GameSprintActiveScreen extends BaseComponent {
         this.resultGame.mistake.push(this.wordContainer.wordPair[0]);
         this.streakCount = 0;
         this.calculatePointsMultiplier();
+      }
+
+      if (this.wordDataIsEmpty()) {
+        if (this.pageWords && +this.pageWords === -1) {
+          this.gameIsActive = false;
+          this.sortResult();
+          this.element.replaceWith(new GameSprintResultScreen(this.resultGame).element);
+        } else {
+          await this.getWordData();
+        }
       }
       this.renderStreakContainer();
       this.renderMultiplierContainer();
@@ -121,10 +127,18 @@ export class GameSprintActiveScreen extends BaseComponent {
   }
 
   async getWordData() {
-    const page = getRandomNumber(0, 29).toString();
-    const wordData = (await apiWords.getAChunkOfWords(this.level, page)).body;
-    if (wordData) {
-      this.wordsData = wordData;
+    if (this.pageWords) {
+      const wordData = (await apiWords.getAChunkOfWords(this.level, this.pageWords)).body;
+      if (wordData && +this.pageWords > -1) {
+        this.wordsData = wordData;
+        this.pageWords = (+this.pageWords - 1).toString();
+      }
+    } else {
+      const page = getRandomNumber(0, 29).toString();
+      const wordData = (await apiWords.getAChunkOfWords(this.level, page)).body;
+      if (wordData) {
+        this.wordsData = wordData;
+      }
     }
   }
 
@@ -156,7 +170,7 @@ export class GameSprintActiveScreen extends BaseComponent {
     if (!this.startTimeAnimation) {
       this.startTimeAnimation = timestamp;
     }
-    const timer = 60;
+    const timer = 30;
     const progress = timer - (timestamp - this.startTimeAnimation) / 1000;
 
     this.timer.element.textContent = `${progress.toFixed(0)} с`;
@@ -199,7 +213,6 @@ export class GameSprintActiveScreen extends BaseComponent {
 
     await this.wordContainer.setWordPair(this.wordsData);
     await this.wordContainer.renderWordPair();
-
     window.requestAnimationFrame(this.timerAnim);
   }
 }

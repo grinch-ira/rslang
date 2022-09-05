@@ -12,16 +12,18 @@ export class SprintWordContainer extends BaseComponent {
   }
 
   setWordPair(wordData: IWord[]) {
-    const index = getRandomNumber(0, wordData.length - 1);
-    const randomWord = wordData.splice(index, 1)[0];
+    if (wordData.length !== 0) {
+      const index = getRandomNumber(0, wordData.length - 1);
+      const randomWord = wordData.splice(index, 1)[0];
 
-    const randomAnswer = wordData.length
-      ? [
-        randomWord.wordTranslate,
-        wordData[getRandomNumber(0, wordData.length - 1)].wordTranslate,
-      ][getRandomNumber(0, 1)]
-      : randomWord.wordTranslate;
-    this.wordPair = [randomWord, randomAnswer];
+      const randomAnswer = wordData.length
+        ? [
+          randomWord.wordTranslate,
+          wordData[getRandomNumber(0, wordData.length - 1)].wordTranslate,
+        ][getRandomNumber(0, 1)]
+        : randomWord.wordTranslate;
+      this.wordPair = [randomWord, randomAnswer];
+    }
   }
 
   async renderWordPair() {

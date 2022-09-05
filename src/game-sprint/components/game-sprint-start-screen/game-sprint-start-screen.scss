@@ -34,6 +34,7 @@
   row-gap: 35px;
 
   .game-sprint__block-2-selected-button {
+    font-size: 18px;
     width: 150px;
     padding: 5px 10px;
     transition: background-color .1s, color .1s;
@@ -42,9 +43,9 @@
     background-color: #989898;
 
     &:disabled {
+      cursor: default;
       color: #8b8b8b;
       background-color: #aeaeae;
-      cursor: default;
     }
 
     &:hover:not(:disabled) {
@@ -53,13 +54,15 @@
   }
 
   .sprint-level-button {
+    font-size: 18px;
     font-weight: 700;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     transition: background-color .15s;
     color: $color-lightgray-background;
     border-radius: 50%;
     background-color: #989898;
+
 
     &:active:not(.active) {
       transform: scale(.96);

@@ -21,8 +21,9 @@ export class GameSprintStartScreen extends BaseComponent {
 
   selectedLevel: WordDifficultyGroup;
 
-  constructor(private level: WordDifficultyGroup | null) {
+  constructor(private level: WordDifficultyGroup | null, private pageWords?: string) {
     super('div', ['game-sprint__start-screen']);
+    window.scrollTo(0, 0);
     this.startGameButton = new ButtonBaseElement(
       ['game-sprint__block-2-selected-button'],
       'Начать',
@@ -35,7 +36,9 @@ export class GameSprintStartScreen extends BaseComponent {
     }
 
     this.startGameButton.element.addEventListener('click', () => {
-      this.element.replaceWith(new GameSprintActiveScreen(this.selectedLevel).element);
+      this.element.replaceWith(
+        new GameSprintActiveScreen(this.selectedLevel, this.pageWords).element,
+      );
     });
   }
 
