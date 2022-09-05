@@ -1,6 +1,0 @@
-node_modules
-*.json
-webpack.config.js
-public/**/*
-dist**/*
-tsconfig.json
