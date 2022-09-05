@@ -35,15 +35,7 @@ export class GameAudioCallActiveScreen extends BaseComponent {
 
   currentWord: IWord;
 
-  gameIsActive = true;
-
-  rounds = 0;
-
-  streakCount = 0;
-
   wordImg = new ImageBaseElement('game-audiocall__current-word', '', '');
-
-  roundsWin = 0;
 
   wordsData: IWord[];
 
