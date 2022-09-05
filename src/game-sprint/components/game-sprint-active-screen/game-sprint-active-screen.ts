@@ -31,6 +31,18 @@ export class GameSprintActiveScreen extends BaseComponent {
 
   rounds = 0;
 
+  multiplierContainer = new BaseComponent(
+    'div',
+    ['game-sprint__active-screen-sprint-multiplier'],
+    'Множитель очков: 1, +10',
+  );
+
+  streakContainer = new BaseComponent(
+    'div',
+    ['game-sprint__active-screen-sprint-streak'],
+    'Верных ответов подряд до увеличения множителя очков: 3',
+  );
+
   streakCount = 0;
 
   roundsWin = 0;
@@ -78,11 +90,14 @@ export class GameSprintActiveScreen extends BaseComponent {
         this.counterIncrease();
         this.streakCount += 1;
         this.roundsWin += 1;
+        this.calculatePointsMultiplier();
       } else {
         this.resultGame.mistake.push(this.wordContainer.wordPair[0]);
         this.streakCount = 0;
+        this.calculatePointsMultiplier();
       }
-
+      this.renderStreakContainer();
+      this.renderMultiplierContainer();
       await this.wordContainer.setWordPair(this.wordsData);
       await this.wordContainer.renderWordPair();
     }
@@ -113,6 +128,18 @@ export class GameSprintActiveScreen extends BaseComponent {
     }
   }
 
+  renderMultiplierContainer() {
+    const multiplier = this.pointsMultiplier;
+    this.multiplierContainer.element.textContent =
+      `Множитель очков: ${multiplier}, +${multiplier * 10}`;
+  }
+
+  renderStreakContainer() {
+    const streak = this.streakCount % 3;
+    this.streakContainer.element.textContent =
+      `Верных ответов подряд до увеличения множителя очков: ${3 - streak}`;
+  }
+
   calculatePointsMultiplier() {
     this.pointsMultiplier = Math.floor(this.streakCount / 3)
       ? Math.floor(this.streakCount / 3) + 1
@@ -120,7 +147,6 @@ export class GameSprintActiveScreen extends BaseComponent {
   }
 
   counterIncrease() {
-    this.calculatePointsMultiplier();
     const basePoints = 10;
     this.points.increasePointsBy(basePoints * this.pointsMultiplier);
     this.points.renderPoints();
@@ -130,7 +156,7 @@ export class GameSprintActiveScreen extends BaseComponent {
     if (!this.startTimeAnimation) {
       this.startTimeAnimation = timestamp;
     }
-    const timer = 20;
+    const timer = 60;
     const progress = timer - (timestamp - this.startTimeAnimation) / 1000;
 
     this.timer.element.textContent = `${progress.toFixed(0)} с`;
@@ -152,12 +178,22 @@ export class GameSprintActiveScreen extends BaseComponent {
 
   async start() {
     await this.getWordData();
+    const buttonContainer = new BaseComponent(
+      'div',
+      ['game-sprint__active-screen-button-container'],
+    );
+
+    buttonContainer.element.append(
+      this.correctButton.element,
+      this.incorrectButton.element,
+    );
 
     this.element.append(
       this.points.element,
+      this.multiplierContainer.element,
+      this.streakContainer.element,
       this.wordContainer.element,
-      this.correctButton.element,
-      this.incorrectButton.element,
+      buttonContainer.element,
       this.timer.element,
     );
 

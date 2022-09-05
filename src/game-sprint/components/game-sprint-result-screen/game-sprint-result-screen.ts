@@ -32,11 +32,17 @@ export class GameSprintResultScreen extends BaseComponent {
   incorrectAnswerContainer = new BaseComponent(
     'div',
     ['result-screen__incorrect-answer'],
-    'Неравильные ответы:',
+    'Неправильные ответы:',
   );
 
   constructor(result: { correct: IWord[], mistake: IWord[] }) {
     super('div', ['game-sprint__result-screen']);
+
+    this.correctAnswerContainer.element.textContent =
+      `Правильные ответы (${result.correct.length ? result.correct.length : ''}):`;
+
+    this.incorrectAnswerContainer.element.textContent =
+      `Неправильные ответы (${result.mistake.length ? result.mistake.length : ''}):`;
 
     this.main.element.append(
       this.correctAnswerContainer.element,
@@ -46,11 +52,18 @@ export class GameSprintResultScreen extends BaseComponent {
     this.addWordToContainer(result.correct, this.correctAnswerContainer.element);
     this.addWordToContainer(result.mistake, this.incorrectAnswerContainer.element);
 
+    const buttonContainer = new BaseComponent(
+      'div',
+      ['game-sprint__result-screen-button-container'],
+    );
+    buttonContainer.element.append(
+      this.textbookButton.element,
+      this.oneMoreGameButton.element,
+    );
     this.element.append(
       this.title.element,
       this.main.element,
-      this.textbookButton.element,
-      this.oneMoreGameButton.element,
+      buttonContainer.element,
     );
 
     this.oneMoreGameButton.element.addEventListener('click', () => {
