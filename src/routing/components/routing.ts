@@ -11,6 +11,7 @@ export const enum PageHash {
   formLogin = 'login',
   textbook = 'textbook',
   gamesPage = 'games',
+  sprintGame = 'sprint-game',
 }
 
 export class App {
@@ -21,31 +22,24 @@ export class App {
   private footer: Footer;
 
   private renderNewPage(componentName: string) {
+    if (componentName.includes(PageHash.sprintGame)) {
+      this.footer.element.style.display = 'none';
+    } else {
+      this.footer.element.style.display = 'flex';
+    }
+
     let page: BaseComponent | undefined;
 
-    switch (componentName) {
-      case PageHash.startPage: {
-        page = new StartPage();
-        break;
-      }
-      case PageHash.formLogin: {
-        page = new FormLogin();
-        break;
-      }
-
-      case PageHash.textbook: {
-        page = new Textbook();
-        break;
-      }
-      case PageHash.gamesPage: {
-        page = new GamesPage();
-        break;
-      }
-
-      //TODO: добавить оставшиеся
-      default: {
-        page = new StartPage();
-      }
+    if (componentName === PageHash.startPage) {
+      page = new StartPage();
+    } else if (componentName === PageHash.formLogin) {
+      page = new FormLogin();
+    } else if (componentName === PageHash.textbook) {
+      page = new Textbook();
+    } else if (componentName === PageHash.gamesPage) {
+      page = new GamesPage();
+    } else {
+      page = new StartPage();
     }
 
     if (page) {
