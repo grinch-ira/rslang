@@ -7,11 +7,16 @@ export class HeaderWrapper extends BaseComponent {
 
   private headerLinkList: HeaderLinkList;
 
+  private headerContainer: BaseComponent;
+
   constructor() {
     super('header', ['header-wrapper']);
-    this.headerLogo = new BaseComponent('div', ['header-logo'], 'RSLang');
+    this.headerContainer = new BaseComponent('div', ['header-container']);
+    this.headerLogo = new BaseComponent('a', ['header-logo'], 'RSLang');
+    this.headerLogo.element.setAttribute('href', '#main');
     this.headerLinkList = new HeaderLinkList();
-    this.element.appendChild(this.headerLogo.element);
-    this.element.appendChild(this.headerLinkList.element);
+    this.headerContainer.element.appendChild(this.headerLogo.element);
+    this.headerContainer.element.appendChild(this.headerLinkList.element);
+    this.element.appendChild(this.headerContainer.element);
   }
 }

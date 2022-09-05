@@ -66,6 +66,11 @@ module.exports = ({ develop }) => ({
       // filename: '[name].[contenthash].css',
       filename: '[name].css',
     }),
+    new CopyPlugin({
+      patterns: [
+        { from: './public' }
+      ]
+    }),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
   ],
   output: {
