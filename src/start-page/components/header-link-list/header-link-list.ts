@@ -30,27 +30,24 @@ export class HeaderLinkList extends BaseComponent {
     );
     this.headerLinkStatistics.element.setAttribute('href', '#');
 
+    this.headerLinkLogin = new BaseComponent(
+      'button',
+      ['login', 'header-link-login'],
+    );
     if (SessionSaver.getInstance().isActive) {
-      this.headerLinkLogin = new BaseComponent(
-        'button',
-        ['login', 'header-link-login'],
-        'Выход',
-      );
+      this.headerLinkLogin.element.textContent = 'Выход';
       this.headerLinkLogin.element.addEventListener('click', () => {
         SessionSaver.getInstance().logout();
-        // May be need it, if page not refresh...
         const newUrl = document.URL.includes('#')
           ? document.URL.split('#')[0]
           : `${document.URL.split('#')[0]}#${PageHash.startPage}`;
         document.location = newUrl;
-        // document.location = document.URL;
       });
     } else {
-      this.headerLinkLogin = new BaseComponent(
-        'a',
-        ['login', 'header-link-login'],
-        'Вход',
-      );
+      this.headerLinkLogin.element.textContent = 'Вход';
+      this.headerLinkLogin.element.addEventListener('click', () => {
+        document.location = `${document.URL.split('#')[0]}#${PageHash.formLogin}`;
+      });
     }
     this.headerLinkLogin.element.setAttribute('href', '#login');
     this.element.appendChild(this.headerLinkMain.element);
