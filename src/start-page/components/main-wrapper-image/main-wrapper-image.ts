@@ -1,3 +1,4 @@
+import { SessionSaver } from '../../../core/services/session-saver/session-saver';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 // eslint-disable-next-line max-len
 import {
@@ -35,8 +36,11 @@ export class MainWrapperImage extends BaseComponent {
     this.wrapperContentContainer = new BaseComponent('div', ['image-content-container']);
     this.element.appendChild(this.wrapperContentImage.element);
     this.wrapperContentContainer.element.appendChild(this.wrapperContentTitle.element);
-    this.wrapperContentContainer.element.appendChild(this.wrapperContentLogIn.element);
+
+    if (!SessionSaver.getInstance().isActive) {
+      this.wrapperContentContainer.element.appendChild(this.wrapperContentLogIn.element);
+    }
+
     this.element.appendChild(this.wrapperContentContainer.element);
-    //this.element.appendChild(this.wrapperContentLogIn.element);
   }
 }

@@ -1,3 +1,4 @@
+import { PageHash } from '../../../routing/components/routing';
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 // eslint-disable-next-line max-len
 import { FeaturesContainerBase } from '../app-features-img-container-base/app-features-img-container-base';
@@ -42,6 +43,10 @@ export class FeaturesWrapper extends BaseComponent {
       'Более 3500 слов для изучения, разбитых на разделы по уровню твоей подготовки',
     );
 
+    this.textbookFeatures.element.addEventListener('click', () => {
+      document.location = `${document.URL.split('#')[0]}#${PageHash.textbook}`;
+    });
+
     this.dictionaryFeatures = new FeaturesContainerBase(
       'dictionary',
       'Словарь',
@@ -49,12 +54,20 @@ export class FeaturesWrapper extends BaseComponent {
       'Создай свой персональный словарь для изучения слов',
     );
 
+    this.dictionaryFeatures.element.addEventListener('click', () => {
+      document.location = `${document.URL.split('#')[0]}#${PageHash.textbook}`;
+    });
+
     this.gamesFeatures = new FeaturesContainerBase(
       'games',
       'Игры',
       './assets/game.jpg',
       'Увлекательные игры на развитие запоминания слов, восприятия на слух и письма',
     );
+
+    this.gamesFeatures.element.addEventListener('click', () => {
+      document.location = `${document.URL.split('#')[0]}#${PageHash.gamesPage}`;
+    });
 
     this.statisticFeatures = new FeaturesContainerBase(
       'statistic',
