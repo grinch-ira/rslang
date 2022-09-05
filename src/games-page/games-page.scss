@@ -20,29 +20,25 @@
   width: 300px;
   height: 300px;
   text-align: center;
-}
+  transition: 0.2s;
 
-.link-to-sprint:hover,
-.link-to-audiocall:hover {
-
-  .sprint-name,
-  .audiocall-name {
-    font-size: 1.7rem;
-    color: $color-yellow-button;
-  }
-
-  .sprint-image,
-  .audiocall-image {
+  &:hover {
     transform: scale(1.05);
-    box-shadow: 8px 8px 8px #0000001a;
+
+    .sprint-name,
+    .audiocall-name {
+        color: $color-yellow-button;
+    }
+
   }
 }
 
 .sprint-name,
 .audiocall-name {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-bottom: 20px;
   font-weight: $font-weight-bold;
+  color: $color-title-default;
   transition: all 0.2s ease-out;
 }
 
