@@ -1,0 +1,102 @@
+@import '../../../variables.scss';
+
+.game-audiocall__start-screen {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 100px auto 0;
+  cursor: default;
+  user-select: none;
+  text-align: center;
+  row-gap: 200px;
+}
+
+.game-audiocall__block-1 {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+
+  .game-audiocall__title {
+    font-size: 36px;
+    font-weight: 700;
+  }
+
+  .game-audiocall__description {
+    line-height: 130%;
+  }
+}
+
+.game-audiocall__block-2 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 35px;
+
+  .game-audiocall__block-2-selected-button {
+    font-size: 18px;
+    width: 150px;
+    padding: 5px 10px;
+    transition: background-color .1s, color .1s;
+    color: $color-lightgray-background;
+    border-radius: 10px;
+    background-color: #989898;
+
+    &:disabled {
+      cursor: default;
+      color: #8b8b8b;
+      background-color: #aeaeae;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: darken(#989898, 10);
+    }
+  }
+
+  .audiocall-level-button {
+    font-size: 18px;
+    font-weight: 700;
+    width: 50px;
+    height: 50px;
+    transition: background-color .15s;
+    color: $color-lightgray-background;
+    border-radius: 50%;
+    background-color: #989898;
+
+
+    &:active:not(.active) {
+      transform: scale(.96);
+    }
+
+    &.active {
+      &.game-audiocall__button-A1 {
+        background-color: $color-background-level-0;
+      }
+
+      &.game-audiocall__button-A2 {
+        background-color: $color-background-level-1;
+      }
+
+      &.game-audiocall__button-B1 {
+        background-color: $color-background-level-2;
+      }
+
+      &.game-audiocall__button-B2 {
+        background-color: $color-background-level-3;
+      }
+
+      &.game-audiocall__button-C1 {
+        background-color: $color-background-level-4;
+      }
+
+      &.game-audiocall__button-C2 {
+        background-color: $color-background-level-5;
+      }
+    }
+  }
+
+  .game-audiocall__block-2-level-buttons {
+    display: flex;
+    column-gap: 10px;
+  }
+}

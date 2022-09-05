@@ -1,0 +1,47 @@
+@import '../../../variables.scss';
+
+.image-content-wrapper {
+  margin-top: 65px;
+}
+
+.wrapper-main-content-image {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  box-shadow: 0 4px 4px #00000040;
+  border-radius: 5px;
+}
+.image-content-container{
+  max-width: $width-container;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  bottom: 300px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.wrapper-image-content-title {
+  width: 500px;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-title;
+  line-height: 60px;
+  color: #FFFFFF;
+  text-shadow: 0px 4px 4px #00000040;
+}
+
+.header-link-wrapper-login {
+  display: flex;
+  width: 200px;
+  height: 55px;
+  background: $color-violet-header;
+  border-radius: 20px;
+  font-size: 20px;
+  line-height: 25px;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+}

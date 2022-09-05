@@ -1,0 +1,45 @@
+@import '../../../variables.scss';
+
+.about-developers-wrapper {
+  max-width: $width-container;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.about-developer-title {
+  text-align: center;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-title;
+  line-height: 65px;
+  margin-bottom: 50px;
+}
+
+.about-dev {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.developer-anton-image,
+.developer-vladimir-image,
+.developer-iryna-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px #0000001a;
+}
+
+.developer-text-container {
+  flex-direction: column;
+  margin-left: 60px;
+}
+
+.developer-title {
+  margin-bottom: 25px;
+  font-size: 30px;
+  font-weight: $font-weight-bold;
+  color: $color-title-default;
+}
+
+.developer-subtitle {
+  font-size: 22px;
+}

@@ -1,0 +1,48 @@
+@import '../../../variables.scss';
+
+.authorization-container {
+  max-width: 100%;
+  background-color: $color-lightgray-background;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  margin-top: 100px;
+
+  .form__subtext {
+    font-size: 1.3rem;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .link-to-next-form {
+    cursor: pointer;
+    text-decoration: underline;
+    &:hover {
+      color: $color-violet-header;
+      transition: all 0.25s ease-out;
+    }
+  }
+}
+
+.form-error-message {
+  width: 90%;
+  height: 15%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: $color-red-error;
+  background-color: $color-input-background;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  top: 78%;
+  left: 5%;
+  box-shadow: 5px 5px 5px rgba(175, 9, 9, 0.25);
+  padding: 0 15px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

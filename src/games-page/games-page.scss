@@ -1,0 +1,55 @@
+@import '../variables.scss';
+
+.games-page-title {
+  text-align: center;
+  font-size: $font-size-title;
+  max-width: 940px;
+  margin: 60px auto;
+  font-weight: $font-weight-bold;
+}
+
+.images-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.link-to-sprint,
+.link-to-audiocall {
+  display: block;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  transition: 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+
+    .sprint-name,
+    .audiocall-name {
+        color: $color-yellow-button;
+    }
+
+  }
+}
+
+.sprint-name,
+.audiocall-name {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: $font-weight-bold;
+  color: $color-title-default;
+  transition: 0.5s;
+}
+
+.sprint-image,
+.audiocall-image {
+  @include button-game-img();
+}
+
+@media(max-width:620px) {
+
+  .link-to-sprint {
+    margin-bottom: 25px;
+  }
+}

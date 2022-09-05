@@ -1,0 +1,90 @@
+$color-violet-header: #2907f5a1;
+$color-violet-form: #2b07f58e;
+$color-yellow-button: #f28c1e;
+$color-violet-border: #4a026c;
+$color-lightgray-background: #f5f5f5;
+$color-medium-gray: #d0cccc;
+$color-input-background: #dddcdcd8;
+
+$font-weight-bold: 800;
+$font-size-title: 48px;
+$color-red-error: #bb0c0c;
+// colors for diffrent levels
+
+$color-text-infolabel-ok: #127a00;
+
+$color-background-level-0: #bd1cbd;
+$color-background-level-1: #e0ef0b;
+$color-background-level-2: #178b05;
+$color-background-level-3: #06f6ca;
+$color-background-level-4: #06aaf6;
+$color-background-level-5: #660af2;
+$color-background-level-6: #815555;
+
+$color-background-level-default: #eca2ec;
+
+$color-background-all-studied: #31ae6f;
+
+@mixin header-style {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #220c0c;
+  text-align: center;
+}
+
+@mixin subheader-style {
+  padding: 20px 0 10px 10px;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+@mixin header-small-style {
+  font-weight: 800;
+}
+
+$color-level-selector-circle: #f5f5f5;
+
+// colors for word card
+
+$color-background-word-default: $color-medium-gray;
+$color-background-word-hover: #55cc55;
+$color-background-word-select: #8a4a9a;
+$color-background-word-difficult: #ff6347;
+$color-background-word-difficult-select: #2d0a0a;
+// $color-background-word-difficult-hover:
+
+$color-title-default: #1d0808;
+
+@mixin shadow-box-default {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@mixin button-default {
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: $color-yellow-button;
+  font-size: 0.65em;
+}
+
+@mixin card-word {
+  @include shadow-box-default();
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+
+@mixin card-level {
+  @include card-word();
+  border-radius: 15px;
+}
+
+@mixin button-game-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px #0000001a;
+  transition: all 0.5s ease-out;
+}
+
+
+$width-container: 1440px;

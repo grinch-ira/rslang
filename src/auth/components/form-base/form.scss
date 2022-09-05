@@ -1,0 +1,34 @@
+@import '../../../variables.scss';
+
+.form {
+  max-width: 360px;
+  padding: 40px;
+  background-color: $color-violet-form;
+  position: relative;
+  border-radius: 20px;
+  margin: 0 auto;
+  @include shadow-box-default();
+
+  &__button-submit {
+    display: block;
+    width: 80%;
+    height: 40px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    background-color: $color-yellow-button;
+    margin: 0 auto;
+    @include shadow-box-default();
+  }
+
+  &__title {
+    padding-bottom: 20px;
+    font-size: 2rem;
+    color: #20022e;
+  }
+
+  &__todo {
+    padding-bottom: 20px;
+    font-size: 1.2rem;
+    color: #ffffff;
+  }
+}
