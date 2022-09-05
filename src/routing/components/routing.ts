@@ -5,9 +5,6 @@ import { BaseComponent } from '../../shared/components/base-element/base-compone
 import { Footer } from '../../start-page/components/footer/footer';
 import { Textbook } from '../../textbook';
 import { GamesPage } from '../../games-page/games-page';
-import {
-  GameSprintRoot,
-} from '../../game-sprint/components/game-sprint-root/game-sprint-root';
 
 export const enum PageHash {
   startPage = 'main',
@@ -25,7 +22,7 @@ export class App {
   private footer: Footer;
 
   private renderNewPage(componentName: string) {
-    if (componentName === PageHash.sprintGame) {
+    if (componentName.includes(PageHash.sprintGame)) {
       this.footer.element.style.display = 'none';
     } else {
       this.footer.element.style.display = 'flex';
@@ -33,33 +30,16 @@ export class App {
 
     let page: BaseComponent | undefined;
 
-    switch (componentName) {
-      case PageHash.startPage: {
-        page = new StartPage();
-        break;
-      }
-      case PageHash.formLogin: {
-        page = new FormLogin();
-        break;
-      }
-
-      case PageHash.textbook: {
-        page = new Textbook();
-        break;
-      }
-      case PageHash.gamesPage: {
-        page = new GamesPage();
-        break;
-      }
-      case PageHash.sprintGame: {
-        page = new GameSprintRoot();
-        break;
-      }
-
-      //TODO: добавить оставшиеся
-      default: {
-        page = new StartPage();
-      }
+    if (componentName === PageHash.startPage) {
+      page = new StartPage();
+    } else if (componentName === PageHash.formLogin) {
+      page = new FormLogin();
+    } else if (componentName === PageHash.textbook) {
+      page = new Textbook();
+    } else if (componentName === PageHash.gamesPage) {
+      page = new GamesPage();
+    } else {
+      page = new StartPage();
     }
 
     if (page) {
