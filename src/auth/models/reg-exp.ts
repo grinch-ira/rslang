@@ -16,7 +16,7 @@ export const PASSWORD_REGEXP: [RegExp, FieldValidateError][] = [
   [new RegExp('(?=.*[!@#$%^&*№;:=+-_])', 'g'), FieldValidateError.fieldNeedSymbol],
   [new RegExp('(?=.*[a-zа-я])', 'g'), FieldValidateError.fieldNeedSmallLetter],
   [new RegExp('(?=.*[A-ZА-Я])', 'g'), FieldValidateError.fieldNeedUpperLetter],
-  [new RegExp('[0-9a-zа-яA-ZА-Я!@#$%^&*№;:=+-_]{6,}', 'g'),
+  [new RegExp('[0-9a-zа-яA-ZА-Я!@#$%^&*№;:=+-_]{8,}', 'g'),
     FieldValidateError.fieldNeedSixOrMoreLength],
 ];
 
