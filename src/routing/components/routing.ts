@@ -30,7 +30,10 @@ export class App {
   private footer: Footer;
 
   private renderNewPage(componentName: string) {
-    if (componentName.includes(PageHash.sprintGame)) {
+    if (
+      componentName.includes(PageHash.sprintGame)
+      || componentName.includes(PageHash.audioCallGame)
+    ) {
       this.footer.element.style.display = 'none';
     } else {
       this.footer.element.style.display = 'flex';
