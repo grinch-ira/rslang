@@ -1,8 +1,9 @@
 @import '../../../variables.scss';
 
 .about-developers-wrapper {
-  max-width: 90%;
+  max-width: $width-container;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .about-developer-title {

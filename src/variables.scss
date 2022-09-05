@@ -27,6 +27,7 @@ $color-background-all-studied: #31ae6f;
   font-size: 3rem;
   font-weight: 800;
   color: #220c0c;
+  text-align: center;
 }
 
 @mixin subheader-style {
@@ -46,7 +47,7 @@ $color-level-selector-circle: #f5f5f5;
 $color-background-word-default: $color-medium-gray;
 $color-background-word-hover: #55cc55;
 $color-background-word-select: #8a4a9a;
-$color-background-word-difficult: #b84848;
+$color-background-word-difficult: #ff6347;
 $color-background-word-difficult-select: #2d0a0a;
 // $color-background-word-difficult-hover:
 
@@ -82,3 +83,6 @@ $color-title-default: #1d0808;
   box-shadow: 5px 5px 5px #0000001a;
   transition: all 0.5s ease-out;
 }
+
+
+$width-container: 1440px;

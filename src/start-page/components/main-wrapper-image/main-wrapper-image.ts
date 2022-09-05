@@ -10,6 +10,8 @@ export class MainWrapperImage extends BaseComponent {
 
   private wrapperContentLogIn: BaseComponent;
 
+  private wrapperContentContainer: BaseComponent;
+
   constructor() {
     super('section', ['image-content-wrapper']);
 
@@ -26,9 +28,12 @@ export class MainWrapperImage extends BaseComponent {
 
     this.wrapperContentLogIn = new BaseComponent(
       'a', ['header-link-wrapper-login'], 'Вход');
-    this.wrapperContentLogIn.element.setAttribute('href', '#');
+    this.wrapperContentLogIn.element.setAttribute('href', '#login');
+    this.wrapperContentContainer = new BaseComponent('div', ['image-content-container']);
     this.element.appendChild(this.wrapperContentImage.element);
-    this.element.appendChild(this.wrapperContentTitle.element);
-    this.element.appendChild(this.wrapperContentLogIn.element);
+    this.wrapperContentContainer.element.appendChild(this.wrapperContentTitle.element);
+    this.wrapperContentContainer.element.appendChild(this.wrapperContentLogIn.element);
+    this.element.appendChild(this.wrapperContentContainer.element);
+    //this.element.appendChild(this.wrapperContentLogIn.element);
   }
 }

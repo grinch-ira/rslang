@@ -25,12 +25,12 @@ export interface IPublisherLevelButton extends IPublisher {
 }
 
 export const TEXTBOOK_LEVEL_DESCRIPTION = [
-  'Изи',
   'Легко',
+  'Легко+',
   'Средне',
   'Средне+',
   'Трудно',
-  'Кошмар',
+  'Трудно+',
   'Сложные слова',
 ];
 
