@@ -1,0 +1,67 @@
+@import '../../../variables.scss';
+
+.game-audiocall__result-screen {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 100px auto 0;
+
+  .game-audiocall__result-screen__title {
+    font-size: 36px;
+  }
+
+  .game-audiocall__result-screen__main {
+    display: flex;
+    overflow-y: auto;
+    min-height: 30px;
+    max-height: 540px;
+    margin-top: 30px;
+    column-gap: 100px;
+
+    .game-audiocall__result-screen__correct-answer,
+    .game-audiocall__result-screen__incorrect-answer {
+      display: flex;
+      flex-direction: column;
+      row-gap: 5px;
+    }
+
+    .game-audiocall__word-container:first-child {
+      margin-top: 20px;
+    }
+  }
+}
+
+.game-audiocall__word-audio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.game-audiocall__word-container {
+  display: flex;
+  column-gap: 10px;
+}
+
+.game-audiocall__result-screen-button-container {
+  display: flex;
+  margin-top: 30px;
+  column-gap: 25px;
+}
+
+.game-audiocall__result-screen__textbook,
+.game-audiocall__result-screen__one-more-game {
+  font-size: 18px;
+  padding: 5px 10px;
+  color: $color-lightgray-background;
+  border-radius: 10px;
+  background-color: #989898;
+
+  &:hover {
+    background-color: darken(#989898, 10);
+  }
+}

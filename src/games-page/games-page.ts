@@ -30,7 +30,7 @@ export class GamesPage extends BaseComponent {
     this.linkToSprintGame = new BaseComponent('a', ['link-to-sprint']);
     this.linkToSprintGame.element.setAttribute('href', `#${PageHash.sprintGame}`);
     this.linkToAudioCallGame = new BaseComponent('a', ['link-to-audiocall']);
-    this.linkToAudioCallGame.element.setAttribute('href', '#');
+    this.linkToAudioCallGame.element.setAttribute('href', `#${PageHash.audioCallGame}`);
     this.sprintGameName = new BaseComponent('p', ['sprint-name'], 'Спринт');
     this.audioCallGameName = new BaseComponent('p', ['audiocall-name'], 'Аудиовызов');
     this.sprintImage = new ImageBaseElement('sprint', '../../assets/sprint.jpg');
