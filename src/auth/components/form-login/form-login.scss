@@ -16,10 +16,9 @@
 
   .link-to-next-form {
     cursor: pointer;
-
+    text-decoration: underline;
     &:hover {
       color: $color-violet-header;
-      text-decoration: underline;
       transition: all 0.25s ease-out;
     }
   }
