@@ -1,6 +1,6 @@
 import { BaseComponent } from '../../../shared/components/base-element/base-component';
 
-export class SprintPoints extends BaseComponent {
+export class AudioCallPoints extends BaseComponent {
   element: HTMLDivElement;
 
   private points = 0;

@@ -9,6 +9,9 @@ import {
   GameSprintRoot,
 } from '../../game-sprint/components/game-sprint-root/game-sprint-root';
 import { WordDifficultyGroup } from '../../api/api-interfaces';
+import {
+  GameAudiocallRoot,
+} from '../../game-audiocall/components/game-audiocall-root/game-audiocall-root';
 
 export const enum PageHash {
   startPage = 'main',
@@ -16,6 +19,7 @@ export const enum PageHash {
   textbook = 'textbook',
   gamesPage = 'games',
   sprintGame = 'sprint-game',
+  audioCallGame = 'audiocall-game',
 }
 
 export class App {
@@ -26,7 +30,10 @@ export class App {
   private footer: Footer;
 
   private renderNewPage(componentName: string) {
-    if (componentName.includes(PageHash.sprintGame)) {
+    if (
+      componentName.includes(PageHash.sprintGame)
+      || componentName.includes(PageHash.audioCallGame)
+    ) {
       this.footer.element.style.display = 'none';
     } else {
       this.footer.element.style.display = 'flex';
@@ -49,6 +56,14 @@ export class App {
         page = new GameSprintRoot(currentLevel, pageWord);
       } else {
         page = new GameSprintRoot();
+      }
+    } else if (componentName.includes(PageHash.audioCallGame)) {
+      const [level, pageWord] = componentName.split('/').slice(1);
+      if (level) {
+        const currentLevel = Object.values(WordDifficultyGroup).sort()[+level];
+        page = new GameAudiocallRoot(currentLevel, pageWord);
+      } else {
+        page = new GameAudiocallRoot();
       }
     } else {
       page = new StartPage();
