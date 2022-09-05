@@ -29,7 +29,8 @@
   }
 
   &.textbook__all-studied .textbook__game-link-container {
-    display: none;
+    pointer-events: none;
+    filter: grayscale(100%);
   }
 
   &__game-header {

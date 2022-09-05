@@ -20,6 +20,10 @@ export class Textbook extends BaseComponent implements ISubscriber {
 
   private level: WordDifficultyGroup;
 
+  private linkToSprint: HTMLAnchorElement;
+
+  private linkToAudiocall: HTMLAnchorElement;
+
   constructor() {
     super('div', ['textbook']);
     this.levelSwitcher = new LevelSwitcher();
@@ -73,6 +77,10 @@ export class Textbook extends BaseComponent implements ISubscriber {
     }
     this.level = newLevel;
     if (+newLevel < 6) {
+      // eslint-disable-next-line max-len
+      this.linkToSprint.setAttribute('href', `${document.URL.split('#')[0]}#sprint-game/${this.level}/${this.pageSwitcher.getCurrentPage()}`);
+      // eslint-disable-next-line max-len
+      this.linkToAudiocall.setAttribute('href', `${document.URL.split('#')[0]}#audiocall-game/${this.level}/${this.pageSwitcher.getCurrentPage()}`);
       apiWords.getAChunkOfWords(
         this.level,
         this.pageSwitcher.getCurrentPage().toString(),
@@ -124,13 +132,13 @@ export class Textbook extends BaseComponent implements ISubscriber {
     gameLinkHeader.classList.add('textbook__game-header');
     gameLinkHeader.textContent = 'Игры';
 
-    const linkSprint = document.createElement('a');
-    linkSprint.classList.add('textbook__game-link');
-    linkSprint.setAttribute('href', '#');
+    this.linkToSprint = document.createElement('a');
+    this.linkToSprint.classList.add('textbook__game-link');
+    // linkSprint.setAttribute('href', '#');
 
-    const linkAudiocall = document.createElement('a');
-    linkAudiocall.classList.add('textbook__game-link');
-    linkAudiocall.setAttribute('href', '#');
+    this.linkToAudiocall = document.createElement('a');
+    this.linkToAudiocall.classList.add('textbook__game-link');
+    // linkAudiocall.setAttribute('href', '#');
 
     const titleSprint = document.createElement('p');
     titleSprint.classList.add('textbook__game-title');
@@ -150,10 +158,10 @@ export class Textbook extends BaseComponent implements ISubscriber {
     iconAudiocall.setAttribute('src', './assets/audiocall.jpg');
     iconAudiocall.setAttribute('alt', 'Icon Audiocall Game');
 
-    linkSprint.append(titleSprint, iconSprint);
-    linkAudiocall.append(titleAudiocall, iconAudiocall);
+    this.linkToSprint.append(titleSprint, iconSprint);
+    this.linkToAudiocall.append(titleAudiocall, iconAudiocall);
 
-    gameLinkWrapper.append(linkSprint, linkAudiocall);
+    gameLinkWrapper.append(this.linkToSprint, this.linkToAudiocall);
 
     gameLinkContainer.append(gameLinkHeader, gameLinkWrapper);
 
