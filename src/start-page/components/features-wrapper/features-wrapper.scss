@@ -1,8 +1,8 @@
 @import '../../../variables.scss';
 
 .features-wrapper {
-  margin: 65px auto 100px auto;
-  max-width: 90%;
+  margin: -150px auto 100px auto;
+  max-width: $width-container;
 }
 
 .application-features-title {
@@ -25,6 +25,10 @@
   display: flex;
   max-width: 1200px;
   justify-content: space-between;
+}
+
+.text-container{
+  padding: 0 15px;
 }
 
 .app-feature {
@@ -58,6 +62,7 @@
     &-games,
     &-statistic {
       margin-bottom: 15px;
+      font-weight: $font-weight-bold;
     }
   }
 }

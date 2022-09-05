@@ -38,28 +38,28 @@ export class FeaturesWrapper extends BaseComponent {
     this.textbookFeatures = new FeaturesContainerBase(
       'textbook',
       'Учебник',
-      '../../assets/textbook.jpg',
+      './assets/textbook.jpg',
       'Более 3500 слов для изучения, разбитых на разделы по уровню твоей подготовки',
     );
 
     this.dictionaryFeatures = new FeaturesContainerBase(
       'dictionary',
       'Словарь',
-      '../../assets/dictionary.jpg',
+      './assets/dictionary.jpg',
       'Создай свой персональный словарь для изучения слов',
     );
 
     this.gamesFeatures = new FeaturesContainerBase(
       'games',
       'Игры',
-      '../../assets/game.jpg',
+      './assets/game.jpg',
       'Увлекательные игры на развитие запоминания слов, восприятия на слух и письма',
     );
 
     this.statisticFeatures = new FeaturesContainerBase(
       'statistic',
       'Статистика',
-      '../../assets/statisctic.jpg',
+      './assets/statisctic.jpg',
       'Отслеживай свой прогресс в индивидуальной статистике!',
     );
 

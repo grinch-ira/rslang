@@ -28,16 +28,17 @@ export class DevelopersWrapper extends BaseComponent {
 
     this.developerAnton = new DevelopersContainerBase(
       'anton',
-      'Anton',
-      '../../assets/anton.jpg',
-      'я люблю пиво',
+      'Anton | Junior front-end developer',
+      './assets/anton.jpg',
+      // eslint-disable-next-line max-len
+      'Спустя 5 лет после универа понял, что всё-таки программирование это мое. Запросил все данные от сервера, которые только можно запросить, а так же написал игру спринт',
       'https://github.com/mldx',
     );
 
     this.developerVladimir = new DevelopersContainerBase(
       'vladimir',
-      'Vladimir | junior front-end developer',
-      '../../assets/vladimir.jpg',
+      'Vladimir | Junior front-end developer',
+      './assets/vladimir.jpg',
       // eslint-disable-next-line max-len
       'Три недели получал удовольствие от командной работы и это было даже бесплатно. А ещё формы авторизации, учебник... и, может, ещё что -нибудь..',
       'https://github.com/dyexplode',
@@ -45,9 +46,9 @@ export class DevelopersWrapper extends BaseComponent {
 
     this.developerIryna = new DevelopersContainerBase(
       'iryna',
-      'Iryna',
-      '../../assets/iryna.jpg',
-      'пииииво:)',
+      'Iryna | Team lead | Junior front-end dev',
+      './assets/iryna.jpg',
+      'Стартовая страница, общий дизайн приложения и роутинг, что еще нужно для счастья?',
       'https://github.com/grinch-ira',
     );
 

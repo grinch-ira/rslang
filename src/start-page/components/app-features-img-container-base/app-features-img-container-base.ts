@@ -17,6 +17,7 @@ export class FeaturesContainerBase extends BaseComponent {
     this.imageContainer = new ImageBaseElement(
       `app-feature-${className}`,
       src,
+      'app-feature',
     );
     this.title = new BaseComponent(
       'div',

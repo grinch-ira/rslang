@@ -22,7 +22,8 @@ export class DevelopersContainerBase extends BaseComponent {
   ) {
     super('div', ['developer', 'about-dev', className]);
 
-    this.imageContainer = new ImageBaseElement(`developer-${className}`, src);
+    this.imageContainer = new ImageBaseElement(
+      `developer-${className}`, src, `developer-${className}`);
 
     this.textContainer = new BaseComponent('div', ['developer-text-container']);
 
