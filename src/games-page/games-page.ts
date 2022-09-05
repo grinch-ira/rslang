@@ -31,9 +31,9 @@ export class GamesPage extends BaseComponent {
     this.sprintGameName = new BaseComponent('p', ['sprint-name'], 'Спринт');
     this.audioCallGameName = new BaseComponent('p', ['audiocall-name'], 'Аудиовызов');
     this.sprintImage = new ImageBaseElement(
-      'sprint', '../../assets/sprint.jpg', 'sprint' );
+      'sprint', './assets/sprint.jpg', 'sprint' );
     this.audioCallImage = new ImageBaseElement(
-      'audiocall', '../../assets/audiocall.jpg', 'audiocall');
+      'audiocall', './assets/audiocall.jpg', 'audiocall');
     this.imagesWrapper = new BaseComponent('div', ['images-wrapper']);
 
     this.element.appendChild(this.gamesPageTitle.element);

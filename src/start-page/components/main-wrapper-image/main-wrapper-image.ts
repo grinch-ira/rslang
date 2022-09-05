@@ -17,7 +17,7 @@ export class MainWrapperImage extends BaseComponent {
 
     this.wrapperContentImage = new ImageBaseElement(
       'wrapper-main-content',
-      '../../assets/main.jpg',
+      './assets/main.jpg',
       'Wrapper',
     );
 
